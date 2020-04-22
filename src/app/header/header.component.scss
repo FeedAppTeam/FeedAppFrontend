@@ -1,0 +1,50 @@
+ion-header{
+  --ion-background-color: #0B5394;
+}
+
+ion-toolbar{
+  height: 45px;
+}
+
+ion-img{
+ width : 60%;
+  height: 60%;
+  margin-left: 35%;
+  margin-top: 7%;
+}
+ion-input, ion-datetime{
+  border:2px #aaaaaa solid;
+  border-radius: 5px;
+  width: 125px;
+  height: 40px;
+  margin-top: 3px;
+}
+
+#title{
+  font-size: 17px;
+  padding-left: 1px;
+  padding-bottom: 10px;
+}
+
+ion-buttons{
+  padding-bottom: 10px;
+}
+
+#signIn, #signUp{
+  border: 2px #EEEEEE solid;
+  border-radius: 25px;
+  font-size: 13px;
+  width : 60px;
+  height: 25px;
+}
+
+#signIn{
+  background: #0B5394;
+  color: #EEEEEE;
+}
+
+#signUp{
+  background: #EEEEEE;
+  color: #0B5394;
+
+}

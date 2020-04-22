@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar >
+        <ion-buttons slot="primary">
+          <ion-button id="search" (click)="toggle()">
+            <ion-icon name="search-outline" color="light"></ion-icon>
+          </ion-button>
+          <ion-button id="signIn" class="ion-text-capitalize">Sign in</ion-button>
+          <ion-button id="signUp" class="ion-text-capitalize">Sign up</ion-button>
+        </ion-buttons>
+        <a href="/home" style="text-decoration: none;">
+            <ion-row class="ion-align-items-left">
+          <ion-thumbnail> <ion-img src="assets/icon/feedApp.png"></ion-img>
+          </ion-thumbnail>
+          <ion-title id="title" color="light">FeedApp</ion-title>
+        </ion-row>
+        </a>
+
+  </ion-toolbar>
+</ion-header>
+<div *ngIf="!isDisplayed">
+    <ion-row>
+        <form (ngSubmit)="logForm()">
+            <ion-row class="ion-align-items-left">
+            <ion-input [(ngModel)]="search.activity" name="activity" placeholder="City or Activity"></ion-input>
+            <ion-datetime [(ngModel)]="search.dateF" name="dateF" displayFormat="DD/MM/YYYY"  placeholder="Date Filter"></ion-datetime>
+                <ion-button id="reset" (click)="resetValue()" color="secondary">
+                <ion-icon  name="refresh-outline"></ion-icon>
+            </ion-button>
+            <ion-button id="submit" type="submit" color="secondary">
+                <ion-icon  name="checkmark-outline"></ion-icon>
+            </ion-button>
+            </ion-row>
+        </form>
+    </ion-row>
+</div>
