@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+span{
+    margin-left: 4em;
+    color:red;
+    text-align:left;
+}
+
+.toolbar-img {
+  width: 40px;
+  height: 40px;
+ margin-left: 1.5em;
+ margin-top: 0.5em;
+  
+}
+.toolbar-title {
+    font-size: 21px;
+    padding-top:0.9em ;
+    padding-left: 0.1em;
+}
+/************content*****************/
+/************content icon************/
+.feedapp-icon{
+    display: block;
+    margin-right: auto;
+    margin-left:auto;
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    margin-top:2em;
+    
+    
+}
+
+/***********Card*****************/
+ion-card{
+    background-color: white;
+    border:1px solid #222428;
+    border-radius: 2em;
+    width: 80%;
+    margin-top:5em;
+    margin-left:auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    
+}
+/***********Buttons*****************/
+#ion-buttons{
+    padding: 1em;
+    
+}
+#sign-in{
+         
+        border: 1px solid #EEEEEE;
+        text-align: center;
+        background-color: #EEEEEE;
+        border-radius: 9999em;
+        box-sizing: border-box;  
+        font-family: 'Oswald', sans-serif;
+        color:black;
+        font-size:18px;
+        //font-weight: 400;
+}
+#sign-in.segment-button-checked{
+    border: 2px solid #0C4559;
+    background-color: white;
+    color:#0C4559;
+}
+#sign-up{
+    font-weight: 500;
+    margin-left: 2em;
+    text-align: center;
+    background-color: #EEEEEE;
+    border-radius: 9999em;
+    border:1px solid #EEEEEE;
+    box-sizing: border-box;  
+    font-family: 'Oswald', sans-serif;
+    color:black;
+    font-size:18px;
+}
+#sign-up.segment-button-checked{
+    border: 2px solid #0C4559;
+    background-color: white;
+    color:#0C4559;
+}
+#connexion{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 1em;
+    border-radius: 9999em;
+    width:50%;
+    text-align: center;
+}
+#register{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 1em;
+    border-radius: 9999em;
+    width:50%;
+}
+
+
+/***************icons*********/
+#call-icon,
+#person-icon{
+    font-size:25px;
+    float: left;
+    margin-left: 0.5em;
+    margin-top: 0.2em;
+    color: black;
+}
+#password-icon,
+#gender-icon,
+#email-icon,
+#calll-icon,
+#city-icon{
+    font-size:25px;
+    float: left;
+    margin-left: 0.5em;
+    color: black;
+}
+/*********the first inputs in each part***********/
+#signIn-phone-input,
+#signUp-name-input{
+ margin-left:3.5em;
+ margin-top: 0;
+ border:1px solid #222428;
+ border-radius: 9999em;
+ width: 80%;
+ height:3em;
+ text-align: left;
+ color: black;
+ background-color:#EEEEEE ;
+}
+/***************other inputs*********/
+
+#signIn-password-input,
+#signUp-gender-input,
+#signUp-email-input,
+#signUp-phone-input,
+#signUp-city-input,
+#signUp-password-input,
+#signUp-repassword-input
+{
+margin-top: 0;
+ margin-left:3.5em;
+ border:1px solid #222428;
+border-radius: 9999em;
+ width: 80%;
+ height:3em;
+ text-align: left;
+ color: black;
+ background-color:#EEEEEE ;
+}
+#signIn-phone-input.ng-invalid,
+#signUp-name-input.ng-invalid,
+#signIn-password-input.ng-invalid,
+#signUp-gender-input.ng-invalid,
+#signUp-email-input.ng-invalid,
+#signUp-phone-input.ng-invalid,
+#signUp-city-input.ng-invalid,
+#signUp-password-input.ng-invalid,
+#signUp-repassword-input.ng-invalid
+{
+    border:1px solid red ;
+}
+
+#signIn-phone-input.ng-valid,
+#signUp-name-input.ng-valid,
+#signIn-password-input.ng-valid,
+#signUp-gender-input.ng-valid,
+#signUp-email-input.ng-valid,
+#signUp-phone-input.ng-valid,
+#signUp-city-input.ng-valid,
+#signUp-password-input.ng-valid,
+#signUp-repassword-input.ng-valid
+{
+    border:1px solid green ;
+}
+
+/************************/
+.signIn-password,
+.signUp-user-gender,
+.signUp-user-email,
+.signUp-user-phone,
+.signUp-user-city,
+.signUp-password,
+.signUp-repassword{
+    margin-top:1em;
+    margin-bottom: 1em;
+}
+#forget-password{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    font-size: small;
+    text-align: center;
+    color: black;
+    
+}
+
+
+

@@ -230,3 +230,14 @@
     --color: white;
   }
 }
+ion-segment-button {
+  --indicator-color: transparent !important;
+  --indicator-color-checked: transparent !important;
+  --indicator-background-color:transparent !important;
+ }
+ 
+ .segment-button-checked {
+   --background-hover: white;
+    --background-focused: white;
+   --color:white;
+ }
