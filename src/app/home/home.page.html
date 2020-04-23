@@ -13,6 +13,12 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-fab horizontal="end" vertical="center" slot="fixed">
+    <ion-fab-button color="warning">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <div id="container">
     <p>Here we should start our Application ? <br> plz don't change any thing in this component</p>
   </div>
@@ -129,6 +135,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <app-event [events] = "events"></app-event>
 
 
 </ion-content>

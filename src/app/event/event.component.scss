@@ -1,0 +1,40 @@
+ion-card{
+    background-color: rgb(240, 238, 238);
+    
+    }
+    ion-card-title{
+        margin-top:-9px;
+        font-size: large;
+    }
+    ion-card-content{
+        margin-top:-11px;
+        font-size: smaller;
+    }
+    ion-buttons{
+        margin-top: 3px;
+    
+    }
+    
+    ion-button{ 
+        padding-right: 1em;
+        padding-left: 1em;
+        font-size: small;
+        width:35%;
+        
+        
+    }
+    #donate{
+        border-right: 1px solid hsl(0, 5%, 76%); 
+        
+    }
+    #participate{
+        border-right: 1px solid hsl(0, 5%, 76%);   
+    }
+    ion-buttons{
+        border-top: 1px solid hsl(0, 5%, 76%); 
+    }
+    
+    
+    
+    
+    
