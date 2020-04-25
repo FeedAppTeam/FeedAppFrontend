@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,24 +6,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    search = {}
-    logForm() {
-        console.log(this.search);
+    isDisplayed = true;
+    srcFile = 'assets/icon/feedApp.png';
 
+    searchForm = {
+        activity : '',
+        date : ''
+    };
+
+    constructor() { }
+
+    logForm() {
+        console.log(this.searchForm);
     }
 
-  isDisplayed: boolean = true;
+    ngOnInit() {}
 
-  constructor() { }
+    toggle() {
+        this.isDisplayed = !this.isDisplayed;
+    }
 
-  ngOnInit() {}
+    resetValue() {
+        this.searchForm = {
+          activity : '',
+          date : ''
+        };
+    }
 
-  public toggle(){
-    this.isDisplayed = !this.isDisplayed;
-}
-
-   public resetValue(){
-      this.search= "";
-   }
+    setTime() {
+        this.searchForm.date = this.searchForm.date.split('T')[0];
+    }
 
 }

@@ -1,35 +1,32 @@
 <ion-header>
     <ion-toolbar >
+        <a routerLink="/home" style="text-decoration: none;">
+            <ion-row class="ion-align-items-left">
+                <ion-thumbnail>
+                    <ion-img [src]="srcFile"></ion-img>
+                </ion-thumbnail>
+                <ion-title id="title"  *ngIf = "isDisplayed" color="light">FeedApp</ion-title>
+            </ion-row>
+        </a>
         <ion-buttons slot="primary">
+          <ion-button *ngIf="!isDisplayed" (click)="logForm()" color="light" class="ion-text-capitalize">
+                search
+          </ion-button>
+
           <ion-button id="search" (click)="toggle()">
             <ion-icon name="search-outline" color="light"></ion-icon>
           </ion-button>
-          <ion-button id="signIn" class="ion-text-capitalize">Sign in</ion-button>
-          <ion-button id="signUp" class="ion-text-capitalize">Sign up</ion-button>
+          <ion-button id="signIn" (click)="resetValue()" class="ion-text-capitalize">Sign in</ion-button>
+          <ion-button id="signUp" (click)="logForm()" class="ion-text-capitalize">Sign up</ion-button>
         </ion-buttons>
-        <a href="/home" style="text-decoration: none;">
-            <ion-row class="ion-align-items-left">
-          <ion-thumbnail> <ion-img src="assets/icon/feedApp.png"></ion-img>
-          </ion-thumbnail>
-          <ion-title id="title" color="light">FeedApp</ion-title>
-        </ion-row>
-        </a>
 
-  </ion-toolbar>
+    </ion-toolbar>
+   <div *ngIf="!isDisplayed">
+       <ion-row>
+           <ion-searchbar id="cityOrActivity" [(ngModel)]="searchForm.activity" searchIcon="search" placeholder="City or Activity" inputmode="text" type="search"></ion-searchbar>
+           <ion-searchbar id="date" [(ngModel)]="searchForm.date" (ionFocus) = "picker.open()"  (ionChange)="setTime()" searchIcon="calendar" placeholder="Date" type="search" >
+               <ion-datetime hidden #picker displayFormat="DD/MM/YYYY" placeholder="dd/mm/yy" [(ngModel)]="searchForm.date" (ionCancel) = "searchForm.date =''"></ion-datetime>
+           </ion-searchbar>
+       </ion-row>
+   </div>
 </ion-header>
-<div *ngIf="!isDisplayed">
-    <ion-row>
-        <form (ngSubmit)="logForm()">
-            <ion-row class="ion-align-items-left">
-            <ion-input [(ngModel)]="search.activity" name="activity" placeholder="City or Activity"></ion-input>
-            <ion-datetime [(ngModel)]="search.dateF" name="dateF" displayFormat="DD/MM/YYYY"  placeholder="Date Filter"></ion-datetime>
-                <ion-button id="reset" (click)="resetValue()" color="secondary">
-                <ion-icon  name="refresh-outline"></ion-icon>
-            </ion-button>
-            <ion-button id="submit" type="submit" color="secondary">
-                <ion-icon  name="checkmark-outline"></ion-icon>
-            </ion-button>
-            </ion-row>
-        </form>
-    </ion-row>
-</div>
