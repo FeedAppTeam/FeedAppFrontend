@@ -1,143 +1,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<ion-header >
-  <ion-toolbar>
-      <ion-avatar class="ion-float-left">
-        <ion-img src="../assets/icon/feedApp.png" alt="FeedApp" class="toolbar-img"></ion-img>
-      </ion-avatar>
-      <ion-title class="toolbar-title" alt="FeedApp" >FeedApp</ion-title>
-    </ion-toolbar>
-</ion-header>
+
 
 <ion-content color="medium" [(ngModel)]="content" ngDefaultControl >
+
   <ion-avatar class="feedapp-icon">
-    <ion-img  src="../assets/icon/feedApp.png" ></ion-img>
+    <ion-img  src="assets/icon/feedApp.png" ></ion-img>
   </ion-avatar>
-  
-      <ion-card [(ngModel)]="change"  ngDefaultControl>
-        
+  <ion-card [(ngModel)]="change"  ngDefaultControl>
       <ion-segment id="ion-buttons" [(ngModel)]="segment"  ngDefaultControl>
-        <ion-segment-button  id="sign-in" value="signIn" >
+        <ion-segment-button  id="sign-in" value="signIn" shape="round">
           Sign In
         </ion-segment-button>
-        <ion-segment-button   id="sign-up" value="signUp" >
+        <ion-segment-button   id="sign-up" value="signUp" shape="round">
           Sign Up
         </ion-segment-button>
-        </ion-segment>
+      </ion-segment>
       
-      <div [ngSwitch]="segment">
-        <!--Sign-in-->
-        <ion-list *ngSwitchCase="'signIn'" >
-
-          <form [formGroup]="loginform"  (ngSubmit)="Connexion(loginform.value)">
-
-          <div class="signIn-user-phone">
+      <!--Sign-in-->
+      <ion-list *ngIf="segment === 'signIn'" >
+          <form>
+              <div class="signIn-user-phone">
                <ion-icon id="call-icon" name="call" slot="start" ></ion-icon>
-               <ion-input  formControlName="loginPhone"  name="loginPhone"  inputmode="tel"  id="signIn-phone-input" maxlength="10" minlength="10"
-                placeholder="your phone number"></ion-input>
-                <div *ngIf="(loginPhone.dirty || loginPhone.touched) && loginPhone.invalid">
-                  <span *ngIf="loginPhone.errors.required">*Phone Number is required </span>
-                  <span *ngIf="loginPhone.errors.minlength">*Phone Number is incorrect</span>
-                </div>
-            
-          </div>
+               <ion-input  [(ngModel)]="loginForm.username"  [ngModelOptions]="{standalone: true}" inputmode="tel"  id="signIn-phone-input" maxlength="10" minlength="10"
+                placeholder="your phone number" [required]="true"></ion-input>
 
-          <div class="signIn-password">
-               <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
-               <ion-input formControlName="loginPassword"   name="loginPassword" id="signIn-password-input"  type="password" 
-               placeholder="your password"></ion-input>
-               <div *ngIf="(loginPassword.dirty || loginPassword.touched) && loginPassword.invalid">
-                <span *ngIf="loginPassword.errors.required">*Password is required</span>
-                
               </div>
+              <div class="signIn-password">
+                   <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
+                   <ion-input [(ngModel)]="loginForm.password" [ngModelOptions]="{standalone: true}" id="signIn-password-input"  type="password"
+                   placeholder="your password" [required]="true"></ion-input>
               </div>
-  
-            <ion-label id="forget-password" slot="center" href="#" >Forget Password?</ion-label><br>
-           <a routerLink="../home"><ion-button id="connexion" color="primary" type="submit" shape="round">Connexion</ion-button></a>
-          </form>
-          </ion-list>
-
+              <ion-label id="forget-password" slot="center" href="#" >Forget Password?</ion-label><br>
+              <ion-button id="connexion" color="primary" (click)="Connexion(loginForm)" shape="round">Connexion</ion-button>
+         </form>
+      </ion-list>
 
         <!--sign-up-->
-        <ion-list *ngSwitchCase="'signUp'">
-          
-          <form [formGroup]="registerform"  (ngSubmit)="Register(registerform.value)">
+      <ion-list *ngIf="segment === 'signUp'">
+
+        <form >
 
           <div class="signUp-user-name">
             <ion-icon id="person-icon" name="person" slot="start" ></ion-icon>
-            <ion-input formControlName="registerName"   name="registerName" id="signUp-name-input" inputmode="text" placeholder="your full name"></ion-input>
-            <div *ngIf="(registerName.dirty || registerName.touched) && registerName.invalid">
-              <span *ngIf="registerName.errors.required">*Name is required</span>
-            </div>
+            <ion-input [(ngModel)]="registerForm.name" [ngModelOptions]="{standalone: true}" id="signUp-name-input" inputmode="text" placeholder="your full name"></ion-input>
           </div>
 
           <div class="signUp-user-phone">
             <ion-icon id="calll-icon" name="call" slot="start" ></ion-icon>
-            <ion-input formControlName="registerPhone"   name="registerPhone"  id="signUp-phone-input" maxlength="10" minlength="10" inputmode="tel" placeholder="your phone number" ></ion-input>
-            <div *ngIf="(registerPhone.dirty|| registerPhone.touched) && registerPhone.invalid">
-              <span *ngIf="registerPhone.errors.required">*Phone is required</span>
-              <span *ngIf="registerPhone.errors.minlength">*Phone Number is incorrect</span>
-            </div>
+            <ion-input [(ngModel)]="registerForm.phone" [ngModelOptions]="{standalone: true}" name="registerPhone"  id="signUp-phone-input" maxlength="10" minlength="10" inputmode="tel" placeholder="your phone number" ></ion-input>
           </div>
 
           <div class="signUp-user-email"  >
             <ion-icon id="email-icon" name="mail" slot="start" ></ion-icon>
-            <ion-input formControlName="registerEmail"   name="registerEmail"  id="signUp-email-input" inputmode="email" placeholder="your email" ></ion-input>
-            <div *ngIf="(registerEmail.dirty || registerEmail.touched) && registerEmail.invalid">
-              <span *ngIf="registerEmail.errors.required">*Email is required<br></span>
-              <span *ngIf="registerEmail.errors.pattern">*Invalid Email</span>
-              </div>
+            <ion-input [(ngModel)]="registerForm.email" [ngModelOptions]="{standalone: true}" name="registerEmail"  id="signUp-email-input" inputmode="email" placeholder="your email" ></ion-input>
           </div>
 
           <div class="signUp-password">
             <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
-            <ion-input formControlName="registerPassword"   name="registerPassword"  id="signUp-password-input"  type="password" placeholder="your password"></ion-input>
-            <div *ngIf="(registerPassword.dirty || registerPassword.touched) && registerPassword.invalid">
-              <span *ngIf="registerPassword.errors.required">*Password is required</span>  
-             </div>
+            <ion-input [(ngModel)]="registerForm.password" [ngModelOptions]="{standalone: true}"  name="registerPassword"  id="signUp-password-input"  type="password" placeholder="your password"></ion-input>
           </div>
 
-       <div class="signUp-repassword">
-        <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
-        <ion-input formControlName="registerRepassword"   name="registerRepassword" id="signUp-repassword-input"  type="password" placeholder=" Confirm your password"  required></ion-input>
-        <div *ngIf="(registerRepassword.dirty || registerRepassword.touched) && registerRepassword.invalid">
-          <span *ngIf="registerRepassword.errors.required">*Confirm password is required<br></span>
-          <span *ngIf=" registerPassword.value !== registerRepassword.value">*your password doesn't match</span>
-          </div> 
-      </div> 
+           <div class="signUp-repassword">
+            <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
+            <ion-input [(ngModel)]="registerForm.rePassword" [ngModelOptions]="{standalone: true}" name="registerRepassword" id="signUp-repassword-input"  type="password" placeholder=" Confirm your password"  required></ion-input>
+           </div>
 
-          
+
           <div class="signUp-user-gender">
             <ion-icon id="gender-icon" name="transgender" slot="start"></ion-icon>
-            <ion-select formControlName="registerGender"   name="registerGender"  id="signUp-gender-input"  required>
+            <ion-select [(ngModel)]="registerForm.gender" [ngModelOptions]="{standalone: true}" name="registerGender"  id="signUp-gender-input"  required>
               <ion-select-option value="" disabled>Choose your gender</ion-select-option>
               <ion-select-option  *ngFor="let gender of genders"  [value]="gender">
                 {{ gender.name }}
               </ion-select-option>
             </ion-select>
-            <div *ngIf="(registerGender.dirty || registerGender.touched) && registerGender.invalid">
-              <span *ngIf="registerGender.errors.required">*Gender is required</span>
-              </div> 
           </div>
 
-          <div class="signUp-user-city">
+           <div class="signUp-user-city">
             <ion-icon id="city-icon" name="navigate" slot="start" ></ion-icon>
-            <ion-select formControlName="registerCity"   name="registerCity"  id="signUp-city-input" placeholder="your city"  required>
-              <ion-select-option value="" disabled>Choose your city</ion-select-option>
-              <ion-select-option *ngFor="let city of cities"  [value]="city">
-                {{ city.name }}
-              </ion-select-option>
-              </ion-select>
-              <div *ngIf="registerCity.invalid  && (registerCity.dirty || registerCity.touched)">
-                <span *ngIf="registerCity.errors.required">*City is required</span>
-                </div> 
-          </div>
-
-        
-     <ion-button id="register" type="submit"  shape="round" color="primary">Register</ion-button>
+                <ion-select [(ngModel)]="registerForm.city" [ngModelOptions]="{standalone: true}" name="registerCity"  id="signUp-city-input" placeholder="your city"  required>
+                  <ion-select-option value="" disabled>Choose your city</ion-select-option>
+                  <ion-select-option *ngFor="let city of cities"  [value]="city">
+                    {{ city.name }}
+                  </ion-select-option>
+                </ion-select>
+           </div>
+           <ion-button id="register" (click)="Register(registerForm)"  shape="round" color="primary">Register</ion-button>
        </form>
-
-        </ion-list>
-      </div>
-      </ion-card>
+     </ion-list>
+  </ion-card>
 </ion-content>
 
