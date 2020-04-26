@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Platform} from '@ionic/angular';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,19 +9,21 @@ export class HeaderComponent implements OnInit {
 
     isDisplayed = true;
     srcFile = 'assets/icon/feedApp.png';
-
+    widthSize = this.platform.width();
     searchForm = {
         activity : '',
         date : ''
     };
 
-    constructor() { }
+    constructor(public platform: Platform) { }
 
     logForm() {
         console.log(this.searchForm);
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.widthSize = this.platform.width();
+    }
 
     toggle() {
         this.isDisplayed = !this.isDisplayed;

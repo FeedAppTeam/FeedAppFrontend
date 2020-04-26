@@ -5,15 +5,15 @@
                 <ion-thumbnail>
                     <ion-img [src]="srcFile"></ion-img>
                 </ion-thumbnail>
-                <ion-title id="title"  *ngIf = "isDisplayed" color="light">FeedApp</ion-title>
+                <ion-title id="title" [hidden]="!isDisplayed && widthSize < 370"  color="light">FeedApp</ion-title>
             </ion-row>
         </a>
         <ion-buttons slot="primary">
-          <ion-button *ngIf="!isDisplayed" (click)="logForm()" color="light" class="ion-text-capitalize">
+          <ion-button [hidden]="!this.platform.url().includes('/home')" *ngIf="!isDisplayed" (click)="logForm()" color="light" class="ion-text-capitalize">
                 search
           </ion-button>
 
-          <ion-button id="search" (click)="toggle()">
+          <ion-button [hidden]="!this.platform.url().includes('/home')" id="search" (click)="toggle()">
             <ion-icon name="search-outline" color="light"></ion-icon>
           </ion-button>
           <ion-button id="signIn" (click)="resetValue()" class="ion-text-capitalize">Sign in</ion-button>
