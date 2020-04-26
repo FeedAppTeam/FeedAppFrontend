@@ -1,7 +1,18 @@
 ion-content{
     --ion-background-color:#F0F0F0;
 }
- 
+
+ion-label.label {
+    font-size: 16px;
+    font-weight: bolder;
+    color: #585858;
+}
+
+ion-card{
+    box-shadow: none;
+    border: 0.5px solid #585858;
+    color:transparent;
+}
 
  
   

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-event-details',
@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['event-details.page.scss'],
 })
 export class EventDetailsPage {
-  event : any[] =  [];
+  event: any[] =  [];
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
