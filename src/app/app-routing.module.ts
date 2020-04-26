@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'event-details',
     loadChildren: () => import('./event-details/event-details.module').then( m => m.EventDetailsPageModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./authentification/authentification.module').then( m => m.AuthentificationPageModule)
+  },
+
 ];
 
 @NgModule({
