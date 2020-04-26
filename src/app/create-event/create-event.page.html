@@ -1,0 +1,67 @@
+<!--header-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--content-->
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-row1">
+      <ion-col>
+        <ion-input [(ngModel)]="createForm.title" type="text" id="input-actionTitle" placeholder="Title of action"></ion-input><br>
+        <ion-select [(ngModel)]="createForm.type" placeholder="Action Type" id="sel-actionType">
+          <ion-select-option *ngFor ="let action of listOfActionType" value="{{action.name}}"> {{action.name}} </ion-select-option>
+        </ion-select>
+        <br>
+        <ion-select [(ngModel)]="createForm.city" placeholder="City" id="sel-city">
+          <ion-select-option *ngFor ="let city of listOfCity" value="{{city.name}}"> {{city.name}} </ion-select-option>
+        </ion-select>
+        <br>
+        <ion-select [(ngModel)]="createForm.team" placeholder="Team" id="sel-team">
+          <ion-select-option value=""></ion-select-option>
+        </ion-select>
+        <br>
+        <ion-select [(ngModel)]="createForm.leader" placeholder="Leader" id="sel-leader">
+          <ion-select-option value=""></ion-select-option>
+        </ion-select>
+        <br>
+
+        <ion-datetime [(ngModel)]="createForm.date" displayFormat="DD/MM/YYYY" placeholder="Date and time" id="sel-date-time"></ion-datetime>
+        <br>
+        <ion-input [(ngModel)]="createForm.number" type="number" inputmode="numeric" id="input-nbrPartic" placeholder="Number of participants"></ion-input><br>
+        <!--List of needs-->
+        <ion-label position="floating" id="needs-list">List of needs</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row class="ion-row1" *ngFor="let item of listOfNeeds;index as i">
+      <ion-col size="6">
+        <ion-input [(ngModel)]="item.name" type="text" id="input-item"  placeholder="Item"></ion-input>
+      </ion-col>
+      <ion-col size="4">
+        <ion-input [(ngModel)]="item.number" type="number" inputmode="numeric" id="sel-number" placeholder="Number"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="trash-outline" (click)="deleteItem(i)" style="font-size: 40px;float: right;color: #808289;">
+        </ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-row1">
+      <ion-col size='12'>
+        <ion-fab horizontal="end" vertical="bottom" id="ion-fab-add"
+                 style="position: relative;float: right;margin: 20px 0;right: -7px;">
+          <ion-fab-button color="warning" id="ion-fab-add-button" (click)="addItem()">
+            <ion-icon name="add" id="add-btn"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="center">
+    <ion-button color = "warning" align="text-center" (click)="createEvent()" > Create Event </ion-button>
+  </div>
+</ion-content>
