@@ -1,18 +1,16 @@
 
-<ion-content>
-  <ion-card *ngFor="let event of events">
-    <img src="assets/Images/{{event.img}}" />
-    <ion-card-header>
-      <ion-card-title>{{event.title}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      {{event.city}} | {{event.by}} |{{event.date}}
-    </ion-card-content>
-    <ion-buttons class="button-bar">
-       <ion-button id="participate" >Participate</ion-button>
-      <ion-button id="donate" >Donate</ion-button>
-      <ion-button id="more" >More</ion-button>
-     
-    </ion-buttons>
-  </ion-card>
-</ion-content>
+<ion-card *ngFor="let event of events">
+  <img src="assets/Images/{{event.informations.img}}" />
+  <ion-card-header>
+    <ion-card-title>{{event.informations.title}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{event.informations.city}} | {{event.informations.organizedby}} |{{event.informations.date}}
+  </ion-card-content>
+  <ion-buttons class="button-bar">
+     <ion-button id="participate"  >Participate</ion-button>
+    <ion-button id="donate" >Donate</ion-button>
+    <ion-button id="more" (click)="getMoreDetailsEvent(event)" >More</ion-button>
+
+  </ion-buttons>
+</ion-card>

@@ -8,7 +8,6 @@ const routes: Routes = [
     path: 'create-event',
     loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
   },
-
   {
     path: 'event-details',
     loadChildren: () => import('./event-details/event-details.module').then( m => m.EventDetailsPageModule)

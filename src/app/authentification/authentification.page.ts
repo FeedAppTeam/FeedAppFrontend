@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HostBinding } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, } from '@angular/forms';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-authentification',
@@ -26,7 +26,7 @@ export class AuthentificationPage implements OnInit {
       rePassword : '',
       gender : '',
       city : '',
-  }
+  };
   // loginform: FormGroup;
   // registerform: FormGroup;
 
@@ -57,7 +57,12 @@ export class AuthentificationPage implements OnInit {
     {name: 'Other', abbrev: 'other'}];
 
   // Methods
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router) {
+      this.route.queryParams.subscribe(params => {
+          if (this.router.getCurrentNavigation().extras.state) {
+              this.segment = this.router.getCurrentNavigation().extras.state.segment;
+          }
+      });
      // loginForm
      /*const loginControll = {
         phone: new FormControl('', [
@@ -135,7 +140,6 @@ export class AuthentificationPage implements OnInit {
   }*/
 
   ngOnInit() {
-    this.segment = 'signIn';
     this.height2 = '100%';
     if (this.segment === 'signIn') {
       this.height1 = '50%';

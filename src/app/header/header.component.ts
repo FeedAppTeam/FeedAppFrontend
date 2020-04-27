@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Platform} from '@ionic/angular';
+import {NavigationExtras, Router} from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
         date : ''
     };
 
-    constructor(public platform: Platform) { }
+    constructor(public platform: Platform, private router: Router) { }
 
     logForm() {
         console.log(this.searchForm);
@@ -40,4 +41,12 @@ export class HeaderComponent implements OnInit {
         this.searchForm.date = this.searchForm.date.split('T')[0];
     }
 
+    toAuth(segmentValue) {
+        const detailsEvent: NavigationExtras = {
+            state: {
+                segment: segmentValue
+            }
+        };
+        this.router.navigate(['auth'], detailsEvent);
+    }
 }

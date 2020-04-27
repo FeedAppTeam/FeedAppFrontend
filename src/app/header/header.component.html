@@ -16,8 +16,8 @@
           <ion-button [hidden]="!this.platform.url().includes('/home')" id="search" (click)="toggle()">
             <ion-icon name="search-outline" color="light"></ion-icon>
           </ion-button>
-          <ion-button id="signIn" (click)="resetValue()" class="ion-text-capitalize">Sign in</ion-button>
-          <ion-button id="signUp" (click)="logForm()" class="ion-text-capitalize">Sign up</ion-button>
+          <ion-button id="signIn" (click)="toAuth('signIn')" class="ion-text-capitalize">Sign in</ion-button>
+          <ion-button id="signUp" (click)="toAuth('signUp')" class="ion-text-capitalize">Sign up</ion-button>
         </ion-buttons>
 
     </ion-toolbar>

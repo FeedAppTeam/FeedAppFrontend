@@ -1,4 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-event',
@@ -7,8 +8,18 @@ import { Component, OnInit , Input} from '@angular/core';
 })
 export class EventComponent implements OnInit {
   @Input() events: any;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+
+    getMoreDetailsEvent(details) {
+
+        const detailsEvent: NavigationExtras = {
+            state: {
+                event: details
+            }
+        };
+        this.router.navigate(['event-details'], detailsEvent);
+    }
 
 }
