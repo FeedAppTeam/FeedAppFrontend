@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar >
+    <ion-toolbar color="secondary">
         <a routerLink="/home" style="text-decoration: none;">
             <ion-row class="ion-align-items-left">
                 <ion-thumbnail>
@@ -8,6 +8,7 @@
                 <ion-title id="title" [hidden]="!isDisplayed && widthSize < 370"  color="light">FeedApp</ion-title>
             </ion-row>
         </a>
+
         <ion-buttons slot="primary">
           <ion-button [hidden]="!this.platform.url().includes('/home')" *ngIf="!isDisplayed" (click)="logForm()" color="light" class="ion-text-capitalize">
                 search
@@ -21,7 +22,7 @@
         </ion-buttons>
 
     </ion-toolbar>
-   <div *ngIf="!isDisplayed">
+   <div *ngIf="!isDisplayed" color="light">
        <ion-row>
            <ion-searchbar id="cityOrActivity" [(ngModel)]="searchForm.activity" searchIcon="search" placeholder="City or Activity" inputmode="text" type="search"></ion-searchbar>
            <ion-searchbar id="date" [(ngModel)]="searchForm.date" (ionFocus) = "picker.open()"  (ionChange)="setTime()" searchIcon="calendar" placeholder="Date" type="search" >
