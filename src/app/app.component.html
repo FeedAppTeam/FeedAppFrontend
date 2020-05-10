@@ -1,6 +1,14 @@
+<div *ngIf="showSplash" class="splash">
+  <div class="spinner">
+    <div class="cube1"></div>
+    <div class="cube2"></div>
+  </div>
+</div>
+
 <ion-app>
-  <app-header></app-header>
-  <ion-content >
+  <app-header id="modal" [hidden]="this.platform.url().includes('/auth')"></app-header>
+  
+  <ion-content id="page-wrap">
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
 </ion-app>

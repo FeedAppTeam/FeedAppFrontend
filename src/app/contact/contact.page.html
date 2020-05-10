@@ -1,0 +1,71 @@
+<ion-content>
+  <br><br>
+  <div>
+    <b> Contact Us </b>
+  </div>
+ 
+  <form (ngSubmit)="processForm(nameInput,emailInput,messageInput)">
+     <!-- Basic Error Message -->
+    <div >
+      <span class="error-text" *ngIf="error">Please check your information.</span>
+    </div>
+    <ion-item lines="full">
+      <ion-label position="floating">Name *</ion-label>
+      <ion-input type="text" name="name" class="input" [(ngModel)]="contactForm.name"   clearInput="true" clearOnEdit="true" inputmode="text" required="true"  #nameInput="ngModel" minlength="3"></ion-input>
+      <ion-icon name="person-outline" slot="end" class="suffix-icon"></ion-icon>
+    </ion-item>
+    <div class="help is-error error-message " *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
+      <div *ngIf="nameInput.errors.required">Name is required</div> 
+      <div *ngIf="!nameInput.errors.required">Name needs to be at least 3 characters</div> 
+    </div>
+    
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email *</ion-label>
+      <ion-input type="email" inputmode="email" name="email" class="input" pattern=".+@.+\..+" [(ngModel)]="contactForm.email" clearInput="true" clearOnEdit="true" required #emailInput="ngModel"></ion-input>
+      <ion-icon name="mail-outline" slot="end" class="suffix-icon"></ion-icon>
+    </ion-item>
+    <div class="help is-error error-message" *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+      <div *ngIf="emailInput.errors.required">Email is required</div> 
+      <div *ngIf="!emailInput.errors.required">Email is not valid</div> 
+    </div>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Message *</ion-label>
+      <ion-textarea id="myText" class="textarea input" name="message" [(ngModel)]="contactForm.message" rows="5" maxLength="500" required #messageInput="ngModel"></ion-textarea>
+    </ion-item>
+    <div class="help is-error error-message" *ngIf="messageInput.invalid && (messageInput.dirty || messageInput.touched)">
+      Your message is required!
+    </div>
+    <br>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block" class="signIn">Send</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+
+  <span class="divider line one-line">or</span>
+  <div>
+    <b> Follow Us </b>
+  </div>
+  <div id="outer">
+    <ion-fab-button size="small" class="inner" (click)="openFacebook('ZeroHungerOrg')" >
+      <ion-icon name="logo-facebook"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small"  class="inner"(click)="openTwitter('ZeroHungerWorld')">
+      <ion-icon name="logo-twitter"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small" class="inner" (click)="openLinkedIn('company/zero-hunger-morocco')">
+      <ion-icon name="logo-linkedin"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small" class="inner" (click)="openInstagram('ZeroHungerWorld')">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small" class="inner" (click)="openYoutube('UCBaDgWdXgySNt_-0SDeUHRg')">
+      <ion-icon name="logo-youtube"></ion-icon>
+    </ion-fab-button>
+  </div>
+   
+</ion-content>

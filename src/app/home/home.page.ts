@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,8 @@ import {Router} from '@angular/router';
 })
 export class HomePage {
   events: any[] =  [];
-
-  constructor(private router: Router) {
+  subscription : any;
+  constructor(private router: Router,private platform: Platform) {
     this.events = [
       {
         informations : {
@@ -70,7 +71,4 @@ export class HomePage {
       }
     ];
   }
-    toCreate() {
-        this.router.navigate(['create-event']);
-    }
 }

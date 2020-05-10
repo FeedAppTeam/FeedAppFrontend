@@ -31,3 +31,15 @@
   -webkit-padding-end: 5px;
   padding-inline-end: 5px;
 }
+
+
+.dialogIsOpen{
+  /* Blur and de-color */
+  -webkit-filter: blur(5px) grayscale(50%) !important; 
+  z-index: -9999;
+  pointer-events: none;
+}
+
+.pointerEvent {
+  pointer-events: none;
+}

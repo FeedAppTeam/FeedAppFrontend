@@ -13,9 +13,18 @@ const routes: Routes = [
     loadChildren: () => import('./event-details/event-details.module').then( m => m.EventDetailsPageModule)
   },
   {
-    path: 'auth',
+    path: 'auth/signIn',
     loadChildren: () => import('./authentification/authentification.module').then( m => m.AuthentificationPageModule)
   },
+  {
+    path: 'auth/signUp',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
+
+
 
 ];
 

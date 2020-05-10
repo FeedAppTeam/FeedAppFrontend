@@ -1,0 +1,92 @@
+form { margin: 30px;}
+.feedapp-icon,p,b{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+}
+b {font-size: 20px;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-style: normal;}
+ion-header::after {
+    background-image: none;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0px !important;
+}
+
+.suffix-icon { position: absolute; bottom: 0; right: 0; margin-left: 2px; }
+.signIn{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 1em;
+    border-radius: 9999em;
+    text-align: center;
+}
+.forgot{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 1em;
+    border-radius: 9999em;
+    width:50%;
+    text-align: center;
+}
+a{text-decoration: none;font-size: 10px;} 
+
+.divider {
+    display: flex;
+    
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+}
+  
+.line {
+    align-items: center;
+    margin: 1em -1em;
+    color: #cccccc;
+    
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+} 
+
+.one-line {
+    &:before,
+    &:after {
+       background: #cccccc;
+    }
+}
+
+.error-text {
+    color: #cc0033;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    text-shadow: 1px 1px rgba(250,250,250,.3);
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .error-message-box {
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    float: left;
+    padding: 20px 30px;
+  }
+
+.error-message {
+    color: #cc0033;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 5px 0 0;
+}

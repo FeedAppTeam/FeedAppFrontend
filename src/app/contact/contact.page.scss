@@ -1,0 +1,80 @@
+form ,ion-row ion-fab-button{ margin: 30px;}
+.divider {
+    display: flex;
+    
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+}
+  
+.line {
+    align-items: center;
+    margin: 1em -1em;
+    color: #cccccc;
+    
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+} 
+
+.one-line {
+    &:before,
+    &:after {
+       background: #cccccc;
+    }
+}
+.suffix-icon { position: absolute; bottom: 0; right: 0; }
+
+.native-textarea, .sc-ion-textarea-ios{
+    height: 200px;   
+}
+
+
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+}
+b {
+    font-size: 20px;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-style: normal; display: block;
+  margin-left:auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.error-text {
+    color: #cc0033;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    text-shadow: 1px 1px rgba(250,250,250,.3);
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .error-message-box {
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    float: left;
+    padding: 20px 30px;
+  }
+
+.error-message {
+    color: #cc0033;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 5px 0 0;
+}
+  

@@ -1,13 +1,15 @@
 <ion-header>
     <ion-toolbar color="secondary">
-        <a routerLink="/home" style="text-decoration: none;">
-            <ion-row class="ion-align-items-left">
-                <ion-thumbnail>
-                    <ion-img [src]="srcFile"></ion-img>
-                </ion-thumbnail>
-                <ion-title id="title" [hidden]="!isDisplayed && widthSize < 370"  color="light">FeedApp</ion-title>
-            </ion-row>
-        </a>
+        
+        <ion-row (click) ="toHome()" class="ion-align-items-left row-title">
+            <ion-thumbnail>
+                <ion-img [src]="srcFile" ></ion-img>
+            </ion-thumbnail>
+            <ion-title id="title" [hidden]="!isDisplayed && widthSize < 370"  color="light">
+              FeedApp
+            </ion-title>
+        </ion-row>
+        
 
         <ion-buttons slot="primary">
           <ion-button [hidden]="!this.platform.url().includes('/home')" *ngIf="!isDisplayed" (click)="logForm()" color="light" class="ion-text-capitalize">
@@ -22,7 +24,7 @@
         </ion-buttons>
 
     </ion-toolbar>
-   <div *ngIf="!isDisplayed" color="light">
+   <div *ngIf="!isDisplayed" [hidden]="!this.platform.url().includes('/home')" color="light">
        <ion-row>
            <ion-searchbar id="cityOrActivity" [(ngModel)]="searchForm.activity" searchIcon="search" placeholder="City or Activity" inputmode="text" type="search"></ion-searchbar>
            <ion-searchbar id="date" [(ngModel)]="searchForm.date" (ionFocus) = "picker.open()"  (ionChange)="setTime()" searchIcon="calendar" placeholder="Date" type="search" >
@@ -31,3 +33,20 @@
        </ion-row>
    </div>
 </ion-header>
+
+<ion-fab horizontal="end" [hidden]="this.platform.url().includes('/contact')" vertical="bottom" (click)="changeTheme()" slot="fixed">  
+    <ion-fab-button color="warning">
+      <ion-icon md="add" ios="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button data-desc="About">
+        <ion-icon name="information-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="openContact()"  data-desc="Contact">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="toCreate()" data-desc="Add Event">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
