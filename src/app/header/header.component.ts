@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {Platform} from '@ionic/angular';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AlertController, MenuController, Platform} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {TokenStorageService} from '../services/token-storage.service';
+import {Observable, Subscription} from 'rxjs';
+import {JwtResponse} from '../models/jwt-response';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
     isDisplayed = true;
     srcFile = 'assets/icon/feedApp.png';
+    srcAvatar = 'assets/avatar/avatar7.png';
     url = '/home';
     widthSize = this.platform.width();
     searchForm = {
@@ -18,17 +22,40 @@ export class HeaderComponent implements OnInit {
         date : ''
     };
 
-    constructor(public platform: Platform, private router: Router) {
+    userSubscription: Subscription;
+    infoUser: JwtResponse = null;
+    constructor(public platform: Platform, private router: Router,
+                public alertController: AlertController,
+                public token: TokenStorageService,
+                private menu: MenuController) {
+        this.init();
      }
 
+     async init() {
+         this.userSubscription = await this.token.getObservableUser().subscribe((data) => {
+             this.infoUser = data;
+             if ((typeof this.infoUser) === 'string' )
+                 this.infoUser = JSON.parse(data);
+             this.srcAvatar = (this.infoUser !== null && this.infoUser.img !== undefined) ? this.infoUser.img : this.srcAvatar;
+         });
+     }
     logForm() {
         console.log(this.searchForm);
     }
 
     ngOnInit() {
         this.resetVariable();
+        this.init();
     }
-   
+
+    ngOnDestroy() {
+         this.userSubscription.unsubscribe();
+    }
+
+    ionViewWillLeave() {
+         this.userSubscription.unsubscribe();
+    }
+
     toggle() {
         this.isDisplayed = !this.isDisplayed;
     }
@@ -37,8 +64,27 @@ export class HeaderComponent implements OnInit {
         this.searchForm.date = this.searchForm.date.split('T')[0];
     }
 
-    toAuth(segmentValue) {     
-        this.router.navigate(['auth/'+segmentValue]);
+    async logOut() {
+        const alert = await this.alertController.create({
+            header: 'Logout',
+            message: 'You really want to logout ',
+            backdropDismiss: false,
+            buttons: [
+                {
+                    text: 'No'
+                },
+                {
+                    text: 'Yes',
+                    handler: () => {
+                        this.token.signOut();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+    toAuth(segmentValue) {
+        this.router.navigate(['auth/' + segmentValue]);
         this.resetVariable();
     }
 
@@ -63,19 +109,22 @@ export class HeaderComponent implements OnInit {
     }
     changeTheme() {
         // State changes
-        var content = document.querySelector("#page-wrap");
-        var header = document.querySelector("ion-header");
-        var events = document.querySelectorAll("app-event ion-button");
-        var eventsCreate = document.querySelectorAll("app-create-event ion-button");
-        content.classList.toggle("dialogIsOpen");  
-        header.classList.toggle("dialogIsOpen");  
-        for (var i=0; i<events.length; i++){
-            events[i].classList.toggle("pointerEvent");
-        } 
-        for (var i=0; i<eventsCreate.length; i++){
-            eventsCreate[i].classList.toggle("pointerEvent");
+        const content = document.querySelector('#page-wrap');
+        const header = document.querySelector('ion-header');
+        const events = document.querySelectorAll('app-event ion-button');
+        const eventsCreate = document.querySelectorAll('app-create-event ion-button');
+        content.classList.toggle('dialogIsOpen');
+        header.classList.toggle('dialogIsOpen');
+        for (let i = 0; i < events.length; i++) {
+            events[i].classList.toggle('pointerEvent');
         }
+        for (let i = 0; i < eventsCreate.length; i++) {
+            eventsCreate[i].classList.toggle('pointerEvent');
+        }
+    }
 
-          
-    }   
+    openMenu() {
+        this.menu.enable(true, 'first');
+        this.menu.open('first');
+    }
 }

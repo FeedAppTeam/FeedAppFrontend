@@ -1,6 +1,5 @@
 <ion-header>
     <ion-toolbar color="secondary">
-        
         <ion-row (click) ="toHome()" class="ion-align-items-left row-title">
             <ion-thumbnail>
                 <ion-img [src]="srcFile" ></ion-img>
@@ -9,7 +8,7 @@
               FeedApp
             </ion-title>
         </ion-row>
-        
+
 
         <ion-buttons slot="primary">
           <ion-button [hidden]="!this.platform.url().includes('/home')" *ngIf="!isDisplayed" (click)="logForm()" color="light" class="ion-text-capitalize">
@@ -19,10 +18,15 @@
           <ion-button [hidden]="!this.platform.url().includes('/home')" id="search" (click)="toggle()">
             <ion-icon name="search-outline" color="light"></ion-icon>
           </ion-button>
-          <ion-button id="signIn" (click)="toAuth('signIn')" class="ion-text-capitalize">Sign in</ion-button>
-          <ion-button id="signUp" (click)="toAuth('signUp')" class="ion-text-capitalize">Sign up</ion-button>
+          <ion-button id="signIn" *ngIf="infoUser == null" (click)="toAuth('signIn')" class="ion-text-capitalize">Sign in</ion-button>
+          <ion-button id="signUp" *ngIf="infoUser == null" (click)="toAuth('signUp')" class="ion-text-capitalize">Sign up</ion-button>
         </ion-buttons>
-
+        <!-- avatar image of user -->
+        <ion-buttons *ngIf="infoUser != null" slot="end">
+            <ion-avatar (click)="openMenu()">
+                <ion-img class="user-image" [src]="srcAvatar"></ion-img>
+            </ion-avatar>
+        </ion-buttons>
     </ion-toolbar>
    <div *ngIf="!isDisplayed" [hidden]="!this.platform.url().includes('/home')" color="light">
        <ion-row>
@@ -47,6 +51,9 @@
       </ion-fab-button>
       <ion-fab-button (click)="toCreate()" data-desc="Add Event">
         <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button *ngIf="infoUser != null" (click)="logOut()" data-desc="LogOut">
+          <ion-icon name="log-out-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>

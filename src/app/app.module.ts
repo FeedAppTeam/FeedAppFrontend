@@ -13,18 +13,36 @@ import { Device } from '@ionic-native/device/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpClientModule  } from '@angular/common/http';
+
+import {ImagePicker} from '@ionic-native/image-picker/ngx';
+import {File} from '@ionic-native/file/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import {AvatarDialogComponent} from "./avatar-dialog/avatar-dialog.component";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
+  declarations: [AppComponent, HeaderComponent, AvatarDialogComponent],
+  entryComponents: [AvatarDialogComponent],
+  imports: [
+      BrowserModule,
+      HttpClientModule,
+      IonicModule.forRoot(),
+      AppRoutingModule,
+      FormsModule,
+      IonicStorageModule.forRoot()
+  ],
   providers: [
     StatusBar,
     SplashScreen,
     InAppBrowser,
     AppAvailability,
     Device,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ImagePicker,
+    File,
+    Camera,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+
   ],
   bootstrap: [AppComponent]
 })

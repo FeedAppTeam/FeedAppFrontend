@@ -1,3 +1,10 @@
+<div *ngIf="showSplashLogin" class="splashLogin">
+  <div class="spinnerLogin">
+    <div class="cube1"></div>
+    <div class="cube2"></div>
+  </div>
+</div>
+
 <ion-header no-shadow no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -14,14 +21,17 @@
     <p>Proceed with your</p>
     <b>Login</b>
   </div>
-  <form (ngSubmit)="Login(usernameInput,passwordInput)">
+  <form (ngSubmit)="f.form.valid && Login(usernameInput,passwordInput)" #f="ngForm">
     <!-- Basic Error Message -->
     <div >
       <span class="error-text" *ngIf="error">Please check your Login information.</span>
     </div>
+    <div *ngIf="f.submitted && isLoginFailed" class="error-text">
+      {{errorMessage}}
+    </div>
     <ion-item lines="full" size=8>
       <ion-label position="floating">Phone</ion-label>
-      <ion-input type="tel" clearInput="true" clearOnEdit="true" [(ngModel)]="loginForm.username" [ngModelOptions]="{standalone: true}" pattern="^0[67]{1}[^0\D]{1}\d{7}$" inputmode="tel" required #usernameInput="ngModel"></ion-input>
+      <ion-input type="tel" clearInput="true" clearOnEdit="true" [(ngModel)]="loginForm.phone" [ngModelOptions]="{standalone: true}" pattern="^0[67]{1}[^0\D]{1}\d{7}$" inputmode="tel" required #usernameInput="ngModel"></ion-input>
       <ion-icon name="person-outline" slot="end" class="suffix-icon"></ion-icon>      
     </ion-item>
 
@@ -53,92 +63,3 @@
     </ion-row>
   </form>
 </ion-content>
-
-<!--ion-content color="medium" [(ngModel)]="content" ngDefaultControl >
-
-  <ion-avatar class="feedapp-icon">
-    <ion-img  src="assets/icon/feedApp.png" ></ion-img>
-  </ion-avatar>
-  <ion-card [(ngModel)]="change"  ngDefaultControl>
-      <ion-segment id="ion-buttons" [(ngModel)]="segment"  ngDefaultControl>
-        <ion-segment-button  id="sign-in" value="signIn" shape="round">
-          Sign In
-        </ion-segment-button>
-        <ion-segment-button   id="sign-up" value="signUp" shape="round">
-          Sign Up
-        </ion-segment-button>
-      </ion-segment>
-      
-      <ion-list *ngIf="segment === 'signIn'" >
-          <form>
-              <div class="signIn-user-phone">
-               <ion-icon id="call-icon" name="call" slot="start" ></ion-icon>
-               <ion-input  [(ngModel)]="loginForm.username"  [ngModelOptions]="{standalone: true}" inputmode="tel"  id="signIn-phone-input" maxlength="10" minlength="10"
-                placeholder="your phone number" [required]="true"></ion-input>
-
-              </div>
-              <div class="signIn-password">
-                   <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
-                   <ion-input [(ngModel)]="loginForm.password" [ngModelOptions]="{standalone: true}" id="signIn-password-input"  type="password"
-                   placeholder="your password" [required]="true"></ion-input>
-              </div>
-              <ion-label id="forget-password" slot="center" href="#" >Forget Password?</ion-label><br>
-              <ion-button id="connexion" color="primary" (click)="Connexion(loginForm)" shape="round">Connexion</ion-button>
-         </form>
-      </ion-list>
-
-      <ion-list *ngIf="segment === 'signUp'">
-
-        <form >
-
-          <div class="signUp-user-name">
-            <ion-icon id="person-icon" name="person" slot="start" ></ion-icon>
-            <ion-input [(ngModel)]="registerForm.name" [ngModelOptions]="{standalone: true}" id="signUp-name-input" inputmode="text" placeholder="your full name"></ion-input>
-          </div>
-
-          <div class="signUp-user-phone">
-            <ion-icon id="calll-icon" name="call" slot="start" ></ion-icon>
-            <ion-input [(ngModel)]="registerForm.phone" [ngModelOptions]="{standalone: true}" name="registerPhone"  id="signUp-phone-input" maxlength="10" minlength="10" inputmode="tel" placeholder="your phone number" ></ion-input>
-          </div>
-
-          <div class="signUp-user-email"  >
-            <ion-icon id="email-icon" name="mail" slot="start" ></ion-icon>
-            <ion-input [(ngModel)]="registerForm.email" [ngModelOptions]="{standalone: true}" name="registerEmail"  id="signUp-email-input" inputmode="email" placeholder="your email" ></ion-input>
-          </div>
-
-          <div class="signUp-password">
-            <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
-            <ion-input [(ngModel)]="registerForm.password" [ngModelOptions]="{standalone: true}"  name="registerPassword"  id="signUp-password-input"  type="password" placeholder="your password"></ion-input>
-          </div>
-
-           <div class="signUp-repassword">
-            <ion-icon id="password-icon" name="lock-closed" slot="start" ></ion-icon>
-            <ion-input [(ngModel)]="registerForm.rePassword" [ngModelOptions]="{standalone: true}" name="registerRepassword" id="signUp-repassword-input"  type="password" placeholder=" Confirm your password"  required></ion-input>
-           </div>
-
-
-          <div class="signUp-user-gender">
-            <ion-icon id="gender-icon" name="transgender" slot="start"></ion-icon>
-            <ion-select [(ngModel)]="registerForm.gender" [ngModelOptions]="{standalone: true}" name="registerGender"  id="signUp-gender-input"  required>
-              <ion-select-option value="" disabled>Choose your gender</ion-select-option>
-              <ion-select-option  *ngFor="let gender of genders"  [value]="gender">
-                {{ gender.name }}
-              </ion-select-option>
-            </ion-select>
-          </div>
-
-           <div class="signUp-user-city">
-            <ion-icon id="city-icon" name="navigate" slot="start" ></ion-icon>
-                <ion-select [(ngModel)]="registerForm.city" [ngModelOptions]="{standalone: true}" name="registerCity"  id="signUp-city-input" placeholder="your city"  required>
-                  <ion-select-option value="" disabled>Choose your city</ion-select-option>
-                  <ion-select-option *ngFor="let city of cities"  [value]="city">
-                    {{ city.name }}
-                  </ion-select-option>
-                </ion-select>
-           </div>
-           <ion-button id="register" (click)="Register(registerForm)"  shape="round" color="primary">Register</ion-button>
-       </form>
-     </ion-list>
-  </ion-card>
-</ion-content-->
-

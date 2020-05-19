@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'localhost:8081/api/'
+  apiUrl: 'https://feedapp01.herokuapp.com/api'
 };
 
 /*

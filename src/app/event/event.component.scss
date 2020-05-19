@@ -28,6 +28,15 @@ ion-button{
 #participate{
     border-right: 1px solid hsl(0, 5%, 76%);   
 }
+
+/* Custom Skeleton Line Height and Margin */
+.custom-skeleton ion-skeleton-text {
+    line-height: 13px;
+}
+
+.custom-skeleton ion-skeleton-text:last-child {
+    margin-bottom: 5px;
+}
     
     
     
