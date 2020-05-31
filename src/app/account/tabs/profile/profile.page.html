@@ -1,0 +1,69 @@
+<ion-content ng-model="Profile" *ngIf="main">
+  <div *ngFor="let profile of profiles">
+    <div class="name-badge">
+      <ion-label> {{profile.informations.name}} </ion-label>
+      <ion-badge color="warning" slot="end">
+        {{profile.informations.badge1}}
+      </ion-badge>
+    </div>
+
+    <div class="info">
+      <ion-list lines="none">
+        <ion-item-sliding>
+          <ion-item button ng-model="EditProfile" (click)="showProfile()">
+            <ion-icon slot="start" name="create"></ion-icon>
+            <ion-label>
+              Edit Profile
+            </ion-label>
+            <ion-note slot="end"> </ion-note>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding>
+          <ion-item button ng-model="ChangePassword" (click)="showPassword()">
+            <ion-icon slot="start" name="key"></ion-icon>
+            <ion-label>
+              Change Password
+            </ion-label>
+            <ion-note slot="end"> </ion-note>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding>
+          <ion-item button ng-model="Team" (click)="showTeam()">
+            <ion-icon slot="start" name="people"></ion-icon>
+            <ion-label>
+              My team
+            </ion-label>
+            <ion-note slot="end"> </ion-note>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item>
+          <ion-icon slot="start" name="notifications"></ion-icon>
+          <ion-label>
+            Notifications
+          </ion-label>
+          <ion-toggle slot="end" name="blueberry" checked></ion-toggle>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<div *ngIf="profile">
+  <div ngShow="EditProfile">
+    <app-edit-profile [profiles]="profiles"></app-edit-profile>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<div *ngIf="password">
+  <div ngShow="ChangePassword">
+    <app-change-password [profiles]="profiles"></app-change-password>
+  </div>
+</div>
+<div *ngIf="team">
+  <div ngShow="Team">
+    <app-myteam [profiles]="profiles"></app-myteam>
+  </div>
+</div>

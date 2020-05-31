@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+/************profile**************/
+.name-badge {
+  text-align: center;
+  margin-top: 2em;
+}
+.name-badge ion-badge {
+  margin-bottom: -4px;
+}
+.info {
+  margin-top: 2em;
+}
+.info ion-item {
+  display: block;
+  margin: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #0b5394;
+  border-radius: 10px;
+  box-shadow: 1px 2px 8px #888888;
+  width: 80%;
+}
+.info ion-icon {
+  color: #0b5394;
+}
+
+/************edit profile**************/
+.edit-profile,
+.team {
+  margin-top: 3em;
+}
+.edit-profile ion-item {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.edit-profile ion-icon {
+  font-size: 18px;
+}
+.edit-profile ion-label {
+  font-size: 18px;
+  margin-left: 1em !important;
+  color: #0b5394 !important ;
+}
+.edit-profile ion-input {
+  margin-top: 0.5em;
+  border: 1px solid #0b5394;
+  border-radius: 9999em;
+  text-align: left;
+  padding-left: 1em !important;
+}
+.edit-profile ion-input:focus,
+.edit-profile ion-input:hover {
+  border: 1px solid #f3c727 !important;
+}
+.update {
+  width: 50%;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 9999em;
+  background-color: #0b5394 !important;
+}
+/************change password**************/
+.change-password {
+  margin-top: 3em;
+}
+.change-password ion-item {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.change-password ion-icon {
+  font-size: 18px;
+}
+.change-password ion-label {
+  font-size: 18px;
+  margin-left: 1em !important;
+  color: #0b5394 !important ;
+}
+.change-password ion-input {
+  margin-top: 0.5em;
+  border: 1px solid #0b5394;
+  border-radius: 9999em;
+  text-align: left;
+  padding-left: 1em !important;
+}
+.change-password ion-input:focus,
+.change-password ion-input:hover {
+  border: 1px solid #f3c727 !important;
+}
+/************my team**************/
+.reset-password,
+.myteam {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.reset-password h3,
+.myteam h3 {
+  color: #606060;
+  font-family: "Oswald", serif;
+}
+.reset-password p,
+.myteam p {
+  font-family: "Oswald", serif;
+}
+.reset-password ion-icon,
+.myteam ion-icon {
+  padding: 0.5em;
+  font-size: 30px;
+  color: #606060;
+  border: 2px solid #606060;
+  border-radius: 9999em;
+  background-color: #e9e8eb;
+}
+.team ion-card {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+.team img {
+  height: 50px;
+  border-radius: 10px;
+  text-align: left;
+  float: left;
+}
+.card-info ion-label {
+  font-size: 14px;
+  margin-left: 1em !important;
+  color: #0b5394 !important;
+  text-align: left;
+}
+.card-info ion-badge {
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+}

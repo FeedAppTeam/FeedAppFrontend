@@ -56,6 +56,10 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['contact']);
         this.resetVariable();
     }
+    openAccount() {
+        this.router.navigate(['account/profile']);
+        this.resetVariable();
+    }
 
     resetVariable() {
         this.widthSize = this.platform.width();

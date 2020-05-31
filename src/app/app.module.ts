@@ -9,6 +9,10 @@ import {FormsModule} from '@angular/forms';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AppAvailability } from '@ionic-native/app-availability/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { Platform } from '@ionic/angular';
+
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +23,10 @@ import { HeaderComponent } from './header/header.component';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
   providers: [
+    Camera,
     StatusBar,
     SplashScreen,
+    Platform,
     InAppBrowser,
     AppAvailability,
     Device,

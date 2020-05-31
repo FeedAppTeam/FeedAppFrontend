@@ -34,7 +34,7 @@
    </div>
 </ion-header>
 
-<ion-fab horizontal="end" [hidden]="this.platform.url().includes('/contact')" vertical="bottom" (click)="changeTheme()" slot="fixed">  
+<ion-fab horizontal="end" [hidden]="this.platform.url().includes('/contact')" [hidden]="this.platform.url().includes('/account')" vertical="bottom" (click)="changeTheme()" slot="fixed">  
     <ion-fab-button color="warning">
       <ion-icon md="add" ios="add"></ion-icon>
     </ion-fab-button>
@@ -47,6 +47,9 @@
       </ion-fab-button>
       <ion-fab-button (click)="toCreate()" data-desc="Add Event">
         <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="openAccount()"  data-desc="Account">
+        <ion-icon name="person-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
