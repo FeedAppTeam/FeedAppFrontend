@@ -37,8 +37,8 @@ export class HeaderComponent implements OnInit {
         this.searchForm.date = this.searchForm.date.split('T')[0];
     }
 
-    toAuth(segmentValue) {     
-        this.router.navigate(['auth/'+segmentValue]);
+    toAuth(segmentValue) {
+        this.router.navigate(['auth/' + segmentValue]);
         this.resetVariable();
     }
 
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
         this.resetVariable();
     }
 
-    toAbout() {
+    openAbout() {
         this.router.navigate(['about']);
         this.resetVariable();
     }
