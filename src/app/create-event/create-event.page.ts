@@ -32,7 +32,8 @@ export class CreateEventPage implements OnInit {
     constructor() {}
 
     ngOnInit() {
-        this.listOfCity = [{
+        this.listOfCity = [
+            {
                 name: 'Rabat',
                 abbrev: 'rabat'
             },
@@ -109,7 +110,8 @@ export class CreateEventPage implements OnInit {
                 abbrev: 'missour'
             },
         ];
-        this.listOfActionType = [{
+        this.listOfActionType = [
+            {
                 name: 'Type 1'
             },
             {
@@ -131,6 +133,16 @@ export class CreateEventPage implements OnInit {
             number: '',
             items: this.listOfNeeds
         };
+    }
+
+    ionViewDidEnter() {
+        const ionSelects = document.querySelectorAll('ion-select');
+        ionSelects.forEach((sel) => {
+            sel.shadowRoot.querySelectorAll('.select-icon-inner')
+                .forEach((elem) => {
+                    elem.setAttribute('style', 'display: none;');
+                });
+        });
     }
 
     deleteItem(i) {

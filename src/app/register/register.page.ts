@@ -56,7 +56,7 @@ export class RegisterPage implements OnInit {
         });
     });
   }
-  
+
   toSignIn() {
     this.router.navigate(['auth/signIn']);
   }

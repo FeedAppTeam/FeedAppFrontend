@@ -10,7 +10,7 @@
         <!--action type-->
         <ion-item lines="full">
             <ion-label position="floating">Action type</ion-label>
-            <ion-select cancelText="Clear" required name="actionType" [(ngModel)]="createForm.type">
+            <ion-select cancelText="Clear" required name="actionType" [(ngModel)]="createForm.type" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="createForm.type = null">
                 <ion-select-option *ngFor="let actionType of listOfActionType" value="{{actionType.name}}">
                     {{ actionType.name }}
                 </ion-select-option>
@@ -20,7 +20,7 @@
         <!--city-->
         <ion-item lines="full">
             <ion-label position="floating">City</ion-label>
-            <ion-select required name="city" [(ngModel)]="createForm.city">
+            <ion-select required name="city" [(ngModel)]="createForm.city" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="createForm.city = null">
                 <ion-select-option *ngFor="let city of listOfCity" value="{{ city.name }}">
                     {{ city.name }}
                 </ion-select-option>
@@ -30,7 +30,7 @@
         <!--team-->
         <ion-item lines="full">
             <ion-label position="floating">Team</ion-label>
-            <ion-select required name="team" [(ngModel)]="createForm.team">
+            <ion-select required name="team" [(ngModel)]="createForm.team" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="createForm.team = null">
                 <ion-select-option *ngFor="let team of listOfTeam" value="{{ team }}">
                     {{ team }}
                 </ion-select-option>
@@ -40,7 +40,7 @@
         <!--leader-->
         <ion-item lines="full">
             <ion-label position="floating">Leader</ion-label>
-            <ion-select required name="leader" [(ngModel)]="createForm.leader">
+            <ion-select required name="leader" [(ngModel)]="createForm.leader" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="createForm.leader = null">
                 <ion-select-option *ngFor="let leader of listOfLeader" value="{{ leader }}">
                     {{ leader }}
                 </ion-select-option>
@@ -50,19 +50,19 @@
         <!--date of the action-->
         <ion-item lines="full">
             <ion-label position="floating">Date of action</ion-label>
-            <ion-datetime displayFormat="DD/MM/YYYY" required name="date" [(ngModel)]="createForm.date"></ion-datetime>
+            <ion-datetime displayFormat="DD/MM/YYYY" required name="date" [(ngModel)]="createForm.date" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel) = "createForm.date =''"></ion-datetime>
             <ion-icon name="calendar-outline" slot="end" class="suffix-icon"></ion-icon>
         </ion-item>
         <!--number of paricipants-->
         <ion-item lines="full">
             <ion-label position="floating">Number of participants</ion-label>
-            <ion-input [(ngModel)]="createForm.number" type="number" inputmode="numeric" name="number"></ion-input><br>
+            <ion-input [(ngModel)]="createForm.number" type="number" inputmode="numeric" name="number" ></ion-input><br>
             <ion-icon name="person-add-outline" slot="end" class="suffix-icon"></ion-icon>
         </ion-item>
         <br><br>
 
         <!--list of needs-->
-        <div class="decoratedLine"><span>List of needs <ion-icon name="receipt-outline"></ion-icon></span></div>
+        <div class="decoratedLine"><span>List of needs</span></div>
         <ion-row *ngFor="let item of listOfNeeds;index as i">
             <!--item-->
             <ion-col size="6">
@@ -85,8 +85,8 @@
         <ion-row>
             <ion-col size='12'>
                 <ion-fab horizontal="end" vertical="bottom" id="ion-fab-add">
-                    <ion-fab-button color="warning" id="ion-fab-add-button" (click)="addItem()">
-                        <ion-icon name="add" id="add-btn"></ion-icon>
+                    <ion-fab-button color="warning" (click)="addItem()">
+                        <ion-icon md="add" ios="add"></ion-icon>
                     </ion-fab-button>
                 </ion-fab>
             </ion-col>
