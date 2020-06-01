@@ -1,43 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { Platform } from "@ionic/angular";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  selector: "app-profile",
+  templateUrl: "./profile.page.html",
+  styleUrls: ["./profile.page.scss"],
 })
 export class ProfilePage implements OnInit {
-  profileUser: any = {};
-  imgURL = '../../assets/Images/avatar.png';
-  contentToShow = 'main';
+  profiles: any[] = [];
+  // subscription : any;
+  public profile: boolean = false;
+  public password: boolean = false;
+  public team: boolean = false;
+  public main: boolean = true;
   constructor(private router: Router, private platform: Platform) {
-    this.profileUser  = {
+    this.profiles = [
+      {
         informations: {
-          name: 'Oumaima Amkane',
-          city: 'Agadir',
-          phone: '0641315913',
-          email: 'ouma@gmail.com',
-          password: 'oumaima',
-          gender: 'Female',
-          badge1: 'gold',
-          badge2: 'silver',
-        }
-      };
+          name: "Oumaima Amkane",
+          city: "Agadir",
+          phone: "0641315913",
+          email: "ouma@gmail.com",
+          password: "oumaima",
+          gender: "Female",
+          badge1: "gold",
+          badge2: "silver",
+        },
+      },
+    ];
   }
   showProfile() {
-    this.contentToShow = 'edit';
+    this.profile = !this.profile;
+    this.main = !this.main;
   }
   showPassword() {
-      this.contentToShow = 'password';
-
+    this.password = !this.password;
+    this.main = !this.main;
   }
   showTeam() {
-      this.contentToShow = 'team';
+    this.team = !this.team;
+    this.main = !this.main;
   }
-  setContent(content) {
-    console.log(content);
-      (content !== undefined && content !== null) ? this.contentToShow = content : this.contentToShow = 'main';
-  }
+
   ngOnInit() {}
 }

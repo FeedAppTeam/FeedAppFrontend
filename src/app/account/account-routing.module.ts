@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: AccountPage,
-    children: [
+    children:[
       {
         path: 'profile',
         loadChildren: () => import('./tabs/profile/profile.module').then( m => m.ProfilePageModule)
@@ -19,14 +19,16 @@ const routes: Routes = [
       {
         path: 'notifications',
         loadChildren: () => import('./tabs/notifications/notifications.module').then( m => m.NotificationsPageModule)
-      }
+      },
+      
     ]
   },
   {
-    path: '',
-    redirectTo: '/account/profile',
-    pathMatch: 'full',
+    path:'',
+    redirectTo:'/account/profile',
+    pathMatch:'full',
   }
+  
 ];
 
 @NgModule({

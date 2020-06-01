@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 
 @Component({
   selector: 'app-edit-profile',
@@ -6,17 +6,9 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class EditProfileComponent  implements OnInit {
-  @Input() profile: any;
-  @Output() goBack = new EventEmitter<string>();
-  content = '';
-  imgURL = '../../assets/Images/avatar.png';
-
+  @Input() profiles: any;
   constructor() {}
 
   ngOnInit() {}
 
-  contentChange() {
-    this.content = 'main';
-    this.goBack.emit(this.content);
-  }
 }

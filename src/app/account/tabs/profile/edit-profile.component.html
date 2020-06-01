@@ -1,14 +1,4 @@
-<ion-button (click) = "contentChange()" fill="clear">
-  <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
-</ion-button>
-<div class="edit-profile" >
-  <ion-avatar class="avatar-edit">
-    <img src="{{imgURL}}" />
-    <ion-fab-button id="user_pic">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-avatar>
-  <br>
+<div class="edit-profile" *ngFor="let profile of profiles">
   <form>
     <ion-item lines="none">
       <ion-label color="tertiary" position="stacked">
