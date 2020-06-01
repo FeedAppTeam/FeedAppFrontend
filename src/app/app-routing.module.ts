@@ -33,6 +33,14 @@ const routes: Routes = [
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   },
 
+  {
+    path: 'create-event',
+    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
+  },
+  {
+    path: 'password-forgotten',
+    loadChildren: () => import('./authentification/password-forgotten/password-forgotten.module').then( m => m.PasswordForgottenPageModule)
+  }
 
 
 ];
