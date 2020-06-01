@@ -8,7 +8,12 @@ import {NavigationExtras, Router} from '@angular/router';
 })
 export class EventComponent implements OnInit {
   @Input() events: any;
-  constructor(private router: Router) { }
+  contentLoaded = false ;
+  constructor(private router: Router) {
+    setTimeout(()=>{
+this.contentLoaded = true ;
+    },3000);
+   }
 
   ngOnInit() {}
 

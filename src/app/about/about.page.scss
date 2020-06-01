@@ -1,0 +1,69 @@
+body {
+   font-family: "Segoe UI",Arial,sans-serif ;
+    margin: 0;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .icon{
+display:block;
+text-align: center;
+object-fit: cover;
+  }
+  
+  .column {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 0 8px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+  
+  .about-section {
+   padding:30px;
+    text-align: center;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    
+    font-family: "Segoe UI",Arial,sans-serif ;
+  }
+  
+  .title {
+    color: grey;
+   
+  }
+  
+.section-title-main{
+   
+  font-size: 17px;
+  font-weight: bolder;
+}
+.section-title-bold-center span, .section-title-bold span {
+    border: 2px solid #0b508ba1;
+    padding: .3em .8em;
+    font-family: "Segoe UI",Arial,sans-serif ;
+}
+
+h4.section-title-bold-center{
+align-items: center;
+margin-bottom: 20px;
+}
+.section-title-bold-center{
+ 
+  padding-bottom: 20px;
+  }
+  
+
+
+
+  

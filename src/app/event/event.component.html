@@ -1,4 +1,4 @@
-  <ion-card *ngFor="let event of events">
+<ion-card *ngFor="let event of events">
   <img src="assets/Images/{{event.informations.img}}" />
   <ion-card-header>
     <ion-card-title>{{event.informations.title}}</ion-card-title>
@@ -11,5 +11,26 @@
     <ion-button id="donate" >Donate</ion-button>
     <ion-button id="more" (click)="getMoreDetailsEvent(event)" >More</ion-button>
 
-  </ion-buttons>
-</ion-card>
+
+
+  </ion-row>
+  <div *ngIf="contentLoaded == false">
+    <ion-row *ngFor="let event of events">
+      <ion-card style="width : 100%">
+        <ion-skeleton-text style="width: 100%;height:130px"></ion-skeleton-text>
+        <ion-card-header>
+          <ion-skeleton-text style="width:170px;height: 20px;margin-bottom:2px;margin-top:-10px"></ion-skeleton-text>
+          </ion-card-header>
+        <ion-card-content >
+          <ion-skeleton-text style="width:140px;height: 8px;margin-bottom:2px"></ion-skeleton-text>
+        </ion-card-content>
+        <ion-buttons class="button-bar" style="height : 30px">
+          <ion-skeleton-text  style="width: 50%; margin-right: 2px;"></ion-skeleton-text>
+          <ion-skeleton-text  style="width: 50%; margin-right: 2px;"></ion-skeleton-text>
+          <ion-skeleton-text  style="width: 50%"></ion-skeleton-text>
+        </ion-buttons>
+      </ion-card>
+    </ion-row>
+  </div>
+
+</ion-grid>

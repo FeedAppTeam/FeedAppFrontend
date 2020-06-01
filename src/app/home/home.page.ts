@@ -48,7 +48,7 @@ export class HomePage {
           cordonedby : 'Nouhaila',
           date : '18/04/2020',
           hour: '18h00',
-          img : 'rabat.jpg'
+          img : 'Agadir.jpg'
         },
         needed : [
           {
