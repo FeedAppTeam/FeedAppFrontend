@@ -3,13 +3,29 @@ ion-toolbar{
   height: 45px;
 }
 
-ion-img{
+ion-thumbnail ion-img{
   width : 60%;
   height: 60%;
   margin-left: 35%;
   margin-top: 7%;
 }
 
+ion-avatar{
+  background-size: contain;
+  padding: 2px;
+  margin: 5px;
+  height: 35px;
+  width: 35px;
+}
+ion-avatar img {
+  border: 2px solid white;
+}
+ion-label {
+  font-size: 14px!important;
+  font-weight: 700;
+  color: #1e2023!important;
+  margin-left: 5px;
+}
 #title{
   font-size: 14px;
   padding-left: 1px;

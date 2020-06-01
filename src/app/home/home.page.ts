@@ -9,10 +9,12 @@ import { Platform } from '@ionic/angular';
 })
 export class HomePage {
   events: any[] =  [];
-  subscription : any;
-  constructor(private router: Router,private platform: Platform) {
+  subscription: any;
+  img = '/assets/Images/casablanca.jpg';
+  constructor(private router: Router, private platform: Platform) {
     this.events = [
       {
+        id: 1,
         informations : {
           title : 'Meal action in casablanca',
           city : 'Casablanca',
@@ -41,6 +43,7 @@ export class HomePage {
             P3 : 'Loubna'
           }
       }, {
+         id: 2,
         informations : {
           title : 'Meal action in Agadir',
           city : 'Agadir',

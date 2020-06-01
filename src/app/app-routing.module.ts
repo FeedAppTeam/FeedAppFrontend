@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {CanActivate, PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -9,7 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
   },
   {
-    path: 'event-details',
+    path: 'event-details/:id',
     loadChildren: () => import('./event-details/event-details.module').then( m => m.EventDetailsPageModule)
   },
   {
@@ -31,11 +32,6 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
-  },
-
-  {
-    path: 'create-event',
-    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
   },
   {
     path: 'password-forgotten',

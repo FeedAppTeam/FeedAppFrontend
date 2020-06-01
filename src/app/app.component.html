@@ -5,10 +5,35 @@
   </div>
 </div>
 
-<ion-app>
-  <app-header id="modal" [hidden]="this.platform.url().includes('/auth')"></app-header>
-  
-  <ion-content id="page-wrap">
-    <ion-router-outlet></ion-router-outlet>
+<ion-app >
+  <app-header id="modal" *ngIf="errorVersion" [hidden]="this.platform.url().includes('/auth')"></app-header>
+  <!-- menu slide -->
+  <ion-menu *ngIf="this.currentUser" side="end" menuId="first" contentId="page-wrap">
+    <ion-header color ="primary">
+      <ion-toolbar>
+          <ion-avatar class="avatar-menu">
+            <ion-img class="user-image" [src]="srcAvatar"></ion-img>
+          </ion-avatar>
+        <ion-title class="title-menu">{{this.currentUser?.name}}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list *ngFor="let pages of navigate">
+        <ion-menu-toggle >
+          <ion-item [routerLink]="pages.url" routerDirection="forward">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            {{pages.title}}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-button class="logout" color="light" (click)="logOut()">
+        <ion-label> Logout </ion-label>
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-content>
+  </ion-menu>
+  <ion-content id="page-wrap" >
+    <ion-router-outlet *ngIf="errorVersion"></ion-router-outlet>
   </ion-content>
 </ion-app>

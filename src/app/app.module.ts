@@ -17,11 +17,28 @@ import { Platform } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpClientModule  } from '@angular/common/http';
+
+import {ImagePicker} from '@ionic-native/image-picker/ngx';
+import {File} from '@ionic-native/file/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import {AvatarDialogComponent} from './avatar-dialog/avatar-dialog.component';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
+  declarations: [AppComponent, HeaderComponent, AvatarDialogComponent],
+  entryComponents: [AvatarDialogComponent],
+  imports: [
+      BrowserModule,
+      HttpClientModule,
+      IonicModule.forRoot(),
+      AppRoutingModule,
+      FormsModule,
+      IonicStorageModule.forRoot()
+  ],
   providers: [
     Camera,
     StatusBar,
@@ -30,7 +47,13 @@ import { HeaderComponent } from './header/header.component';
     InAppBrowser,
     AppAvailability,
     Device,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ImagePicker,
+    File,
+    Camera,
+    SocialSharing,
+    Deeplinks,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+
   ],
   bootstrap: [AppComponent]
 })

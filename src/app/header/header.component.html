@@ -19,10 +19,15 @@
           <ion-button [hidden]="!this.platform.url().includes('/home')" id="search" (click)="toggle()">
             <ion-icon name="search-outline" color="light"></ion-icon>
           </ion-button>
-          <ion-button id="signIn" (click)="toAuth('signIn')" class="ion-text-capitalize">Sign in</ion-button>
-          <ion-button id="signUp" (click)="toAuth('signUp')" class="ion-text-capitalize">Sign up</ion-button>
+          <ion-button id="signIn" *ngIf="infoUser == null" (click)="toAuth('signIn')" class="ion-text-capitalize">Sign in</ion-button>
+          <ion-button id="signUp" *ngIf="infoUser == null" (click)="toAuth('signUp')" class="ion-text-capitalize">Sign up</ion-button>
         </ion-buttons>
-
+        <!-- avatar image of user -->
+        <ion-buttons *ngIf="infoUser != null" slot="end">
+            <ion-avatar (click)="openMenu()">
+                <ion-img class="user-image" [src]="srcAvatar"></ion-img>
+            </ion-avatar>
+        </ion-buttons>
     </ion-toolbar>
    <div *ngIf="!isDisplayed" [hidden]="!this.platform.url().includes('/home')" color="light">
        <ion-row>
@@ -34,7 +39,7 @@
    </div>
 </ion-header>
 
-<ion-fab horizontal="end" [hidden]="this.platform.url().includes('/contact')" [hidden]="this.platform.url().includes('/account')" vertical="bottom" (click)="changeTheme()" slot="fixed">  
+<ion-fab horizontal="end" [hidden]="this.platform.url().includes('/contact')" [hidden]="this.platform.url().includes('/account')" vertical="bottom" (click)="changeTheme()" slot="fixed">
     <ion-fab-button color="warning">
       <ion-icon md="add" ios="add"></ion-icon>
     </ion-fab-button>
@@ -50,6 +55,9 @@
       </ion-fab-button>
       <ion-fab-button (click)="openAccount()"  data-desc="Account">
         <ion-icon name="person-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button *ngIf="infoUser != null" (click)="logOut()" data-desc="LogOut">
+          <ion-icon name="log-out-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>

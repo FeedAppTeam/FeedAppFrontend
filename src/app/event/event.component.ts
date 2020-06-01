@@ -15,7 +15,7 @@ this.contentLoaded = true ;
     },3000);
    }
 
-  ngOnInit() {}
+    ngOnInit() {}
 
     getMoreDetailsEvent(details) {
 
@@ -24,7 +24,57 @@ this.contentLoaded = true ;
                 event: details
             }
         };
-        this.router.navigate(['event-details'], detailsEvent);
+        this.router.navigate(['event-details/' + details.id ], detailsEvent);
     }
 
+   shareEventGlobal(event) {
+       const link = 'https://feedapp.inovagit.com/event-details/' + event.id;
+       const msg = this.constructMessage(event);
+        // this is the complete list of currently supported params you can pass to the plugin (all optional)
+       const options = {
+            message: msg, // not supported on some apps (Facebook, Instagram)
+            subject: 'ZeroHunger - FeedApp', // fi. for email
+            url : link,
+            iPadCoordinates: '0,0,0,0' // IOS only iPadCoordinates for where the popover should be point.  Format with x,y,width,height
+       };
+       this.socialSharing.shareWithOptions(options).then(
+            () => {
+
+           },
+           async () => {
+               const toast = await this.toastController.create({
+                   message: 'Error sharing',
+                   duration: 2000,
+                   position: 'bottom'
+               });
+               toast.present();
+           }
+       );
+    }
+
+    constructMessage(event): string {
+        return 'Hello , \nZeroHunger organized an event At ' + event.informations.date + ' in ' + event.informations.city +
+               '\nJoin As : ';
+    }
+
+
+    share(event) {
+        const link = 'https://feedapp-638f1.firebaseapp.com/event-details/' + event.id;
+        const msg = this.constructMessage(event) + link;
+        // this is the complete list of currently supported params you can pass to the plugin (all optional)
+
+        this.socialSharing.share(msg, 'ZeroHunger - FeedApp', null, null).then(
+             () => {
+
+            },
+            async () => {
+                const toast = await this.toastController.create({
+                    message: 'Error sharing',
+                    duration: 2000,
+                    position: 'bottom'
+                });
+                toast.present();
+            }
+        );
+    }
 }

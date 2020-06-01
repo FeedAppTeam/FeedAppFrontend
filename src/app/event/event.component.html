@@ -1,3 +1,56 @@
+<!--ion-list>
+  <ion-list-header>
+    <ion-label>
+      <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+    </ion-label>
+  </ion-list-header>
+  <ion-item >
+    <ion-avatar slot="start">
+      <ion-skeleton-text class="skeletonAnimation"></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text  style="width: 80%" class="skeletonAnimation"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text  style="width: 50%" class="skeletonAnimation"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <ion-skeleton-text animated class="skeletonAnimation"></ion-skeleton-text>
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text animated style="width: 50%" class="skeletonAnimation"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text animated style="width: 80%" class="skeletonAnimation"></ion-skeleton-text>
+      </p>
+      <p>
+        <ion-skeleton-text animated style="width: 60%" class="skeletonAnimation"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<div>
+  <ion-card *ngFor="let event of events">
+    <ion-skeleton-text  style="height: 120px;" class="skeletonAnimation"></ion-skeleton-text>
+    <ion-card-header>
+    <ion-skeleton-text  style="width: 80%" class="skeletonAnimation"></ion-skeleton-text>
+  </ion-card-header>
+    <ion-card-content>
+      <ion-skeleton-text  style="width: 50%" class="skeletonAnimation"></ion-skeleton-text>
+    </ion-card-content>
+    <ion-buttons class="button-bar">
+      <ion-skeleton-text  style="width: 60%; margin-left : 2px" class="skeletonAnimation"></ion-skeleton-text>
+      <ion-skeleton-text  style="width: 60%; margin-left : 2px" class="skeletonAnimation"></ion-skeleton-text>
+      <ion-skeleton-text  style="width: 60%; margin-left : 2px;margin-right : 2px" class="skeletonAnimation"></ion-skeleton-text>
+    </ion-buttons>
+  </ion-card>
+</div-->
 <ion-grid>
   <ion-row *ngIf="contentLoaded != false">
     <ion-card *ngFor="let event of events">

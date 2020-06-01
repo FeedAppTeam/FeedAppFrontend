@@ -10,7 +10,7 @@
       <span class="error-text" *ngIf="error">Please check your information.</span>
     </div>
     <ion-item lines="full">
-      <ion-label position="floating">Name *</ion-label>
+      <ion-label position="floating">Name <span class="required">*</span></ion-label>
       <ion-input type="text" name="name" class="input" [(ngModel)]="contactForm.name"   clearInput="true" clearOnEdit="true" inputmode="text" required="true"  #nameInput="ngModel" minlength="3"></ion-input>
       <ion-icon name="person-outline" slot="end" class="suffix-icon"></ion-icon>
     </ion-item>
@@ -21,7 +21,7 @@
     
 
     <ion-item lines="full">
-      <ion-label position="floating">Email *</ion-label>
+      <ion-label position="floating">Email <span class="required">*</span></ion-label>
       <ion-input type="email" inputmode="email" name="email" class="input" pattern=".+@.+\..+" [(ngModel)]="contactForm.email" clearInput="true" clearOnEdit="true" required #emailInput="ngModel"></ion-input>
       <ion-icon name="mail-outline" slot="end" class="suffix-icon"></ion-icon>
     </ion-item>
@@ -31,7 +31,7 @@
     </div>
 
     <ion-item lines="full">
-      <ion-label position="floating">Message *</ion-label>
+      <ion-label position="floating">Message <span class="required">*</span></ion-label>
       <ion-textarea id="myText" class="textarea input" name="message" [(ngModel)]="contactForm.message" rows="5" maxLength="500" required #messageInput="ngModel"></ion-textarea>
     </ion-item>
     <div class="help is-error error-message" *ngIf="messageInput.invalid && (messageInput.dirty || messageInput.touched)">

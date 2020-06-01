@@ -64,3 +64,41 @@
     -webkit-transform: rotate(-360deg);
   }
 }
+
+.logout {
+  bottom: 5px;
+  right: 15px;
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.avatar-menu {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.title-menu {
+  display: block;
+  display: block;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+ion-menu {
+  ion-toolbar {
+    --background: var(--ion-color-secondary);
+    --ion-text-color: var(--ion-color-primary-contrast);
+  }
+
+}
