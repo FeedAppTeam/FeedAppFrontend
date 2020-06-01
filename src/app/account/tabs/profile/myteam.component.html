@@ -1,4 +1,7 @@
-<div class="team" *ngFor="let profile of profiles">
+<ion-button (click) = "contentChange()" fill="clear">
+  <ion-icon name="arrow-back-outline"></ion-icon>
+</ion-button>
+<div class="team" >
   <div class="myteam">
     <ion-icon name="people-outline"></ion-icon>
     <h3>My Team</h3>
@@ -30,3 +33,4 @@
     </ion-card-content>
   </ion-card>
 </div>
+

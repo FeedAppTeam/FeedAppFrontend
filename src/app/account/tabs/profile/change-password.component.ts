@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-change-password',
@@ -6,9 +6,16 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ChangePasswordComponent implements OnInit {
-  @Input() profiles: any;
-  constructor() { }
+    @Input() profile: any;
+    @Output() goBack = new EventEmitter<string>();
+    content = '';
+    constructor() {}
 
-  ngOnInit() {}
+    ngOnInit() {}
+
+    contentChange() {
+        this.content = 'main';
+        this.goBack.emit(this.content);
+    }
 
 }

@@ -1,22 +1,12 @@
-<ion-header no-border>
-  <ion-avatar>
-    <img src="{{imgURL}}" />
-    <ion-fab-button id="user_pic" (click)="picker()">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-avatar>
-</ion-header>
-
 <ion-content>
   <ion-tabs>
     <ion-tab-bar selectedTab="profile" slot="bottom">
-
-      <ion-tab-button tab="profile" selected="true">
+      <ion-tab-button tab="profile">
         <ion-icon name="person"></ion-icon>
         <ion-label>My Profile</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="actions">
+      <ion-tab-button tab="actions" >
         <ion-icon name="calendar"></ion-icon>
         <ion-label>My Actions</ion-label>
       </ion-tab-button>
@@ -26,7 +16,7 @@
         <ion-icon name="notifications"></ion-icon>
         <ion-label>Notifications</ion-label>
       </ion-tab-button>
-      
+
     </ion-tab-bar>
   </ion-tabs>
 </ion-content>

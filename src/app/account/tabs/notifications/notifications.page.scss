@@ -1,3 +1,25 @@
+//********Top side********/
+.notifications {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+.notifications h3 {
+    color: #606060;
+    font-family: "Oswald", serif;
+}
+.notifications ion-icon {
+    padding: 0.5em;
+    font-size: 30px;
+    color: #606060;
+    border: 2px solid #606060;
+    border-radius: 9999em;
+    background-color: #e9e8eb;
+}
+
 ion-card{
     margin-top: 4em;
 }
