@@ -1,68 +1,135 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component,
+    OnInit
+} from '@angular/core';
 @Component({
     selector: 'app-create-event',
     templateUrl: './create-event.page.html',
-
     styleUrls: ['./create-event.page.scss'],
 })
 
 export class CreateEventPage implements OnInit {
 
-    listOfNeeds = [{name: '', number: ''}];
+    listOfNeeds = [{
+        name: '',
+        number: ''
+    }];
     listOfCity = [];
     listOfActionType = [];
     listOfLeader = [];
     listOfTeam = [];
     createForm = {
-        title : '',
-        type : '',
-        city : '',
-        team : '',
-        leader : '',
-        date : '',
-        number : '',
-        items : []
+        title: '',
+        type: '',
+        city: '',
+        team: '',
+        leader: '',
+        date: '',
+        number: '',
+        items: []
     };
-    constructor() {
-    }
+
+    constructor() {}
 
     ngOnInit() {
-        this.listOfCity = [
-                            {
-                              name : 'Casablanca'
-                            },
-                            {
-                                name : 'Agadir'
-                            },
-                            {
-                                name : 'Rabat'
-                            },
-                            {
-                                name : 'Fes'
-                            }
-                          ];
-        this.listOfActionType = [
-                                  {
-                                      name : 'Type 1'
-                                  },
-                                  {
-                                      name : 'Type 2'
-                                  },
-                                  {
-                                      name : 'Type 3'
-                                  }
-                              ];
-        this.listOfLeader = [];
-        this.listOfTeam = [];
+        this.listOfCity = [{
+                name: 'Rabat',
+                abbrev: 'rabat'
+            },
+            {
+                name: 'Casablanca',
+                abbrev: 'casa'
+            },
+            {
+                name: 'Mohammadia',
+                abbrev: 'mohammadia'
+            },
+            {
+                name: 'Agadir',
+                abbrev: 'agadir'
+            },
+            {
+                name: 'Oujda',
+                abbrev: 'oujda'
+            },
+            {
+                name: 'Laayoune',
+                abbrev: 'laayoune'
+            },
+            {
+                name: 'El Houcima',
+                abbrev: 'elhoucima'
+            },
+            {
+                name: 'Fes',
+                abbrev: 'fes'
+            },
+            {
+                name: 'Meknes',
+                abbrev: 'meknes'
+            },
+            {
+                name: 'Kenitra',
+                abbrev: 'kenitra'
+            },
+            {
+                name: 'Laaraich',
+                abbrev: 'laaraich'
+            },
+            {
+                name: 'Marrakech',
+                abbrev: 'kech'
+            },
+            {
+                name: 'Tanger',
+                abbrev: 'tanger'
+            },
+            {
+                name: 'Tetouane',
+                abbrev: 'tetouane'
+            },
+            {
+                name: 'Tiznit',
+                abbrev: 'tiznit'
+            },
+            {
+                name: 'Tifelt',
+                abbrev: 'tifelt'
+            },
+            {
+                name: 'Safi',
+                abbrev: 'safi'
+            },
+            {
+                name: 'El Jadida',
+                abbrev: 'el jadida'
+            },
+            {
+                name: 'Missour',
+                abbrev: 'missour'
+            },
+        ];
+        this.listOfActionType = [{
+                name: 'Type 1'
+            },
+            {
+                name: 'Type 2'
+            },
+            {
+                name: 'Type 3'
+            }
+        ];
+        this.listOfTeam = ['A', 'B', 'C', 'D', 'E'];
+        this.listOfLeader = ['A', 'B', 'C', 'D', 'E'];
         this.createForm = {
-            title : '',
-            type : '',
-            city : '',
-            team : '',
-            leader : '',
-            date : '',
-            number : '',
-            items : []
+            title: '',
+            type: '',
+            city: '',
+            team: '',
+            leader: '',
+            date: '',
+            number: '',
+            items: this.listOfNeeds
         };
     }
 
@@ -71,7 +138,11 @@ export class CreateEventPage implements OnInit {
     }
 
     addItem() {
-        this.listOfNeeds.push({name: '', number: ''});
+        this.listOfNeeds.push({
+            name: '',
+            number: ''
+        });
+
     }
 
     createEvent() {
@@ -79,4 +150,6 @@ export class CreateEventPage implements OnInit {
         this.createForm.items = this.listOfNeeds;
         console.log('createForm :  ' + JSON.stringify(this.createForm));
     }
+
+
 }

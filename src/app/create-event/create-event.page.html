@@ -1,60 +1,102 @@
-<!--content-->
 <ion-content>
-  <ion-grid>
-    <ion-row class="ion-row1">
-      <ion-col>
-        <ion-input [(ngModel)]="createForm.title" type="text" id="input-actionTitle" placeholder="Title of action"></ion-input><br>
-        <ion-select [(ngModel)]="createForm.type" placeholder="Action Type" id="sel-actionType">
-          <ion-select-option *ngFor ="let action of listOfActionType" value="{{action.name}}"> {{action.name}} </ion-select-option>
-        </ion-select>
-        <br>
-        <ion-select [(ngModel)]="createForm.city" placeholder="City" id="sel-city">
-          <ion-select-option *ngFor ="let city of listOfCity" value="{{city.name}}"> {{city.name}} </ion-select-option>
-        </ion-select>
-        <br>
-        <ion-select [(ngModel)]="createForm.team" placeholder="Team" id="sel-team">
-          <ion-select-option value=""></ion-select-option>
-        </ion-select>
-        <br>
-        <ion-select [(ngModel)]="createForm.leader" placeholder="Leader" id="sel-leader">
-          <ion-select-option value=""></ion-select-option>
-        </ion-select>
-        <br>
+    <form>
+        <!--title of action-->
+        <ion-item lines="full">
+            <ion-label position="floating">Title of action</ion-label>
+            <ion-input clearInput="true" [ngModel]="createForm.title" clearOnEdit="true" inputmode="text" required
+                minlength="3" name="title" type="text"></ion-input>
+            <ion-icon name="reader-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
+        <!--action type-->
+        <ion-item lines="full">
+            <ion-label position="floating">Action type</ion-label>
+            <ion-select cancelText="Clear" required name="actionType" [(ngModel)]="createForm.type">
+                <ion-select-option *ngFor="let actionType of listOfActionType" value="{{actionType.name}}">
+                    {{ actionType.name }}
+                </ion-select-option>
+            </ion-select>
+            <ion-icon name="create-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
+        <!--city-->
+        <ion-item lines="full">
+            <ion-label position="floating">City</ion-label>
+            <ion-select required name="city" [(ngModel)]="createForm.city">
+                <ion-select-option *ngFor="let city of listOfCity" value="{{ city.name }}">
+                    {{ city.name }}
+                </ion-select-option>
+            </ion-select>
+            <ion-icon name="location-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
+        <!--team-->
+        <ion-item lines="full">
+            <ion-label position="floating">Team</ion-label>
+            <ion-select required name="team" [(ngModel)]="createForm.team">
+                <ion-select-option *ngFor="let team of listOfTeam" value="{{ team }}">
+                    {{ team }}
+                </ion-select-option>
+            </ion-select>
+            <ion-icon name="people-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
+        <!--leader-->
+        <ion-item lines="full">
+            <ion-label position="floating">Leader</ion-label>
+            <ion-select required name="leader" [(ngModel)]="createForm.leader">
+                <ion-select-option *ngFor="let leader of listOfLeader" value="{{ leader }}">
+                    {{ leader }}
+                </ion-select-option>
+            </ion-select>
+            <ion-icon name="person-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
+        <!--date of the action-->
+        <ion-item lines="full">
+            <ion-label position="floating">Date of action</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" required name="date" [(ngModel)]="createForm.date"></ion-datetime>
+            <ion-icon name="calendar-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
+        <!--number of paricipants-->
+        <ion-item lines="full">
+            <ion-label position="floating">Number of participants</ion-label>
+            <ion-input [(ngModel)]="createForm.number" type="number" inputmode="numeric" name="number"></ion-input><br>
+            <ion-icon name="person-add-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
+        <br><br>
 
-        <ion-datetime [(ngModel)]="createForm.date" displayFormat="DD/MM/YYYY" placeholder="Date and time" id="sel-date-time"></ion-datetime>
-        <br>
-        <ion-input [(ngModel)]="createForm.number" type="number" inputmode="numeric" id="input-nbrPartic" placeholder="Number of participants"></ion-input><br>
-        <!--List of needs-->
-        <ion-label position="floating" id="needs-list">List of needs</ion-label>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid>
-    <ion-row class="ion-row1" *ngFor="let item of listOfNeeds;index as i">
-      <ion-col size="6">
-        <ion-input [(ngModel)]="item.name" type="text" id="input-item"  placeholder="Item"></ion-input>
-      </ion-col>
-      <ion-col size="4">
-        <ion-input [(ngModel)]="item.number" type="number" inputmode="numeric" id="sel-number" placeholder="Number"></ion-input>
-      </ion-col>
-      <ion-col size="2">
-        <ion-icon name="trash-outline" (click)="deleteItem(i)" style="font-size: 40px;float: right;color: #808289;">
-        </ion-icon>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-row1">
-      <ion-col size='12'>
-        <ion-fab horizontal="end" vertical="bottom" id="ion-fab-add"
-                 style="position: relative;float: right;margin: 20px 0;right: -7px;">
-          <ion-fab-button color="warning" id="ion-fab-add-button" (click)="addItem()">
-            <ion-icon name="add" id="add-btn"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <div class="center">
-    <ion-button color = "warning" align="text-center" (click)="createEvent()" > Create Event </ion-button>
-  </div>
+        <!--list of needs-->
+        <div class="decoratedLine"><span>List of needs <ion-icon name="receipt-outline"></ion-icon></span></div>
+        <ion-row *ngFor="let item of listOfNeeds;index as i">
+            <!--item-->
+            <ion-col size="6">
+                <ion-input type="text" [(ngModel)]="item.name" placeholder="Item" name="needsName">
+                </ion-input>
+            </ion-col>
+            <!--Number of item-->
+            <ion-col size="4">
+                <ion-input type="number" [(ngModel)]="item.number" inputmode="numeric" placeholder="Number"
+                    name="needsNumber">
+                </ion-input>
+            </ion-col>
+            <!--deleteItem button-->
+            <ion-col size="2">
+                <ion-icon name="trash-outline" (click)="deleteItem(i)" id="delete-btn">
+                </ion-icon>
+            </ion-col>
+        </ion-row>
+        <!--add button-->
+        <ion-row>
+            <ion-col size='12'>
+                <ion-fab horizontal="end" vertical="bottom" id="ion-fab-add">
+                    <ion-fab-button color="warning" id="ion-fab-add-button" (click)="addItem()">
+                        <ion-icon name="add" id="add-btn"></ion-icon>
+                    </ion-fab-button>
+                </ion-fab>
+            </ion-col>
+        </ion-row>
+        <!--create event button-->
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="createEvent()" color="tertiary" expand="block" class="center">Create Event
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
 </ion-content>

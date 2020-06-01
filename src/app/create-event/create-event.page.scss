@@ -1,73 +1,75 @@
-/****Buttons******/
+/****Buttons****/
+/****delete button****/
+#delete-btn {
+  font-size: 35px;
+  float: right;
+  color: #808289;
+}
 
-#add-btn {
-  color: #0C4559;
-  font-size: 45px;
-
+/****add button****/
+#ion-fab-add {
+  margin-top: 10em;
+  position: relative;
+  float: right;
+  margin: 20px 0;
+  right: -7px;
 }
 
 #ion-fab-add-button {
   border: 1px solid #0C4559;
   border-radius: 30px;
-
 }
 
-
-
-#ion-fab-add {
-  margin-top: 10em;
+#add-btn {
+  color: #0C4559;
+  font-size: 45px;
 }
 
+/****create event button****/
 .center {
   text-align: center;
   margin-bottom: 10px;
 }
 
-ion-content {
-  --ion-background-color: #F0F0F0;
+/****decoratedLine of list of needs****/
+.decoratedLine {
+  overflow: hidden;
+  text-align: center;
 }
 
-
-ion-header {
-  border-bottom: 30px solid #F0F0F0;
+.decoratedLine>span {
+  position: relative;
+  display: inline-block;
 }
 
-
-
-
-
-#needs-list {
-  color: #888888;
-
+.decoratedLine>span:before,
+.decoratedLine>span:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  border-bottom: 1px solid;
+  width: 591px;
+  /* half of limiter*/
+  margin: 0 20px;
 }
 
-ion-input{
-  color: #636363 !important;
-  background-color: white;
-  border: 1px solid #585858;
+.decoratedLine>span:before {
+  right: 100%;
 }
 
-.ion-row1 {
-  margin-left: 25px !important;
-  margin-right: 25px !important;
+.decoratedLine>span:after {
+  left: 100%;
 }
 
-
-ion-select {
-  color: black !important; //placeholder color
-  max-width: 100%;
+/****form size****/
+form {
+  margin: 30px;
 }
 
-#sel-number {
-  margin-left: 8px !important;
-}
-
-#sel-actionType,
-#sel-city,
-#sel-team,
-#sel-leader,
-#sel-date-time,
-#sel-number {
-  background-color: white;
-  border: 1px solid #585858;
+/****select icons****/
+.suffix-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-left: 2px;
 }
