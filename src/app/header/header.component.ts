@@ -52,6 +52,11 @@ export class HeaderComponent implements OnInit {
         this.resetVariable();
     }
 
+    toAbout() {
+        this.router.navigate(['about']);
+        this.resetVariable();
+    }
+
     openContact() {
         this.router.navigate(['contact']);
         this.resetVariable();
