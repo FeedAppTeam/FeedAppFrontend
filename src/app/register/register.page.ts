@@ -134,7 +134,6 @@ export class RegisterPage implements OnInit {
   }
 
   async selectAvatar() {
-      console.log('condition : ' + !this.platform.is('ios'));
       const actionSheet = await this.actionsheetCtrl.create({
           header: 'Profil picture',
           cssClass: 'action-sheets-basic-page',

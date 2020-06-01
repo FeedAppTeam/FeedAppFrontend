@@ -61,8 +61,8 @@
     {{event.informations.city}} | {{event.informations.organizedby}} |{{event.informations.date}}
   </ion-card-content>
   <ion-buttons class="button-bar">
-     <ion-button id="participate"  >Participate</ion-button>
-    <ion-button id="donate" >Donate</ion-button>
+     <ion-button id="participate" (click)="shareEventGlobal(event)" >Participate</ion-button>
+    <ion-button id="donate" (click)="share(event)">Donate</ion-button>
     <ion-button id="more" (click)="getMoreDetailsEvent(event)" >More</ion-button>
   </ion-buttons>
 </ion-card>

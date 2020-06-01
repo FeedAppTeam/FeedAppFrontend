@@ -10,7 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
   },
   {
-    path: 'event-details',
+    path: 'event-details/:id',
     loadChildren: () => import('./event-details/event-details.module').then( m => m.EventDetailsPageModule)
   },
   {
@@ -23,8 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
   },
 
 

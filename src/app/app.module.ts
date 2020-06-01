@@ -19,7 +19,10 @@ import { HttpClientModule  } from '@angular/common/http';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {File} from '@ionic-native/file/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
-import {AvatarDialogComponent} from "./avatar-dialog/avatar-dialog.component";
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import {AvatarDialogComponent} from './avatar-dialog/avatar-dialog.component';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AvatarDialogComponent],
@@ -41,6 +44,8 @@ import {AvatarDialogComponent} from "./avatar-dialog/avatar-dialog.component";
     ImagePicker,
     File,
     Camera,
+    SocialSharing,
+    Deeplinks,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
   ],

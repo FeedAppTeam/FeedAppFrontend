@@ -1,4 +1,4 @@
-import { Component, ViewChildren, QueryList } from '@angular/core';
+import {Component, ViewChildren, QueryList, NgZone} from '@angular/core';
 
 import {Platform, IonRouterOutlet, AlertController, MenuController} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import {TokenStorageService} from './services/token-storage.service';
 import {JwtResponse} from './models/jwt-response';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import {EventDetailsPage} from './event-details/event-details.page';
 
 @Component({
   selector: 'app-root',
@@ -36,12 +38,15 @@ export class AppComponent {
     public toastController: ToastController,
     public alertController: AlertController,
     public token: TokenStorageService,
-    private menu: MenuController
+    private menu: MenuController,
+    private deeplinks: Deeplinks,
+    private zone: NgZone
   ) {
       this.initializeApp();
       this.backButtonEvent();
       this.sideMenu();
       this.getCurrentUser();
+
   }
 
   initializeApp() {
@@ -49,15 +54,17 @@ export class AppComponent {
       this.versionType = this.device.version;
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
       if (this.platform.is('android')) {
         this.statusBar.styleLightContent();
         this.statusBar.backgroundColorByHexString('#0B5394');
-
+        this.initializeDeepLink();
         if (this.versionType != null && this.cmpVersions(this.versionType, '6.0') < 0) {
           this.notConformeDevice ();
         } else {
-          timer(3000).subscribe(() => this.showSplash = false);
+          timer(3000).subscribe(() => {
+              this.showSplash = false;
+              //this.initializeDeepLink();
+          });
         }
       } else {
         timer(3000).subscribe(() => this.showSplash = false);
@@ -177,5 +184,21 @@ export class AppComponent {
         });
         this.menu.close('first');
         alert.present();
+    }
+    initializeDeepLink() {
+        this.deeplinks.route({
+            '/event-details/:id': EventDetailsPage
+        }).subscribe(match => {
+            // match.$route - the route we matched, which is the matched entry from the arguments to route()
+            // match.$args - the args passed in the link
+            // match.$link - the full link data
+            const intpaht = `/event-details/${match.$args['id']}`;
+            this.zone.run(() => {
+                this.router.navigate([intpaht]);
+            });
+        }, nomatch => {
+            // nomatch.$link - the full link data
+            console.error('Got a deeplink that didn\'t match', nomatch);
+        });
     }
 }
