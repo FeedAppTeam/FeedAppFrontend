@@ -1,6 +1,6 @@
 <ion-header no-border [hidden]="contentToShow !== 'main'">
   <ion-avatar id="avatar-header">
-    <img src="{{imgURL}}" />
+    <img src="{{this.infoUser?.img}}" />
     <ion-fab-button id="user_pic">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
@@ -10,9 +10,9 @@
 <ion-content ng-model="Profile" >
   <div *ngIf="contentToShow === 'main'">
     <div class="name-badge">
-      <ion-label> {{profileUser.informations.name}} </ion-label>
+      <ion-label> {{infoUser?.name}} </ion-label>
       <ion-badge color="warning" slot="end">
-        {{profileUser.informations.badge1}}
+        Gold
       </ion-badge>
     </div>
 
@@ -60,17 +60,17 @@
   </div>
   <div *ngIf="contentToShow === 'edit'">
     <div >
-      <app-edit-profile [profile]="profileUser" (goBack)='setContent($event)'></app-edit-profile>
+      <app-edit-profile [profile]="infoUser" (goBack)='setContent($event)'></app-edit-profile>
     </div>
   </div>
   <div *ngIf="contentToShow === 'password'">
     <div >
-      <app-change-password [profile]="profileUser" (goBack)='setContent($event)'></app-change-password>
+      <app-change-password [profile]="infoUser" (goBack)='setContent($event)'></app-change-password>
     </div>
   </div>
   <div *ngIf="contentToShow === 'team'">
     <div >
-      <app-myteam [profile]="profileUser" (goBack)='setContent($event)'></app-myteam>
+      <app-myteam [profile]="infoUser" (goBack)='setContent($event)'></app-myteam>
     </div>
   </div>
 </ion-content>

@@ -9,7 +9,7 @@ export class EditProfileComponent  implements OnInit {
   @Input() profile: any;
   @Output() goBack = new EventEmitter<string>();
   content = '';
-  imgURL = '../../assets/Images/avatar.png';
+  imgURL = '../../assets/avatar/avatar1.png';
 
   constructor() {}
 

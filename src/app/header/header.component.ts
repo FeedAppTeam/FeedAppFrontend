@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ionViewWillLeave() {
          this.userSubscription.unsubscribe();
     }
-   
+
     toggle() {
         this.isDisplayed = !this.isDisplayed;
     }
@@ -64,8 +64,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.searchForm.date = this.searchForm.date.split('T')[0];
     }
 
-    toAuth(segmentValue) {
-        this.router.navigate(['auth/' + segmentValue]);
     async logOut() {
         const alert = await this.alertController.create({
             header: 'Logout',

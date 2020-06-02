@@ -1,5 +1,7 @@
 import { Component, OnInit , Input} from '@angular/core';
 import {NavigationExtras, Router} from '@angular/router';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import {ActionSheetController, ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-event',
@@ -9,10 +11,13 @@ import {NavigationExtras, Router} from '@angular/router';
 export class EventComponent implements OnInit {
   @Input() events: any;
   contentLoaded = false ;
-  constructor(private router: Router) {
-    setTimeout(()=>{
-this.contentLoaded = true ;
-    },3000);
+  constructor(private router: Router,
+              private socialSharing: SocialSharing,
+              public actionsheetCtrl: ActionSheetController,
+              public toastController: ToastController) {
+        setTimeout(() => {
+            this.contentLoaded = true ;
+        }, 3000);
    }
 
     ngOnInit() {}

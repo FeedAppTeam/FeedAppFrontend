@@ -27,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
+    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule),
+    canActivate : [AuthGuard]
   },
   {
     path: 'about',

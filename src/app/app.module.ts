@@ -22,7 +22,6 @@ import { HttpClientModule  } from '@angular/common/http';
 
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {File} from '@ionic-native/file/ngx';
-import { Camera } from '@ionic-native/camera/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import {AvatarDialogComponent} from './avatar-dialog/avatar-dialog.component';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';

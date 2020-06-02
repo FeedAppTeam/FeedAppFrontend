@@ -8,29 +8,43 @@
     <p>Together we stand <br />Divided we fall</p>
   </div>
 
-  <ion-card>
-    <ion-card-title>Team Manager</ion-card-title>
-    <ion-card-content>
-      <img src="../../assets/Images/ouma.jpg" />
+  <ion-list>
+    <ion-list-header>
+      Team Manager
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-img src="{{profile?.img}}"></ion-img>
+      </ion-avatar>
       <div class="card-info">
-        <ion-label> {{ profile.informations.name }} </ion-label>
-        <ion-badge color="warning" slot="end">
-          {{ profile.informations.badge1 }}
-        </ion-badge>
+        <ion-label>
+          <h2>{{ profile?.name }} </h2>
+          <h3>{{ profile?.phone }} </h3>
+        </ion-label>
       </div>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-title>Team Members</ion-card-title>
-    <ion-card-content>
-      <img src="../../assets/Images/ouma.jpg" />
+      <ion-badge color="warning" slot="end">
+        Gold
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Team Members
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-img src="{{profile?.img}}"></ion-img>
+      </ion-avatar>
       <div class="card-info">
-        <ion-label> {{ profile.informations.name }} </ion-label>
-        <ion-badge color="medium" slot="end">
-          {{ profile.informations.badge2 }}
-        </ion-badge>
+        <ion-label>
+          <h2>{{ profile?.name }} </h2>
+          <h3>{{ profile?.phone }} </h3>
+        </ion-label>
       </div>
-    </ion-card-content>
-  </ion-card>
+      <ion-badge color="medium" slot="end">
+        Silver
+      </ion-badge>
+    </ion-item>
+  </ion-list>
 </div>
 

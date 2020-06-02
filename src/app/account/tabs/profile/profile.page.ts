@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {JwtResponse} from '../../../models/jwt-response';
+import {TokenStorageService} from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,36 +9,37 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  profileUser: any = {};
-  imgURL = '../../assets/Images/avatar.png';
+  infoUser: JwtResponse = null;
   contentToShow = 'main';
-  constructor(private router: Router, private platform: Platform) {
-    this.profileUser  = {
-        informations: {
-          name: 'Oumaima Amkane',
-          city: 'Agadir',
-          phone: '0641315913',
-          email: 'ouma@gmail.com',
-          password: 'oumaima',
-          gender: 'Female',
-          badge1: 'gold',
-          badge2: 'silver',
-        }
-      };
+  constructor(public token: TokenStorageService) {
   }
+
+  ngOnInit() {
+
+  }
+
+  ionViewDidEnter() {
+      console.log('from ionViewDidEnter');
+      this.getCurrentUser();
+  }
+  async getCurrentUser() {
+    this.infoUser = this.token.getCurrentUser();
+    if ((typeof this.infoUser) === 'string' ) {
+      this.infoUser = JSON.parse(this.infoUser.toString());
+    }
+  }
+
   showProfile() {
     this.contentToShow = 'edit';
   }
   showPassword() {
       this.contentToShow = 'password';
-
   }
   showTeam() {
       this.contentToShow = 'team';
   }
   setContent(content) {
-    console.log(content);
-      (content !== undefined && content !== null) ? this.contentToShow = content : this.contentToShow = 'main';
+    (content !== undefined && content !== null) ? this.contentToShow = content : this.contentToShow = 'main';
   }
-  ngOnInit() {}
+
 }

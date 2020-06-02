@@ -188,7 +188,6 @@ ion-header::before {
   img {
     margin-top: 3em;
     width: 70px;
-    border-radius: 10px;
   }
 }
 
@@ -202,4 +201,8 @@ ion-header::before {
     font-size: 20px;
   }
 }
+ion-list-header {
+  font-size : 20px;
+}
+
 

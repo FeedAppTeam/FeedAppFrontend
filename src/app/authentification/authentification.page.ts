@@ -86,7 +86,6 @@ export class AuthentificationPage implements OnInit {
         content.classList.toggle('dialogIsOpen');
         header.classList.toggle('dialogIsOpen');
 
-
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].classList.toggle('pointerEvent');
         }

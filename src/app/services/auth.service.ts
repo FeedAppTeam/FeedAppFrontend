@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 
 import { JwtResponse } from '../models/jwt-response';
 import { AuthLoginInfo } from '../models/login-info';
@@ -18,10 +18,9 @@ const httpOptions = {
 })
 export class AuthService {
 
-    // private loginUrl = 'http://localhost:8081/api/auth/signin';
-    // private signupUrl = 'http://localhost:8081/api/auth/signup';
-    private loginUrl = environment.apiUrl + '/auth/signin';
-    private signupUrl = environment.apiUrl + '/auth/signup';
+    apiUrl =  'https://feedapp01.herokuapp.com/api';
+    private loginUrl = this.apiUrl + '/auth/signin';
+    private signupUrl = this.apiUrl + '/auth/signup';
 
      constructor(private http: HttpClient/*, private storage: Storage*/) {
 
