@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import { Platform } from '@ionic/angular';
 
@@ -27,13 +27,13 @@ export class HomePage {
         needed : [
           {
             item : 'Milk',
-            nbr : '5',
-            total : '15'
+            nbr : 5,
+            total : 15
           },
           {
             item : 'Bread',
-            nbr : '10',
-            total : '15'
+            nbr : 10,
+            total : 15
           }
         ] ,
         Participatns :
@@ -56,13 +56,13 @@ export class HomePage {
         needed : [
           {
             item : 'milk',
-            nbr : '5',
-            total : '15'
+            nbr : 13,
+            total : 15
           },
           {
             item : 'Eggs',
-            nbr : '10',
-            total : '15'
+            nbr : 10,
+            total : 15
           }
         ] ,
         Participatns :
@@ -73,5 +73,8 @@ export class HomePage {
           }
       }
     ];
+  }
+
+  ngOnInit() {
   }
 }

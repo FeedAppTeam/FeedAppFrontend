@@ -6,8 +6,9 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: 'event-details.page.html',
   styleUrls: ['event-details.page.scss'],
 })
-export class EventDetailsPage {
-  event: any;
+export class EventDetailsPage implements OnInit {
+  event: any[] =  [];
+  segment = 'details';
   events = [
       {
           id : 1,
@@ -86,5 +87,15 @@ export class EventDetailsPage {
                 this.event = this.events[Number(id ) - 1];
         }
     });
+  }
+  ngOnInit() {
+  }
+  goHome() {
+      this.router.navigate(['home']);
+  }
+
+  async segmentChanged(ev: any) {
+        // await this.slider.slideTo(this.segment);
+        console.log('Segment changed', ev);
   }
 }
