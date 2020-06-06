@@ -8,7 +8,7 @@
             </ion-button>
         </ion-buttons>
         <ion-buttons slot="end" style="zoom:1.3;">
-            <ion-button large>
+            <ion-button large (click) = "shareEvent()">
                 <ion-icon name="share-social-outline" ></ion-icon>
             </ion-button>
             <ion-button large>
@@ -20,7 +20,7 @@
 <ion-content>
 
     <div class="img-box">
-        <ion-img src="/assets/Images/casablanca.jpg" ></ion-img>
+        <ion-img src='/assets/Images/{{event.informations.img}}'></ion-img>
         <div class="title-box">
             <b>Event type</b><br/>
             <span>

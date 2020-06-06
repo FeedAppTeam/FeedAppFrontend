@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Platform, ToastController} from '@ionic/angular';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-event-details',
@@ -70,7 +72,10 @@ export class EventDetailsPage {
               }
       }
   ];
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router,
+              private platform: Platform,
+              public toastController: ToastController,
+              private socialSharing: SocialSharing) {
     console.log('event details');
     this.route.queryParams.subscribe(params => {
         console.log('subscribe');
@@ -98,5 +103,52 @@ export class EventDetailsPage {
         // await this.slider.slideTo(this.segment);
         console.log('Segment changed', ev);
   }
+
+  shareEvent() {
+        const link = 'https://feedapp.inovagit.com/event-details/' + this.event.id;
+        const msg = this.constructMessage();
+        if (this.platform.is('mobileweb')) {
+            let newVariable: any;
+            newVariable = window.navigator;
+            if (newVariable && newVariable.share) {
+                newVariable.share({
+                    title: 'ZeroHunger - FeedApp',
+                    text: msg,
+                    url: link,
+                })
+                    .then(() => console.log('Successful share'))
+                    .catch((error) => console.log('Error sharing', error));
+            } else {
+                alert('share not supported');
+            }
+        } else {
+            // this is the complete list of currently supported params you can pass to the plugin (all optional)
+            const options = {
+                message: msg, // not supported on some apps (Facebook, Instagram)
+                subject: 'ZeroHunger - FeedApp', // fi. for email
+                url : link,
+                iPadCoordinates: '0,0,0,0' // IOS only iPadCoordinates for where the popover should be point.  Format with x,y,width,height
+            };
+            this.socialSharing.shareWithOptions(options).then(
+                () => {
+
+                },
+                async () => {
+                    const toast = await this.toastController.create({
+                        message: 'Error sharing',
+                        duration: 2000,
+                        position: 'bottom'
+                    });
+                    toast.present();
+                }
+            );
+        }
+    }
+
+  constructMessage(): string {
+        return 'Hello , \nZeroHunger organized an event At ' + this.event.date + ' in ' + this.event.city +
+            '\nJoin As : ';
+    }
+
 }
 
