@@ -2,7 +2,7 @@
   <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
 </ion-button>
 <div class="edit-profile" >
-  <ion-avatar class="avatar-edit">
+  <ion-avatar class="avatar-edit" (click)="selectAvatar()">
     <img src="{{profile?.img}}" />
     <ion-fab-button id="user_pic">
       <ion-icon name="camera"></ion-icon>

@@ -20,6 +20,6 @@ import { EventComponent } from '../event/event.component';
       }
     ])
   ],
-  declarations: [HomePage,EventComponent]
+  declarations: [HomePage, EventComponent]
 })
 export class HomePageModule {}

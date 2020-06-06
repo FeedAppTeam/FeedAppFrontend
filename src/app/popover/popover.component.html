@@ -1,0 +1,11 @@
+
+<ion-list>
+  <ion-item button="" *ngIf="!this.platform.is('desktop')" class="item ios in-list ion-activatable ion-focusable hydrated" (click)="shareEvent()">
+    <ion-icon name="share-social-outline"></ion-icon>
+    Share
+  </ion-item>
+  <ion-item button="" class="item ios in-list ion-activatable ion-focusable hydrated" (click)="copyLink()">
+    <ion-icon name="link-outline"></ion-icon>
+    Copy link
+  </ion-item>
+</ion-list>

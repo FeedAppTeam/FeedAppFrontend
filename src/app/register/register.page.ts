@@ -6,7 +6,7 @@ import {SignUpInfo} from '../models/signup-info';
 import {ImagePicker, ImagePickerOptions} from '@ionic-native/image-picker/ngx';
 import {File} from '@ionic-native/file/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import {AvatarDialogComponent} from "../avatar-dialog/avatar-dialog.component";
+import {AvatarDialogComponent} from '../avatar-dialog/avatar-dialog.component';
 
 
 @Component({
@@ -20,6 +20,9 @@ export class RegisterPage implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   showSplashRegister = false;
+  showOTPInput = false;
+  OTPmessage = 'An OTP is sent to your number. You should receive it in 15 s';
+  OTP = [];
   urlAvatarProfile = 'assets/avatar/avatar1.png';
     registerForm = {
     name : '',
@@ -29,17 +32,24 @@ export class RegisterPage implements OnInit {
     rePassword : '',
     gender : '',
     city : '',
+    country: '',
     img: this.urlAvatarProfile
   };
-  cities = [
-    {name: 'RABAT', abbrev: 'Rabat'},
-    {name: 'CASABLANCA', abbrev: 'Casablanca'},
-    {name: 'AGADIR', abbrev: 'Agadir'}
-   ];
    genders = [
      {name: 'Male', abbrev: 'male'},
      {name: 'Female', abbrev: 'female'},
      {name: 'Other', abbrev: 'other'}];
+   countries = [
+        {
+            name: 'MOROCCO',
+            id: 1,
+            cities : [
+                {name: 'RABAT'},
+                {name: 'CASABLANCA'},
+                {name: 'AGADIR'}
+            ]
+        }
+   ];
    error = false;
   constructor( private platform: Platform,
                private route: ActivatedRoute,
@@ -73,7 +83,7 @@ export class RegisterPage implements OnInit {
     this.registerForm.city = null;
   }
 
-  register(nameInput, phoneInput, passwordInput, repasswordInput, emailInput, genderInput, cityInput) {
+  next(nameInput, phoneInput, passwordInput, repasswordInput, emailInput, genderInput, cityInput) {
     if (this.registerForm.name === '' || this.registerForm.phone === '' || this.registerForm.email === '' ||
         this.registerForm.password === '' || this.registerForm.rePassword === '' || this.registerForm.gender === '' ||
         this.registerForm.city === '' || this.registerForm.rePassword !== this.registerForm.password ) {
@@ -86,6 +96,14 @@ export class RegisterPage implements OnInit {
               !(genderInput.invalid && (genderInput.dirty || genderInput.touched)) &&
               !(cityInput.invalid && (cityInput.dirty || cityInput.touched))
               ) {
+                    this.error = false;
+                    this.showOTPInput = true;
+    } else {
+      this.error = true;
+    }
+  }
+
+  register() {
       this.error = false;
       this.showSplashRegister = true;
       this.changeTheme();
@@ -127,12 +145,7 @@ export class RegisterPage implements OnInit {
               this.isSignUpFailed = true;
           }
       );
-
-    } else {
-      this.error = true;
-    }
   }
-
   async selectAvatar() {
       const actionSheet = await this.actionsheetCtrl.create({
           header: 'Profil picture',
@@ -212,7 +225,9 @@ export class RegisterPage implements OnInit {
        });
 
        modal.onDidDismiss().then((result) => {
-           this.urlAvatarProfile = result.data.avatar;
+           this.urlAvatarProfile = (result.data !== undefined  && result.data !== null &&
+                                    result.data.avatar !== undefined && result.data.avatar !== null) ?
+                                    result.data.avatar : this.urlAvatarProfile;
        });
 
        return await modal.present();
@@ -229,5 +244,18 @@ export class RegisterPage implements OnInit {
         buttons.forEach((btn) => {
             btn.classList.toggle('pointerEvent');
         });
+    }
+    otpController(event, next, prev) {
+        if (event.target.value.length < 1 && prev) {
+            prev.setFocus();
+        } else if (next && event.target.value.length > 0) {
+            next.setFocus();
+        }  else {
+            // return 0;
+            event.target.blur();
+        }
+        /*else if ( next === '') {
+          event.target.blur();
+        } */
     }
 }

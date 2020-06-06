@@ -17,6 +17,16 @@
             </ion-select>
             <ion-icon name="create-outline" slot="end" class="suffix-icon"></ion-icon>
         </ion-item>
+        <!--countries-->
+        <ion-item lines="full">
+            <ion-label position="floating">Country</ion-label>
+            <ion-select required name="city" [(ngModel)]="createForm.city" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="createForm.city = null">
+                <ion-select-option *ngFor="let city of listOfCity" value="{{ city.name }}">
+                    {{ city.name }}
+                </ion-select-option>
+            </ion-select>
+            <ion-icon name="location-outline" slot="end" class="suffix-icon"></ion-icon>
+        </ion-item>
         <!--city-->
         <ion-item lines="full">
             <ion-label position="floating">City</ion-label>
@@ -56,7 +66,7 @@
         <!--number of paricipants-->
         <ion-item lines="full">
             <ion-label position="floating">Number of participants</ion-label>
-            <ion-input [(ngModel)]="createForm.number" type="number" inputmode="numeric" name="number" ></ion-input><br>
+            <ion-input [(ngModel)]="createForm.number" type="number" inputmode="numeric" name="number" ></ion-input>
             <ion-icon name="person-add-outline" slot="end" class="suffix-icon"></ion-icon>
         </ion-item>
         <br><br>

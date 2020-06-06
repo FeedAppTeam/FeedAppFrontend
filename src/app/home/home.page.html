@@ -1,4 +1,7 @@
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <app-event [events] = "events"></app-event>
 
     <!--div class="img-box">

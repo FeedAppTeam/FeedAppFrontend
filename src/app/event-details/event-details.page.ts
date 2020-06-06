@@ -82,9 +82,11 @@ export class EventDetailsPage {
         } else {
             console.log('else');
             const id = this.route.snapshot.paramMap.get('id');
-            if ( 0 <= Number(id) - 1 && Number(id) - 1 < this.events.length )
+            if ( 0 <= Number(id) - 1 && Number(id) - 1 < this.events.length ) {
                 this.event = this.events[Number(id ) - 1];
+            }
         }
     });
   }
 }
+
