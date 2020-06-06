@@ -6,8 +6,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: 'event-details.page.html',
   styleUrls: ['event-details.page.scss'],
 })
-export class EventDetailsPage implements OnInit {
-  event: any[] =  [];
+export class EventDetailsPage {
+  event: any;
   segment = 'details';
   events = [
       {
@@ -83,13 +83,13 @@ export class EventDetailsPage implements OnInit {
         } else {
             console.log('else');
             const id = this.route.snapshot.paramMap.get('id');
-            if ( 0 <= Number(id) - 1 && Number(id) - 1 < this.events.length )
+            if ( 0 <= Number(id) - 1 && Number(id) - 1 < this.events.length ) {
                 this.event = this.events[Number(id ) - 1];
+            }
         }
     });
   }
-  ngOnInit() {
-  }
+
   goHome() {
       this.router.navigate(['home']);
   }
