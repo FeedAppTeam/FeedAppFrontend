@@ -1,4 +1,4 @@
-ion-content{
+/*ion-content{
     --ion-background-color:#F0F0F0;
 }
 
@@ -12,6 +12,45 @@ ion-card{
     box-shadow: none;
     border: 0.5px solid #585858;
     color:transparent;
+}*/
+ion-toolbar{
+    height: 45px;
+}
+ion-buttons{
+    padding-bottom: 10px;
+}
+.img-box {
+    position: relative;
+    z-index: 3;
+}
+
+.title-box{
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    opacity: 0.9;
+    box-shadow: inset 0px -33px 10px -7px #0B5394;
+    width: 100%;
+    color : white;
+    span {
+        padding-left: 5px;
+        padding-bottom: 10px;
+    }
+    b {
+        padding-left: 5px;
+    }
+}
+
+.sponsors {
+    ion-img {
+        display: inline-block;
+        height: 80px;
+        width: 80px;
+    }
+}
+
+.transparent-card{
+    background-color: transparent;
 }
 
  

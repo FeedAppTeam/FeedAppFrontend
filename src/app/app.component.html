@@ -6,7 +6,7 @@
 </div>
 
 <ion-app>
-  <app-header id="modal" [hidden]="this.platform.url().includes('/auth')"></app-header>
+  <app-header id="modal" [hidden]="this.platform.url().includes('/auth')" [hidden]="this.platform.url().includes('/event-details')"></app-header>
   
   <ion-content id="page-wrap">
     <ion-router-outlet></ion-router-outlet>

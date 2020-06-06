@@ -1,16 +1,12 @@
-import { Component } from '@angular/core';
-import {Router} from '@angular/router';
-import { Platform } from '@ionic/angular';
-
+import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   events: any[] =  [];
-  subscription : any;
-  constructor(private router: Router,private platform: Platform) {
+  constructor() {
     this.events = [
       {
         informations : {
@@ -25,13 +21,13 @@ export class HomePage {
         needed : [
           {
             item : 'Milk',
-            nbr : '5',
-            total : '15'
+            nbr : 5,
+            total : 15
           },
           {
             item : 'Bread',
-            nbr : '10',
-            total : '15'
+            nbr : 10,
+            total : 15
           }
         ] ,
         Participatns :
@@ -53,13 +49,13 @@ export class HomePage {
         needed : [
           {
             item : 'milk',
-            nbr : '5',
-            total : '15'
+            nbr : 13,
+            total : 15
           },
           {
             item : 'Eggs',
-            nbr : '10',
-            total : '15'
+            nbr : 10,
+            total : 15
           }
         ] ,
         Participatns :
@@ -70,5 +66,8 @@ export class HomePage {
           }
       }
     ];
+  }
+
+  ngOnInit() {
   }
 }
