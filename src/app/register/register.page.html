@@ -21,105 +21,179 @@
     <p>Proceed with your</p>
     <b>Register</b>
   </div>
-  <form (ngSubmit)="f.form.valid && register(nameInput,phoneInput,passwordInput,repasswordInput,emailInput,genderInput,cityInput)" #f="ngForm" novalidate>
-    <ion-avatar class="feedapp-icon container" (click)="selectAvatar()">
-      <ion-img  [src]="urlAvatarProfile" ></ion-img>
-      <ion-icon name="camera"></ion-icon>
-    </ion-avatar>
-    <!-- Basic Error Message -->
-    <div >
-      <span class="error-text" *ngIf="error">Please check your information.</span>
-    </div>
-    <div *ngIf="f.submitted && isSignUpFailed" class="error-text">
-      {{errorMessage}}
-    </div>
-    <ion-item lines="full">
-      <ion-label position="floating">Display name<span class="required">*</span></ion-label>
-      <ion-input [(ngModel)]="registerForm.name" [ngModelOptions]="{standalone: true}" clearInput="true" clearOnEdit="true"  inputmode="text" required #nameInput="ngModel" minlength="3"></ion-input>
-      <ion-icon name="person-outline" slot="end" class="suffix-icon"></ion-icon>
-    </ion-item>
-    <div class="help is-error error-message " *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
-      <div *ngIf="nameInput.errors.required">Name is required</div>
-      <div *ngIf="!nameInput.errors.required">Name needs to be at least 3 characters</div>
-    </div>
+  <form #f="ngForm" novalidate>
+    <div *ngIf="!showOTPInput">
+      <ion-avatar class="feedapp-icon container" (click)="selectAvatar()">
+        <ion-img  [src]="urlAvatarProfile" ></ion-img>
+        <ion-icon name="camera"></ion-icon>
+      </ion-avatar>
+      <!-- Basic Error Message -->
+      <div >
+        <span class="error-text" *ngIf="error">Please check your information.</span>
+      </div>
+      <div *ngIf="f.submitted && isSignUpFailed" class="error-text">
+        {{errorMessage}}
+      </div>
+      <ion-item lines="full">
+        <ion-label position="floating">Display name<span class="required">*</span></ion-label>
+        <ion-input [(ngModel)]="registerForm.name" [ngModelOptions]="{standalone: true}" clearInput="true" clearOnEdit="true"  inputmode="text" required #nameInput="ngModel" minlength="3"></ion-input>
+        <ion-icon name="person-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message " *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
+        <div *ngIf="nameInput.errors.required">Name is required</div>
+        <div *ngIf="!nameInput.errors.required">Name needs to be at least 3 characters</div>
+      </div>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Phone<span class="required">*</span></ion-label>
-      <ion-input type="tel" [(ngModel)]="registerForm.phone" [ngModelOptions]="{standalone: true}"  clearInput="true" clearOnEdit="true" inputmode="tel" pattern="^0[67]{1}[^0\D]{1}\d{7}$" required #phoneInput="ngModel"></ion-input>
-      <ion-icon name="call-outline" slot="end" class="suffix-icon"></ion-icon>
-    </ion-item>
-    <div class="help is-error error-message " *ngIf="phoneInput.invalid && (phoneInput.dirty || phoneInput.touched)">
-      <div *ngIf="phoneInput.errors.required">Phone Number is required</div>
-      <div *ngIf="!phoneInput.errors.required">This phone number is invalid</div>
-    </div>
+      <ion-item lines="full">
+        <ion-label position="floating">Phone<span class="required">*</span></ion-label>
+        <ion-input type="tel" [(ngModel)]="registerForm.phone" [ngModelOptions]="{standalone: true}"  clearInput="true" clearOnEdit="true" inputmode="tel" pattern="^0[67]{1}[0-9]{8}$" required #phoneInput="ngModel"></ion-input>
+        <ion-icon name="call-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message " *ngIf="phoneInput.invalid && (phoneInput.dirty || phoneInput.touched)">
+        <div *ngIf="phoneInput.errors.required">Phone Number is required</div>
+        <div *ngIf="!phoneInput.errors.required">This phone number is invalid</div>
+      </div>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Password<span class="required">*</span></ion-label>
-      <ion-input type="password" [(ngModel)]="registerForm.password" [ngModelOptions]="{standalone: true}" clearInput="true" clearOnEdit="true" required [minlength]="6" #passwordInput="ngModel"></ion-input>
-      <ion-icon name="key-outline" slot="end" class="suffix-icon"></ion-icon>
-    </ion-item>
-    <div class="help is-error error-message" *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
-      <div *ngIf="passwordInput.errors.required">Password is required</div>
-      <div *ngIf="passwordInput.errors.minlength">Password must be at least 6 characters</div>
-    </div>
-    <ion-item lines="full">
-      <ion-label position="floating">Confirm Password<span class="required">*</span></ion-label>
-      <ion-input [(ngModel)]="registerForm.rePassword" [ngModelOptions]="{standalone: true}" type="password" clearInput="true" clearOnEdit="true" required [minlength]="6" #repasswordInput="ngModel"></ion-input>
-      <ion-icon name="key-outline" slot="end" class="suffix-icon"></ion-icon>
-    </ion-item>
-    <div class="help is-error error-message" *ngIf="repasswordInput.invalid && (repasswordInput.dirty || repasswordInput.touched)">
-      <div *ngIf="repasswordInput.errors.required">Confirm Password is required</div>
-      <div *ngIf="repasswordInput.errors.minlength">Password must be at least 6 characters</div>
-    </div>
-    <div class="help is-error error-message" *ngIf="passwordInput.dirty && repasswordInput.dirty && registerForm.rePassword !== registerForm.password">
-      Passwords don't appear to match.
-    </div>
-    <ion-item lines="full" >
-      <ion-label position="floating">Email<span class="required">*</span></ion-label>
-      <ion-input type="text" [(ngModel)]="registerForm.email" [ngModelOptions]="{standalone: true}" pattern=".+@.+\..+" clearInput="true" clearOnEdit="true" required email #emailInput="ngModel"></ion-input>
-      <ion-icon name="mail-outline" slot="end" class="suffix-icon"></ion-icon>
-    </ion-item>
-    <div class="help is-error error-message" *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
-      <div *ngIf="emailInput.errors.required">Email is required</div>
-      <div *ngIf="!emailInput.errors.required">Email is not valid</div>
-    </div>
-    <ion-item lines="full">
-      <ion-label position="floating">Gender<span class="required">*</span></ion-label>
-      <ion-select [(ngModel)]="registerForm.gender" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="registerForm.gender = null" required #genderInput="ngModel">
-        <ion-select-option  *ngFor="let gender of genders"  [value]="gender.abbrev">
-          {{ gender.name }}
-        </ion-select-option>
-      </ion-select>
-      <ion-icon name="transgender-outline" slot="end" class="suffix-icon"></ion-icon>
-    </ion-item>
-    <div class="help is-error error-message" *ngIf="genderInput.invalid && (genderInput.dirty || genderInput.touched)">
-      <div *ngIf="genderInput.errors.required">Gender is required</div>
-    </div>
+      <ion-item lines="full">
+        <ion-label position="floating">Password<span class="required">*</span></ion-label>
+        <ion-input type="password" [(ngModel)]="registerForm.password" [ngModelOptions]="{standalone: true}" clearInput="true" clearOnEdit="true" required [minlength]="6" #passwordInput="ngModel"></ion-input>
+        <ion-icon name="key-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message" *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+        <div *ngIf="passwordInput.errors.required">Password is required</div>
+        <div *ngIf="passwordInput.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+      <ion-item lines="full">
+        <ion-label position="floating">Confirm Password<span class="required">*</span></ion-label>
+        <ion-input [(ngModel)]="registerForm.rePassword" [ngModelOptions]="{standalone: true}" type="password" clearInput="true" clearOnEdit="true" required [minlength]="6" #repasswordInput="ngModel"></ion-input>
+        <ion-icon name="key-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message" *ngIf="repasswordInput.invalid && (repasswordInput.dirty || repasswordInput.touched)">
+        <div *ngIf="repasswordInput.errors.required">Confirm Password is required</div>
+        <div *ngIf="repasswordInput.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+      <div class="help is-error error-message" *ngIf="passwordInput.dirty && repasswordInput.dirty && registerForm.rePassword !== registerForm.password">
+        Passwords don't appear to match.
+      </div>
+      <ion-item lines="full" >
+        <ion-label position="floating">Email<span class="required">*</span></ion-label>
+        <ion-input type="text" [(ngModel)]="registerForm.email" [ngModelOptions]="{standalone: true}" pattern=".+@.+\..+" clearInput="true" clearOnEdit="true" required email #emailInput="ngModel"></ion-input>
+        <ion-icon name="mail-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message" *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+        <div *ngIf="emailInput.errors.required">Email is required</div>
+        <div *ngIf="!emailInput.errors.required">Email is not valid</div>
+      </div>
+      <ion-item lines="full">
+        <ion-label position="floating">Gender<span class="required">*</span></ion-label>
+        <ion-select [(ngModel)]="registerForm.gender" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="registerForm.gender = null" required #genderInput="ngModel">
+          <ion-select-option  *ngFor="let gender of genders"  [value]="gender.abbrev">
+            {{ gender.name }}
+          </ion-select-option>
+        </ion-select>
+        <ion-icon name="transgender-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message" *ngIf="genderInput.invalid && (genderInput.dirty || genderInput.touched)">
+        <div *ngIf="genderInput.errors.required">Gender is required</div>
+      </div>
 
-    <ion-item lines="full">
-      <ion-label position="floating">City<span class="required">*</span></ion-label>
-      <ion-select [(ngModel)]="registerForm.city" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="registerForm.city = null" required #cityInput="ngModel">
-        <ion-select-option *ngFor="let city of cities"  [value]="city.name">
-          {{ city.name }}
-        </ion-select-option>
-      </ion-select>
-      <ion-icon name="location-outline" slot="end" class="suffix-icon"></ion-icon>
-    </ion-item>
-    <div class="help is-error error-message" *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)">
-      <div *ngIf="cityInput.errors.required">Gender is required</div>
+      <ion-item lines="full">
+        <ion-label position="floating">Country<span class="required">*</span></ion-label>
+        <ion-select [(ngModel)]="registerForm.country" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="registerForm.city = null" required #countryInput="ngModel">
+          <ion-select-option *ngFor="let country of countries"  [value]="country.id">
+            {{ country.name }}
+          </ion-select-option>
+        </ion-select>
+        <ion-icon name="location-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message" *ngIf="countryInput.invalid && (countryInput.dirty || countryInput.touched)">
+        <div *ngIf="countryInput.errors.required">Country is required</div>
+      </div>
+      <ion-item lines="full">
+        <ion-label position="floating">City<span class="required">*</span></ion-label>
+        <ion-select [(ngModel)]="registerForm.city" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="registerForm.city = null" required #cityInput="ngModel">
+          <ion-select-option *ngFor="let city of countries[ registerForm?.country -1 ]?.cities"  [value]="city.name">
+            {{ city.name }}
+          </ion-select-option>
+        </ion-select>
+        <ion-icon name="location-outline" slot="end" class="suffix-icon"></ion-icon>
+      </ion-item>
+      <div class="help is-error error-message" *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)">
+        <div *ngIf="cityInput.errors.required">City is required</div>
+      </div>
+      <br>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="f.form.valid && next(nameInput,phoneInput,passwordInput,repasswordInput,emailInput,genderInput,cityInput)" color="primary" expand="block" class="signIn">Next</ion-button>
+        </ion-col>
+      </ion-row>
+      <span class="divider line one-line">or</span>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="toSignIn()" color="tertiary" expand="block" class="signIn">Sign In</ion-button>
+        </ion-col>
+      </ion-row>
     </div>
-    <br>
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="primary" expand="block" class="signIn">Register</ion-button>
-      </ion-col>
-    </ion-row>
-    <span class="divider line one-line">or</span>
-    <ion-row>
-      <ion-col>
-        <ion-button (click)="toSignIn()" color="tertiary" expand="block" class="signIn">Sign In</ion-button>
-      </ion-col>
-    </ion-row>
+    <div *ngIf="showOTPInput">
+      <div *ngIf="isSignUpFailed" class="error-text">
+        {{errorMessage}}
+      </div>
+      <ion-row  class="OTP-border">
+        <ion-col>
+          <div>
+            <ion-input name="1" type="tel" [(ngModel)]="OTP[0]" maxlength="1" class="otpinput"
+                       padding-horizontal (keyup)="otpController($event,otp1,'')" #otp0>
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input name="2" type="tel" [(ngModel)]="OTP[1]" maxlength="1" class="otpinput"
+                       padding-horizontal (keyup)="otpController($event,otp2,otp0)" #otp1>
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input name="3" type="tel" [(ngModel)]="OTP[2]" maxlength="1" class="otpinput"
+                       padding-horizontal (keyup)="otpController($event,otp3,otp1)" #otp2>
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input name="4" type="tel" [(ngModel)]="OTP[3]" maxlength="1" class="otpinput"
+                       padding-horizontal (keyup)="otpController($event,otp4,otp2)" #otp3>
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input name="5" type="tel" [(ngModel)]="OTP[4]" maxlength="1" class="otpinput"
+                       padding-horizontal (keyup)="otpController($event,otp5,otp3)" #otp4>
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input name="6" type="tel" [(ngModel)]="OTP[5]" maxlength="1" class="otpinput"
+                       padding-horizontal (keyup)="otpController($event,'',otp4)" #otp5>
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="text-otp">
+        <ion-col>
+          <ion-text class="small">{{OTPmessage}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row>
+        <ion-button expand="block" (click)="register()" class="signIn">
+          <strong class="white">Register</strong>
+        </ion-button>
+      </ion-row>
+    </div>
   </form>
 
 </ion-content>

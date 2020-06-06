@@ -116,7 +116,7 @@ export class AppComponent {
       this.routerOutlets.forEach(async (outlet: IonRouterOutlet) => {
         if (outlet && outlet.canGoBack()) {
           outlet.pop();
-        } else if (this.router.url === '/home') {
+        } else if (this.router.url === '/home' || this.router.url.includes('/event-details/')) {
           if (new Date().getTime() - this.lastTimeBackPress < this.timePeriodToExit) {
             // this.platform.exitApp(); // Exit from app
               navigator['app'].exitApp(); // work in ionic 4
@@ -143,6 +143,11 @@ export class AppComponent {
                     icon  : 'home'
                 },
                 {
+                    title : 'Account',
+                    url   : '/account/profile',
+                    icon  : 'person-outline'
+                },
+                {
                     title : 'Add Event',
                     url   : '/create-event',
                     icon  : 'add-outline'
@@ -159,8 +164,9 @@ export class AppComponent {
     async getCurrentUser() {
         this.token.getObservableUser().subscribe((data) => {
             this.currentUser = data;
-            if ((typeof this.currentUser) === 'string' )
+            if ((typeof this.currentUser) === 'string' ) {
                 this.currentUser = JSON.parse(data);
+            }
             this.srcAvatar = (this.currentUser !== null && this.currentUser.img !== undefined) ? this.currentUser.img : this.srcAvatar;
         });
     }
@@ -198,7 +204,12 @@ export class AppComponent {
             });
         }, nomatch => {
             // nomatch.$link - the full link data
-            console.error('Got a deeplink that didn\'t match', nomatch);
+            // console.error('Got a deeplink that didn\'t match', nomatch);
         });
+    }
+
+    openProfile() {
+      this.menu.close('first');
+      this.router.navigate(['/account/profile']);
     }
 }

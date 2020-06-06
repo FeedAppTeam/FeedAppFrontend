@@ -38,6 +38,18 @@ ion-button{
     margin-bottom: 5px;
 }
 
+.button-container{
+    display:inline-block;
+    position:relative;
+    ion-icon{
+        zoom : 1.5;
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        border-radius: 1.5em;
+        color: white;
+    }
+}
     
     
     

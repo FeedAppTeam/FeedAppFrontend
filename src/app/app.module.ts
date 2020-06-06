@@ -12,8 +12,6 @@ import { Device } from '@ionic-native/device/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Platform } from '@ionic/angular';
 
-
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
@@ -25,11 +23,14 @@ import {File} from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import {AvatarDialogComponent} from './avatar-dialog/avatar-dialog.component';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+
+import {PopoverComponent} from './popover/popover.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AvatarDialogComponent],
-  entryComponents: [AvatarDialogComponent],
+  declarations: [AppComponent, HeaderComponent, AvatarDialogComponent, PopoverComponent],
+  entryComponents: [AvatarDialogComponent, PopoverComponent],
   imports: [
       BrowserModule,
       HttpClientModule,
@@ -51,6 +52,7 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
     Camera,
     SocialSharing,
     Deeplinks,
+    Clipboard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
   ],

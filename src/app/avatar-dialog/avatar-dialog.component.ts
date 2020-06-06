@@ -9,7 +9,7 @@ import {ModalController} from '@ionic/angular';
 export class AvatarDialogComponent implements OnInit {
 
     avatars: Array<string> = new Array<string>();
-    link;
+    link = null;
     constructor(
         public modalController: ModalController
     ) { }

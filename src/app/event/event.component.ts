@@ -2,6 +2,8 @@ import { Component, OnInit , Input} from '@angular/core';
 import {NavigationExtras, Router} from '@angular/router';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import {ActionSheetController, ToastController} from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+import {PopoverComponent} from '../popover/popover.component';
 
 @Component({
   selector: 'app-event',
@@ -14,7 +16,8 @@ export class EventComponent implements OnInit {
   constructor(private router: Router,
               private socialSharing: SocialSharing,
               public actionsheetCtrl: ActionSheetController,
-              public toastController: ToastController) {
+              public toastController: ToastController,
+              private popoverController: PopoverController) {
         setTimeout(() => {
             this.contentLoaded = true ;
         }, 3000);
@@ -81,5 +84,20 @@ export class EventComponent implements OnInit {
                 toast.present();
             }
         );
+    }
+    async presentPopover(ev: any , event) {
+        console.log('click');
+        const popover = await this.popoverController.create({
+            component: PopoverComponent,
+            componentProps: {
+                id : event.id,
+                date : event.informations.date,
+                city : event.informations.city
+            },
+            cssClass: 'popover-class',
+            event: ev,
+            translucent: true
+        });
+        return await popover.present();
     }
 }

@@ -31,7 +31,7 @@
     </div>
     <ion-item lines="full" size=8>
       <ion-label position="floating">Phone</ion-label>
-      <ion-input type="tel" clearInput="true" clearOnEdit="true" [(ngModel)]="loginForm.phone" [ngModelOptions]="{standalone: true}" pattern="^0[67]{1}[^0\D]{1}\d{7}$" inputmode="tel" required #usernameInput="ngModel"></ion-input>
+      <ion-input type="tel" clearInput="true" clearOnEdit="true" [(ngModel)]="loginForm.phone" [ngModelOptions]="{standalone: true}" pattern="^0[67]{1}[0-9]{8}$"  inputmode="tel" required #usernameInput="ngModel"></ion-input>
       <ion-icon name="person-outline" slot="end" class="suffix-icon"></ion-icon>      
     </ion-item>
 

@@ -178,12 +178,35 @@ a{text-decoration: none;font-size: 10px;}
   padding: 0.2em 0.2em;
 }
 
-/*
-.my-custom-modal-css .modal-wrapper {
-  height: 50%;
+
+.OTP-border {
+  max-width: 80%;
+  margin: auto;
+  ion-col {
+    div {
+      border-bottom: 1px solid #0C4559;
+    }
+
+  }
+}
+.otpinput {
+  letter-spacing: 30px;
+  -webkit-padding-end: 0;
+  --padding-end: 0;
+  font-size: 30px;
+  border: none;
+  background: white;
+  color : #0C4559;
+}
+
+.small {
+  font-size: 13px;
+  a {
+    text-decoration: unset !important;
+  }
+}
+.text-otp {
   width: 80%;
-  border-radius: 5px;
-  top: 80%;
-  position: absolute;
-  display: block;
-}*/
+  margin: auto;
+  text-align: center;
+}

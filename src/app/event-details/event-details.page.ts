@@ -99,3 +99,4 @@ export class EventDetailsPage {
         console.log('Segment changed', ev);
   }
 }
+

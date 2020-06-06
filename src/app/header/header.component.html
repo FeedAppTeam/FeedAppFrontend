@@ -39,7 +39,7 @@
    </div>
 </ion-header>
 
-<ion-fab horizontal="end" [hidden]="this.platform.url().includes('/contact')" [hidden]="this.platform.url().includes('/account')" vertical="bottom" (click)="changeTheme()" slot="fixed">
+<ion-fab horizontal="end" [hidden]="this.platform.url().includes('/contact')" [hidden]="this.platform.url().includes('/account')" [hidden]="this.platform.url().includes('/create-event')" vertical="bottom" (click)="changeTheme()" slot="fixed">
     <ion-fab-button color="warning">
       <ion-icon md="add" ios="add"></ion-icon>
     </ion-fab-button>

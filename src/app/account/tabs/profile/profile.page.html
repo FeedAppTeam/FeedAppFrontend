@@ -1,5 +1,5 @@
 <ion-header no-border [hidden]="contentToShow !== 'main'">
-  <ion-avatar id="avatar-header">
+  <ion-avatar id="avatar-header" (click)="selectAvatar()">
     <img src="{{this.infoUser?.img}}" />
     <ion-fab-button id="user_pic">
       <ion-icon name="camera"></ion-icon>

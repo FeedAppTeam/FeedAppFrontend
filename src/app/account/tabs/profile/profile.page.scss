@@ -91,15 +91,49 @@
     margin-left: 1em !important;
     color: #0b5394 !important ;
   }
-  ion-input {
+  .inputForm {
     margin-top: 0.5em;
     border: 1px solid #0b5394;
     border-radius: 9999em;
     text-align: left;
     padding-left: 1em !important;
   }
-  ion-input:focus, ion-input:hover {
+  .inputForm:focus, .inputForm:hover {
     border: 1px solid #f3c727 !important;
+  }
+
+
+
+  .OTP-border {
+    max-width: 80%;
+    margin: auto;
+    ion-col {
+      div {
+        border-bottom: 1px solid #0C4559;
+      }
+
+    }
+  }
+  .otpinput {
+    letter-spacing: 30px;
+    -webkit-padding-end: 0;
+    --padding-end: 0;
+    font-size: 30px;
+    border: none;
+    background: white;
+    color : #0C4559;
+  }
+
+  .small {
+    font-size: 13px;
+    a {
+      text-decoration: unset !important;
+    }
+  }
+  .text-otp {
+    width: 80%;
+    margin: auto;
+    text-align: center;
   }
 }
 
@@ -204,5 +238,6 @@ ion-header::before {
 ion-list-header {
   font-size : 20px;
 }
+
 
 

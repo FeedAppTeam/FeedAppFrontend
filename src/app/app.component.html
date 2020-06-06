@@ -10,7 +10,7 @@
   <!-- menu slide -->
   <ion-menu *ngIf="this.currentUser" side="end" menuId="first" contentId="page-wrap">
     <ion-header color ="primary">
-      <ion-toolbar>
+      <ion-toolbar (click)="openProfile()">
           <ion-avatar class="avatar-menu">
             <ion-img class="user-image" [src]="srcAvatar"></ion-img>
           </ion-avatar>

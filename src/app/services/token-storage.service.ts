@@ -22,10 +22,12 @@ export class TokenStorageService {
   constructor(private storage: Storage, private router: Router) {
       this.storage.get(USER_KEY).then((v) => {
           this.userInfo$.next(v);
-          if ((typeof v) === 'string')
+          if ((typeof v) === 'string') {
               this.currentUser = JSON.parse(v);
-          if( v !== undefined && v !== null)
+          }
+          if ( v !== undefined && v !== null) {
               this.currentUser = v;
+          }
 
           this.token = this.currentUser ? this.currentUser.accessToken : null;
       });

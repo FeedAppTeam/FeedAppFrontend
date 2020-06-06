@@ -79,3 +79,13 @@
   position: absolute;
   display: block;
 }
+
+/* DOES NOT WORK - not specific enough */
+.popover-content {
+  background: #222;
+}
+
+/* Works - pass "popover-class" in cssClass to increase specificity */
+.popover-class .popover-content {
+  background: #fff;
+}
