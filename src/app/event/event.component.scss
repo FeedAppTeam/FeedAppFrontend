@@ -1,5 +1,6 @@
 ion-card{
-    background-color: rgb(240, 238, 238);  
+     // background-color: rgb(240, 238, 238);
+     background-color: rgba(235, 236, 240, 0.5);
 }
 ion-card-title{
     margin-top:-9px;
@@ -48,6 +49,9 @@ ion-button{
         right: 0.5em;
         border-radius: 1.5em;
         color: white;
+        background-color: rgba(235, 236, 240, 0.5);
+
+        padding: 0.2em 0.2em;
     }
 }
     
