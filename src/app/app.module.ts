@@ -27,6 +27,8 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 import {PopoverComponent} from './popover/popover.component';
 
+import { HttpModule } from '@angular/http'; 
+
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AvatarDialogComponent, PopoverComponent],
@@ -36,8 +38,10 @@ import {PopoverComponent} from './popover/popover.component';
       HttpClientModule,
       IonicModule.forRoot(),
       AppRoutingModule,
+      HttpModule,
       FormsModule,
       IonicStorageModule.forRoot()
+  
   ],
   providers: [
     Camera,

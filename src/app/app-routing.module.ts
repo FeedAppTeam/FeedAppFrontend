@@ -37,12 +37,24 @@ const routes: Routes = [
   {
     path: 'password-forgotten',
     loadChildren: () => import('./authentification/password-forgotten/password-forgotten.module').then( m => m.PasswordForgottenPageModule)
-  }
-
+  },
+  {
+    path: 'my-modal',
+    loadChildren: () => import('./modals/my-modal/my-modal.module').then( m => m.MyModalPageModule)
+  },
+  {
+    path: 'credit-card-detail',
+    loadChildren: () => import('./modals/my-modal/credit-card-detail/credit-card-detail.module').then( m => m.CreditCardDetailPageModule)
+  },
+  {
+    path: 'paypal-detail',
+    loadChildren: () => import('./modals/my-modal/paypal-detail/paypal-detail.module').then( m => m.PaypalDetailPageModule)
+  },
 
 ];
 
 @NgModule({
+  
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],

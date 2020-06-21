@@ -1,0 +1,108 @@
+.feedapp-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+h2,h3,h4 {
+  text-align: center;
+}
+
+ion-row {
+  height: 55px;
+}
+
+.paypal {
+  --vertical-align: middle;
+  --padding-start: 150px;
+  --padding-end: 160px;
+  height: 55px;
+  --border-color: black;
+  color: black;
+}
+
+.credit-card {
+  --vertical-align: middle;
+  --padding-start: 100px;
+  --padding-end: 165px;
+  height: 55px;
+  --border-color: black;
+  color: black;
+}
+
+span.ion-text-left {
+  margin-right: auto;
+}
+
+.cash {
+  --vertical-align: middle;
+  --padding-start: 40px;
+  --padding-end: 40px;
+  height: 55px;
+  --border-color: black;
+  color: black;
+}
+
+.needs {
+  --vertical-align: middle;
+  --padding-start: 40px;
+  --padding-end: 90px;
+  height: 55px;
+  --border-color: black;
+  color: black;
+}
+
+.others {
+  --vertical-align: middle;
+  --padding-start: 40px;
+  --padding-end: 102px;
+  height: 55px;
+  --border-color: black;
+  color: black;
+}
+
+// icons
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 95%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.paypal-icon {
+  position: absolute;
+  top: 50%;
+  right: 245%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  display: block;
+  width: 55%;
+  height: 55%;
+}
+
+.bank-icon {
+  position: absolute;
+  top: 50%;
+  right: 94%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  display: block;
+  width: 12%;
+  height: 40%;
+}
+
+.credit-card-icon {
+  position: absolute;
+  top: 50%;
+  right: 130%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  display: block;
+}

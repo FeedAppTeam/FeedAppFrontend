@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end" (click)="dismiss()">
+      DISMISS
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-avatar class="feedapp-icon">
+    <ion-img src="assets/icon/feedApp.png"></ion-img>
+  </ion-avatar>
+
+  <h2><b>Save Someone</b></h2>
+  <h3>100% of your donation provides food for people in need</h3><br>
+  <h4> <b>Choose How to Donate</b> </h4>
+
+  <!-- paypal -->
+  <ion-row>
+    <div routerLinkActive="active">
+      <ion-button shape="round" fill="outline" class="paypal">
+        <img src="assets/icon/paypal.png" class="paypal-icon" routerLink="/paypal-detail">
+        <span class="ion-text-left">Paypal</span>
+      </ion-button>
+    </div>
+  </ion-row><br>
+
+  <!-- credit card -->
+  <ion-row>
+    <div routerLinkActive="active">
+      <ion-button shape="round" fill="outline" class="credit-card"(click)="creditCard()" routerDirection="forward">
+        <img src="assets/icon/credit-card.png" class="credit-card-icon">
+        Credit Card
+      </ion-button>
+    </div>
+  </ion-row><br>
+
+  <!-- cash -->
+  <ion-row>
+    <ion-button shape="round" fill="outline" class="cash" (click)="bankAlert()">
+      <img src="assets/icon/Bank.png" class="bank-icon">Direct Bank Transfer | Wafacash
+    </ion-button>
+  </ion-row><br>
+
+  <!-- needs -->
+  <ion-row>
+    <ion-button shape="round" fill="outline" class="needs" (click)="needsAlert()">
+      <ion-icon name="reader-outline" class="icon"></ion-icon>Offering One of Our Needs
+    </ion-button>
+  </ion-row><br>
+
+  <!-- others -->
+  <ion-row>
+    <ion-button shape="round" fill="outline" class="others" (click)="othersAlert()">
+      <ion-icon name="phone-portrait-outline" class="icon"></ion-icon>Offering Other Elements
+    </ion-button>
+  </ion-row>
+</ion-content>

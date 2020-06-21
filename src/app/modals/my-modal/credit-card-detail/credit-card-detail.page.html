@@ -1,0 +1,60 @@
+<ion-content>
+
+  <div class="creditCardForm">
+    <div>
+      <h1><b>Credit Card Details</b></h1><br>
+    </div>
+
+    <!-- owner -->
+    <div class="payment">
+      <form>
+        <ion-item lines="full">
+          <ion-label position="floating">Owner</ion-label>
+          <ion-input clearInput="true" [ngModel]="creditCardForm.owner" clearOnEdit="true" inputmode="text" required
+            minlength="3" name="title" type="text"></ion-input>
+        </ion-item>
+
+        <!-- CVV -->
+        <ion-item lines="full">
+          <ion-label position="floating">CVV</ion-label>
+          <ion-input clearInput="true" [ngModel]="creditCardForm.cvv" clearOnEdit="true" inputmode="text" required
+            minlength="3" name="title" type="text"></ion-input>
+        </ion-item>
+
+        <!-- card number -->
+        <ion-item lines="full">
+          <ion-label position="floating">Card Number</ion-label>
+          <ion-input clearInput="true" [ngModel]="creditCardForm.cardNumber" clearOnEdit="true" inputmode="text"
+            required minlength="3" name="title" type="text"></ion-input>
+        </ion-item>
+
+        <!-- expiration date -->
+        <ion-item lines="full">
+          <ion-label position="floating">Expiration Date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" required name="date" [(ngModel)]="creditCardForm.expirationDate"
+            [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="creditCardForm.expirationDate =''">
+          </ion-datetime>
+        </ion-item>
+
+        <!-- credit card -->
+        <ion-item lines="full">
+          <ion-label position="floating">Choose your credit card</ion-label>
+          <ion-select required name="creditCard" [(ngModel)]="creditCardForm.creditCard"
+            [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="creditCardForm.creditCard = null">
+            <ion-select-option *ngFor="let creditCard of listOfcards" value="{{creditCard}}">
+              {{ creditCard }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item><br><br><br>
+
+        <!-- donate button -->
+        <ion-row>
+          <ion-col>
+            <ion-button color="tertiary" expand="block" class="donate-btn">Donate Now
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+  </div>
+</ion-content>

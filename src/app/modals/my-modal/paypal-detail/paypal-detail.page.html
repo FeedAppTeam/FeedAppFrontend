@@ -1,0 +1,26 @@
+<ion-content>
+  <div class="creditCardForm">
+    <div>
+      <h1>Donation by Paypal</h1><br>
+    </div>
+
+    <div>
+      <form>
+        <!-- amount -->
+        <ion-item lines="full">
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input clearInput="true" [ngModel]="paypalDetailForm.amount" clearOnEdit="true" inputmode="text" required
+            minlength="3" name="title" type="text"></ion-input>
+        </ion-item><br>
+
+        <!-- donate button -->
+        <ion-row>
+          <ion-col>
+            <ion-button color="tertiary" expand="block" class="donate-btn" (click)="donate()">Donate Now
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+  </div>
+</ion-content>
