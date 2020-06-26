@@ -35,9 +35,34 @@ const routes: Routes = [
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   },
   {
+    path: 'coordinateur',
+    loadChildren: () => import('./coordinateur/coordinateur.module').then( m => m.CoordinateurPageModule)
+  },
+  {
     path: 'password-forgotten',
     loadChildren: () => import('./authentification/password-forgotten/password-forgotten.module').then( m => m.PasswordForgottenPageModule)
+  },
+  {
+    path: 'coordinateur',
+    loadChildren: () => import('./coordinateur/coordinateur.module').then( m => m.CoordinateurPageModule)
+  },
+  {
+    path: 'chef',
+    loadChildren: () => import('./coordinateur/pages/chef/chef.module').then( m => m.ChefPageModule)
+  },
+  {
+    path: 'participant',
+    loadChildren: () => import('./coordinateur/pages/participant/participant.module').then( m => m.ParticipantPageModule)
+  },
+  {
+    path: 'evenements',
+    loadChildren: () => import('./coordinateur/pages/evenements/evenements.module').then( m => m.EvenementsPageModule)
+  },
+  {
+    path: 'chef',
+    loadChildren: () => import('./coordinateur/pages/chef/chef.module').then( m => m.ChefPageModule)
   }
+
 
 
 ];
