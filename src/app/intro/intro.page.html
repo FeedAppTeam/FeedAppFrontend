@@ -1,0 +1,53 @@
+<ion-header >
+      <ion-button routerLink="../home" fill="clear" >Skip</ion-button>
+</ion-header>
+<ion-content>
+  <ion-slides pager  #slides>
+
+    <ion-slide>
+      <div class="slide">
+        <img src="/assets/Images/slide1.png">
+        <h2>New Innovative Solution to Feed The Homeless </h2>
+        <p>Every year, a trillion dollars of food goes to waste. This hurts our planet instead of nourishing people</p>
+        <ion-button (click)="next(slides)" fill="clear" >NEXT <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide">
+      <img src="/assets/Images/slide2.png">
+      <h2>Connect</h2>
+      <p><strong>FeedApp</strong> connect volunteers, restaurants and donators, to help build a strong community around homeless feeding.</p>
+      <ion-button fill="clear" (click)="next(slides)">NEXT <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </div>
+
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide">
+      <img src="/assets/Images/slide3.png">
+      <h2>Manage</h2>
+      <p>After Connecting people, FeedApp manage teams, assign roles, organize food supply chain and get things efficiently done.</p>
+      <ion-button fill="clear" (click)="next(slides)">NEXT<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide">
+      <img src="/assets/Images/slide4.png">
+      <h2>Feed</h2>
+      <p>During this step, FeedApp helps to to predict the critical areas based on previous data about Homeless people group localization.</p>
+      <ion-button fill="clear" (click)="next(slides)">NEXT<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide">
+      <img src="/assets/Images/slide5.png">
+      <h2>Welcome to FeedApp</h2>
+      <ion-button fill="clear"  routerLink="../home">Get Started <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </div>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

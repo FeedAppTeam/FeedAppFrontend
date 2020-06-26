@@ -6,7 +6,7 @@
 </div>
 
 <ion-app >
-  <app-header id="modal" *ngIf="errorVersion" [hidden]="this.platform.url().includes('/auth')" [hidden]="this.platform.url().includes('/event-details')"></app-header>
+  <app-header id="modal" *ngIf="errorVersion" [hidden]="this.platform.url().includes('/auth')" [hidden]="this.platform.url().includes('/event-details')" [hidden]="this.platform.url().includes('/intro')"></app-header>
   <!-- menu slide -->
   <ion-menu *ngIf="this.currentUser" side="end" menuId="first" contentId="page-wrap">
     <ion-header color ="primary">

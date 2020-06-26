@@ -1,0 +1,36 @@
+.header-md::after{
+  width:0px;
+  
+}
+ion-slides {
+    height: 100%;
+    margin-left:1em;
+    margin-right: 1em ;
+    margin-top: auto;
+    display: block;
+
+  }
+  ion-slides img{
+    height: 300px;
+    width: 300px;
+  }
+  
+   ion-button{
+    float: right;  
+  }
+ /* #skip{
+    position:absolute;
+    text-align: right;
+    //margin-top: 1em;
+  }*/
+
+  p {
+    padding: 0 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ion-color-step-600, #60646b);
+  }
+
+  p b {
+    color: var(--ion-text-color, #000000);
+  }
