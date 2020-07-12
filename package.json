@@ -52,7 +52,7 @@
     "es6-promise-plugin": "^4.2.2",
     "flag-icon-css": "^3.4.6",
     "ionic-plugin-deeplinks": "^1.0.20",
-    "ionic-selectable": "^4.5.0",
+    "ionic-selectable": "^4.6.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

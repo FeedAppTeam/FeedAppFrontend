@@ -11,6 +11,7 @@ import {TokenStorageService} from './services/token-storage.service';
 import {JwtResponse} from './models/jwt-response';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import {EventDetailsPage} from './event-details/event-details.page';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -29,8 +30,6 @@ export class AppComponent {
   navigate: any;
   srcAvatar = 'assets/avatar/avatar7.png';
   currentUser: JwtResponse;
-  rootPage: any = "home";
-
   oldItem = null;
   constructor(
     private platform: Platform,
@@ -50,14 +49,14 @@ export class AppComponent {
       this.backButtonEvent();
       this.sideMenu();
       this.getCurrentUser();
-
+  }
   showintro() {
-    this.storage.get("introShown").then((result) => {
+    this.storage.get('introShown').then((result) => {
       if (result) {
-        this.router.navigate(["/home"]);
+        this.router.navigate(['/home']);
       } else {
-        this.router.navigate(["/intro"]);
-        this.storage.set("introShown", true);
+        this.router.navigate(['/intro']);
+        this.storage.set('introShown', true);
       }
     });
   }
@@ -74,7 +73,7 @@ export class AppComponent {
         this.showintro();
         if (
           this.versionType != null &&
-          this.cmpVersions(this.versionType, "6.0") < 0
+          this.cmpVersions(this.versionType, '6.0') < 0
         ) {
           this.notConformeDevice();
         } else {
@@ -243,7 +242,7 @@ export class AppComponent {
             // match.$route - the route we matched, which is the matched entry from the arguments to route()
             // match.$args - the args passed in the link
             // match.$link - the full link data
-            const intpaht = `/event-details/${match.$args['id']}`;
+            const intpaht = `/event-details/${match.$args.id}`;
             this.zone.run(() => {
                 this.router.navigate([intpaht]);
             });
