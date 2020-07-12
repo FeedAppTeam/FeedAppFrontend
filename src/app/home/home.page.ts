@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import {IntroPage} from '../intro/intro.page';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +14,7 @@ export class HomePage {
   events: any[] =  [];
   subscription: any;
   img = '/assets/Images/casablanca.jpg';
-  constructor(private router: Router, private platform: Platform) {
+  constructor(private router: Router, private platform: Platform ,public navCtrl: NavController, public storage: Storage) {
     this.events = [
       {
         id: 1,
@@ -173,4 +176,5 @@ export class HomePage {
           ];
       }, 2000);
   }
+ 
 }

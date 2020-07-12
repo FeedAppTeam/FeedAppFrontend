@@ -86,7 +86,10 @@ ion-header::after {
     --border-width: 0px !important;
 }
 
-.suffix-icon { position: absolute; bottom: 0; right: 0; }
+.suffix-icon { 
+  position: absolute;
+   bottom: 0; 
+   right: 0; }
 
 .signIn{
     display: block;
