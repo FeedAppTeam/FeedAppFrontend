@@ -3,15 +3,8 @@ import {CanActivate, PreloadAllModules, RouterModule, Routes} from '@angular/rou
 import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
-  {
-     path: '',
-     redirectTo: 'home',
-     pathMatch: 'full'
-   },
-  { 
-    path: 'home', 
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
     path: 'create-event',
     loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
@@ -48,6 +41,10 @@ const routes: Routes = [
   {
     path: 'intro',
     loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule)
+  },
+  {
+      path: 'coordinateur',
+      loadChildren: () => import('./coordinateur/coordinateur.module').then( m => m.CoordinateurPageModule)
   }
 
 

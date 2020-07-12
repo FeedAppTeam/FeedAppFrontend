@@ -1,0 +1,83 @@
+
+<ion-content>
+
+  <div class="search-bar">
+    <ion-searchbar (ionInput)="Filterchef($event)" (ionInput)="Filterbenevole($event)" (ionInput)="Filterevenement($event)"  ></ion-searchbar>   
+  </div>
+ 
+
+  <!-- Segment with secondary color -->
+  <ion-segment  color="secondary" [(ngModel)]="segment">
+      <ion-segment-button  value="chef" active >
+          <ion-label>Leader</ion-label>
+      </ion-segment-button>
+      <ion-segment-button  value="benevol">
+          <ion-label>Benevols</ion-label>
+      </ion-segment-button>
+      <ion-segment-button  value="Evenement">
+          <ion-label>Events</ion-label>
+      </ion-segment-button>
+  </ion-segment>
+<!------------------------Segment Leader------------------------------->
+
+  <div *ngIf="segment === 'chef'">
+    <ion-list>
+      <ion-item *ngFor="let item of chef"> 
+          <ion-avatar slot="start">
+              <ion-img src="./assets/avatar/{{item.image}}"></ion-img>
+          </ion-avatar>
+          <div class="card-info">
+              <ion-label>
+                  <h2>{{item.name}}</h2>
+                  <h3>{{item.code}}</h3>
+              </ion-label>
+          </div> 
+        </ion-item>
+    </ion-list>
+</div>
+<!------------------------Segment Benevols------------------------------->
+
+  <div *ngIf="segment === 'benevol'" >
+      <ion-list >
+        <ion-item *ngFor="let item of benevol;let index = index"> 
+                <ion-avatar slot="start">
+                    <ion-img src="./assets/avatar/{{item.image}}"></ion-img>
+                </ion-avatar>
+                <div class="card-info">
+                    <ion-label>
+                        <h2>{{item.name}}</h2>
+                        <h3>{{item.code}}</h3>
+                    </ion-label>  
+                    <ion-toggle [(ngModel)]="button[index]" (click)="addtochef(index)" class="toggle"></ion-toggle> 
+                    <ion-col size="2">
+                      <ion-icon name="trash-outline" (click)="DeleteBenevol(index)" id="delete-btn">
+                      </ion-icon>
+                  </ion-col>
+                  </div>
+
+          </ion-item>
+      </ion-list>
+  </div>
+<!------------------------Segment Evenements------------------------------->
+<div *ngIf="segment === 'Evenement'">
+      <div class="event1" *ngFor="let item of evenement;let index = index">
+        <div class="time">
+          <ul>
+            <li>{{item.date}}</li>
+          </ul>
+        </div>
+        <div class="info">
+          <ul>
+            <span></span>
+            <li class="title">{{item.name}}</li>
+            <li class="place">
+              <ion-icon name="location" slot="start"></ion-icon> {{item.city}}
+            </li>
+            <li class="role">
+              <ion-icon name="person" slot="start"></ion-icon> {{item.leader}}
+            </li>
+          </ul>
+        </div>
+      </div>
+</div>
+</ion-content>
