@@ -1,12 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {JwtResponse} from '../../../models/jwt-response';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../../services/token-storage.service';
-import {ImagePicker, ImagePickerOptions} from "@ionic-native/image-picker/ngx";
-import {Camera, CameraOptions} from "@ionic-native/camera/ngx";
-import {AvatarDialogComponent} from "../../../avatar-dialog/avatar-dialog.component";
-import {ActionSheetController, ModalController, Platform} from "@ionic/angular";
-import {File} from "@ionic-native/file/ngx";
+import {ImagePicker, ImagePickerOptions} from '@ionic-native/image-picker/ngx';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {AvatarDialogComponent} from '../../../avatar-dialog/avatar-dialog.component';
+import {ActionSheetController, ModalController, Platform} from '@ionic/angular';
+import {File} from '@ionic-native/file/ngx';
+import {UserService} from '../../../services/user.service';
+import {User} from '../../../models/user';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +14,7 @@ import {File} from "@ionic-native/file/ngx";
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  infoUser: JwtResponse = null;
+  infoUser: User;
   contentToShow = 'main';
   constructor(public token: TokenStorageService,
               public actionsheetCtrl: ActionSheetController,
@@ -22,7 +22,8 @@ export class ProfilePage implements OnInit {
               public imagePicker: ImagePicker,
               public file: File,
               private camera: Camera,
-              public modalController: ModalController) {
+              public modalController: ModalController,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -30,11 +31,20 @@ export class ProfilePage implements OnInit {
   }
 
   ionViewDidEnter() {
-      console.log('from ionViewDidEnter');
       this.getCurrentUser();
   }
   async getCurrentUser() {
-    this.infoUser = this.token.getCurrentUser();
+    if (this.userService.getUser() === undefined || this.userService.getUser() === null) {
+        this.userService.getCurrentUser().subscribe(
+            (res) => {
+                this.userService.setUser(res.data);
+                this.infoUser = res.data;
+            }
+        );
+    } else {
+      this.infoUser = this.userService.getUser();
+    }
+
     if ((typeof this.infoUser) === 'string' ) {
       this.infoUser = JSON.parse(this.infoUser.toString());
     }
@@ -98,7 +108,7 @@ export class ProfilePage implements OnInit {
           const path = results[0].substring(0 , results[0].lastIndexOf('/') + 1);
           this.file.readAsDataURL(path, filename).then((base64string) => {
               this.infoUser.img = base64string;
-              this.token.saveUser(this.infoUser);
+              // this.token.saveUser(this.infoUser);
           });
       });
   }
@@ -121,7 +131,7 @@ export class ProfilePage implements OnInit {
 
       this.camera.getPicture(options).then((results) => {
           this.infoUser.img = 'data:image/jpeg;base64,' + results;
-          this.token.saveUser(this.infoUser);
+          // this.token.saveUser(this.infoUser);
       });
   }
 
@@ -137,7 +147,7 @@ export class ProfilePage implements OnInit {
           this.infoUser.img = (result.data !== undefined  && result.data !== null &&
                                 result.data.avatar !== undefined && result.data.avatar !== null) ?
                                 result.data.avatar : this.infoUser.img;
-          this.token.saveUser(this.infoUser);
+          // this.token.saveUser(this.infoUser);
       });
 
       return await modal.present();

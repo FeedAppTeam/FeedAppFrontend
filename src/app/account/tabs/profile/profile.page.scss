@@ -1,13 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
+/*********** Content *****************/
+.container, .edit-profile.container, .change-password.container, .team.container{
+  max-width: 700px;
+  margin : auto;
+}
 /************profile**************/
 .name-badge {
   text-align: center;
   margin-top: 2em;
+  ion-badge, ion-skeleton-text {
+    margin-bottom: -4px;
+  }
 }
-.name-badge ion-badge {
-  margin-bottom: -4px;
-}
+
 .info {
   margin-top: 2em;
 }
@@ -212,16 +218,17 @@ ion-header::before {
   background-image: none;
 }
 
-#avatar-header {
+.avatar-header {
   display: block;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3em;
   margin-bottom: 2em;
-  img {
+  img, ion-skeleton-text {
     margin-top: 3em;
     width: 70px;
+    height: 70px;
   }
 }
 

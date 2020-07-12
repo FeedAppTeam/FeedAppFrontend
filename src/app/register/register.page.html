@@ -23,7 +23,8 @@
   </div>
   <form #f="ngForm" novalidate>
     <div *ngIf="!showOTPInput">
-      <ion-avatar class="feedapp-icon container" (click)="selectAvatar()">
+      <input type="file" id="fileLoader" #fileLoader name="files" title="Load File" hidden />
+      <ion-avatar class="feedapp-icon container" (click)="selectAvatar(fileLoader)">
         <ion-img  [src]="urlAvatarProfile" ></ion-img>
         <ion-icon name="camera"></ion-icon>
       </ion-avatar>
@@ -43,10 +44,27 @@
         <div *ngIf="nameInput.errors.required">Name is required</div>
         <div *ngIf="!nameInput.errors.required">Name needs to be at least 3 characters</div>
       </div>
-
-      <ion-item lines="full">
-        <ion-label position="floating">Phone<span class="required">*</span></ion-label>
-        <ion-input type="tel" [(ngModel)]="registerForm.phone" [ngModelOptions]="{standalone: true}"  clearInput="true" clearOnEdit="true" inputmode="tel" pattern="^0[67]{1}[0-9]{8}$" required #phoneInput="ngModel"></ion-input>
+      <ion-item lines="full" id="phoneBlock">
+        <ionic-selectable
+                [(ngModel)]="country"
+                [ngModelOptions]="{standalone: true}"
+                [items]="counrtiesNegatif"
+                itemValueField="abrev"
+                itemTextField="name"
+                [canSearch]="true"
+                (onChange)="phoneCountryChange()"
+                #negatifInput="ngModel"
+                hidden>
+          <ng-template ionicSelectableItemEndTemplate let-element="item" let-isPortSelected="isItemSelected">
+            <span class="flag-icon flag-icon-{{element.abrev}}"></span>
+          </ng-template>
+        </ionic-selectable>
+        <ion-label position="floating" style="margin-bottom: 5px;">Phone<span class="required">*</span></ion-label>
+        <div class="input-group prefix">
+          <span *ngIf="country" class="flag-icon flag-icon-{{country?.abrev}}" (click)="openSelectable()"></span>
+          <span *ngIf="country" slot="start" class="input-group-addon" (click)="openSelectable()">{{country?.negatif}}</span>
+          <ion-input type="tel" id="phone" [(ngModel)]="registerForm.phone" [ngModelOptions]="{standalone: true}"  clearInput="true" clearOnEdit="true" inputmode="tel" pattern="^[0-9]{9}$" required #phoneInput="ngModel"></ion-input>
+        </div>
         <ion-icon name="call-outline" slot="end" class="suffix-icon"></ion-icon>
       </ion-item>
       <div class="help is-error error-message " *ngIf="phoneInput.invalid && (phoneInput.dirty || phoneInput.touched)">
@@ -99,7 +117,7 @@
 
       <ion-item lines="full">
         <ion-label position="floating">Country<span class="required">*</span></ion-label>
-        <ion-select [(ngModel)]="registerForm.country" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="registerForm.city = null" required #countryInput="ngModel">
+        <ion-select [(ngModel)]="registerForm.country" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ngModelChange)= "registerForm.city = null;" (ionCancel)="registerForm.city = null; registerForm.country = null;" required #countryInput="ngModel">
           <ion-select-option *ngFor="let country of countries"  [value]="country.id">
             {{ country.name }}
           </ion-select-option>
@@ -112,7 +130,7 @@
       <ion-item lines="full">
         <ion-label position="floating">City<span class="required">*</span></ion-label>
         <ion-select [(ngModel)]="registerForm.city" [ngModelOptions]="{standalone: true}" cancelText="Clear" (ionCancel)="registerForm.city = null" required #cityInput="ngModel">
-          <ion-select-option *ngFor="let city of countries[ registerForm?.country -1 ]?.cities"  [value]="city.name">
+          <ion-select-option *ngFor="let city of countries[ registerForm?.country -1 ]?.Cities"  [value]="city.id">
             {{ city.name }}
           </ion-select-option>
         </ion-select>

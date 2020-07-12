@@ -72,6 +72,9 @@
               },
               {
                 "input": "src/theme/variables.css"
+              },
+              {
+                "input": "node_modules/flag-icon-css/sass/flag-icon.scss"
               }
             ],
             "scripts": []

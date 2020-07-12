@@ -8,9 +8,13 @@ import { SignUpInfo } from '../models/signup-info';
 import {MessageResponse} from '../models/message-response';
 import {environment} from '../../environments/environment';
 
-
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+        'Cache-Control' : 'no-cache',
+         'Content-Type': 'application/json',
+         Accept: '*/*',
+        'Access-Control-Allow-Origin': '*',
+         })
 };
 
 @Injectable({
@@ -18,11 +22,12 @@ const httpOptions = {
 })
 export class AuthService {
 
-    apiUrl =  'https://feedapp01.herokuapp.com/api';
+   // apiUrl =  'https://feedapp01.herokuapp.com/api';
+    apiUrl =  'http://localhost:3000/api';
     private loginUrl = this.apiUrl + '/auth/signin';
     private signupUrl = this.apiUrl + '/auth/signup';
 
-     constructor(private http: HttpClient/*, private storage: Storage*/) {
+    constructor(private http: HttpClient) {
 
     }
 

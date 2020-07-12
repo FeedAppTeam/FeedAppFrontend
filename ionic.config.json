@@ -1,8 +1,5 @@
 {
-  "name": "FeedAppFrontendApplication",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
+  "name": "feedapp",
+  "integrations": {},
   "type": "angular"
 }

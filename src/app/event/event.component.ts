@@ -1,9 +1,10 @@
 import { Component, OnInit , Input} from '@angular/core';
 import {NavigationExtras, Router} from '@angular/router';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import {ActionSheetController, ToastController} from '@ionic/angular';
+import {ActionSheetController, NavParams, Platform, ToastController} from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import {PopoverComponent} from '../popover/popover.component';
+import {Clipboard} from "@ionic-native/clipboard/ngx";
 
 @Component({
   selector: 'app-event',
@@ -17,7 +18,8 @@ export class EventComponent implements OnInit {
               private socialSharing: SocialSharing,
               public actionsheetCtrl: ActionSheetController,
               public toastController: ToastController,
-              private popoverController: PopoverController) {
+              private clipboard: Clipboard,
+              private platform: Platform) {
         setTimeout(() => {
             this.contentLoaded = true ;
         }, 3000);
@@ -67,27 +69,41 @@ export class EventComponent implements OnInit {
 
 
     share(event) {
-        const link = 'https://feedapp-638f1.firebaseapp.com/event-details/' + event.id;
+        const link = 'https://feedapp.inovagit.com/event-details/' + event.id;
         const msg = this.constructMessage(event) + link;
         // this is the complete list of currently supported params you can pass to the plugin (all optional)
-
-        this.socialSharing.share(msg, 'ZeroHunger - FeedApp', null, null).then(
-             () => {
-
-            },
-            async () => {
-                const toast = await this.toastController.create({
-                    message: 'Error sharing',
-                    duration: 2000,
-                    position: 'bottom'
-                });
-                toast.present();
+        if (this.platform.is('mobileweb')) {
+            let newVariable: any;
+            newVariable = window.navigator;
+            if (newVariable && newVariable.share) {
+                newVariable.share({
+                    title: 'ZeroHunger - FeedApp',
+                    text: msg,
+                    url: link,
+                })
+                    .then(() => console.log('Successful share'))
+                    .catch((error) => console.log('Error sharing', error));
+            } else {
+                alert('share not supported');
             }
-        );
+        } else {
+            this.socialSharing.share(msg, 'ZeroHunger - FeedApp', null, null).then(
+                () => {
+
+                },
+                async () => {
+                    const toast = await this.toastController.create({
+                        message: 'Error sharing',
+                        duration: 2000,
+                        position: 'bottom'
+                    });
+                    toast.present();
+                }
+            );
+        }
     }
     async presentPopover(ev: any , event) {
-        console.log('click');
-        const popover = await this.popoverController.create({
+        /*const popover = await this.popoverController.create({
             component: PopoverComponent,
             componentProps: {
                 id : event.id,
@@ -98,6 +114,41 @@ export class EventComponent implements OnInit {
             event: ev,
             translucent: true
         });
-        return await popover.present();
+        return await popover.present();*/
+        const actionSheet = await this.actionsheetCtrl.create({
+            header: 'Share event',
+            cssClass: 'action-sheets-basic-page',
+            buttons: [
+                {
+                    text: 'Share',
+                    role: 'destructive',
+                    icon: this.platform.is('ios') ? 'ios-share-social-outline' : 'share-social-outline',
+                    handler: () => {
+                        this.share(event);
+                    }
+                },
+                {
+                    text: 'Copy link',
+                    role: 'destructive',
+                    icon: this.platform.is('ios') ? 'ios-link-outline' : 'link-outline',
+                    handler: () => {
+                        this.copyLink(event);
+                    }
+                }
+            ]
+        });
+        await actionSheet.present();
+    }
+    async copyLink(event) {
+        const link = 'https://feedapp.inovagit.com/event-details/' + event.id;
+        if (this.platform.is('desktop') || this.platform.is('mobileweb')) {
+            if (navigator.clipboard) {
+                try {
+                    await navigator.clipboard.writeText(link);
+                } catch (err) {}
+            }
+        } else {
+            this.clipboard.copy(link);
+        }
     }
 }

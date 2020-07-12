@@ -29,6 +29,7 @@ export class AppComponent {
   navigate: any;
   srcAvatar = 'assets/avatar/avatar7.png';
   currentUser: JwtResponse;
+  oldItem = null;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -63,7 +64,6 @@ export class AppComponent {
         } else {
           timer(3000).subscribe(() => {
               this.showSplash = false;
-              //this.initializeDeepLink();
           });
         }
       } else {
@@ -140,25 +140,49 @@ export class AppComponent {
                 {
                     title : 'Home',
                     url   : '/home',
+                    active: true,
                     icon  : 'home'
                 },
                 {
                     title : 'Account',
                     url   : '/account/profile',
+                    active: false,
                     icon  : 'person-outline'
                 },
                 {
                     title : 'Add Event',
                     url   : '/create-event',
+                    active: false,
                     icon  : 'add-outline'
                 },
                 {
                     title : 'Contact',
                     url   : '/contact',
+                    active: false,
                     icon  : 'chatbubble-outline'
                 },
-
+                {
+                    title : 'Sign out',
+                    url : null,
+                    active: false,
+                    function   : 'callback',
+                    icon  : 'exit-outline'
+                }
             ];
+        this.oldItem = this.navigate[0];
+    }
+
+    sideMenuAction(e , pages) {
+      if (pages.url !== null) {
+          this.oldItem.active = false;
+          this.router.navigate([pages.url]);
+          const elem = document.getElementsByClassName('active')[0];
+          elem.classList.toggle('active');
+          pages.active = true;
+          this.oldItem = pages;
+      } else if (pages.function !== undefined && pages.function !== null) {
+          this.logOut();
+      }
     }
 
     async getCurrentUser() {
@@ -184,6 +208,11 @@ export class AppComponent {
                     text: 'Yes',
                     handler: () => {
                         this.token.signOut();
+                        this.oldItem.active = false;
+                        this.navigate[0].active = true;
+                        this.oldItem = this.navigate[0];
+                        const elem = document.getElementsByClassName('active')[0];
+                        elem.classList.toggle('active');
                     }
                 }
             ]

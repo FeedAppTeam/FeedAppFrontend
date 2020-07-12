@@ -9,54 +9,56 @@
     </ion-fab-button>
   </ion-avatar>
   <br>
-  <form>
-    <ion-item lines="none">
-      <ion-label color="tertiary" position="stacked">
-        <ion-icon name="person" slot="start"></ion-icon>
-        Full Name
-      </ion-label>
-      <ion-input value="{{ profile?.name }}" inputmode="text"></ion-input>
-    </ion-item>
+  <div class="container">
+    <form>
+      <ion-item lines="none">
+        <ion-label color="tertiary" position="stacked">
+          <ion-icon name="person" slot="start"></ion-icon>
+          Full Name
+        </ion-label>
+        <ion-input value="{{ profile?.name }}" inputmode="text"></ion-input>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-label color="tertiary" position="stacked">
-        <ion-icon name="call" slot="start"></ion-icon>
-        Phone
-      </ion-label>
-      <ion-input value="{{ profile?.phone }}" inputmode="tel"></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-label color="tertiary" position="stacked">
+          <ion-icon name="call" slot="start"></ion-icon>
+          Phone
+        </ion-label>
+        <ion-input value="{{ profile?.phone }}" inputmode="tel"></ion-input>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-label color="tertiary" position="stacked">
-        <ion-icon name="mail" slot="start"></ion-icon>
-        Email
-      </ion-label>
-      <ion-input value="" inputmode="email" ></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-label color="tertiary" position="stacked">
+          <ion-icon name="mail" slot="start"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input value="{{ profile?.email }}" inputmode="email" ></ion-input>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-label color="tertiary" position="stacked">
-        <ion-icon name="transgender" slot="start"></ion-icon>
-        Gender
-      </ion-label>
-      <ion-input value="" inputmode="text"  ></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-label color="tertiary" position="stacked">
+          <ion-icon name="transgender" slot="start"></ion-icon>
+          Gender
+        </ion-label>
+        <ion-input value="{{ profile?.gender }}" inputmode="text"  ></ion-input>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-label color="tertiary" position="stacked">
-        <ion-icon name="location" slot="start"></ion-icon>
-        City
-      </ion-label>
-      <ion-input value="" inputmode="text"></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-label color="tertiary" position="stacked">
+          <ion-icon name="location" slot="start"></ion-icon>
+          City
+        </ion-label>
+        <ion-input value="{{ profile?.city.name }}" inputmode="text"></ion-input>
+      </ion-item>
 
-    <ion-row>
-      <ion-col>
-        <ion-button class="update">
-          <ion-icon slot="start" name="create"></ion-icon>
-          Update Profile
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+      <ion-row>
+        <ion-col>
+          <ion-button class="update">
+            <ion-icon slot="start" name="create"></ion-icon>
+            Update Profile
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
 </div>
