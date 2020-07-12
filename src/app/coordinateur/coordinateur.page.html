@@ -2,7 +2,6 @@
 <ion-content>
 
   <div class="search-bar">
-    
     <ion-searchbar (ionInput)="Filterchef($event)" (ionInput)="Filterbenevole($event)" (ionInput)="Filterevenement($event)"  ></ion-searchbar>   
   </div>
  
@@ -60,7 +59,7 @@
       </ion-list>
   </div>
 <!------------------------Segment Evenements------------------------------->
-<div *ngIf="segment === 'Evenement'">  
+<div *ngIf="segment === 'Evenement'">
       <div class="event1" *ngFor="let item of evenement;let index = index">
         <div class="time">
           <ul>
