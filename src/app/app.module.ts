@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { IonicStorageModule } from '@ionic/storage';
-import { HttpClientModule  } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {File} from '@ionic-native/file/ngx';
@@ -26,7 +26,7 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 import {PopoverComponent} from './popover/popover.component';
-
+import {httpInterceptorProviders} from './services/auth-interceptor';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AvatarDialogComponent, PopoverComponent],
@@ -37,7 +37,7 @@ import {PopoverComponent} from './popover/popover.component';
       IonicModule.forRoot(),
       AppRoutingModule,
       FormsModule,
-      IonicStorageModule.forRoot()
+      IonicStorageModule.forRoot(),
   ],
   providers: [
     Camera,
@@ -53,8 +53,8 @@ import {PopoverComponent} from './popover/popover.component';
     SocialSharing,
     Deeplinks,
     Clipboard,
+    httpInterceptorProviders,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-
   ],
   bootstrap: [AppComponent]
 })

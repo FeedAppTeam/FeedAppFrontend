@@ -1,0 +1,269 @@
+{
+  "countries" : [
+    {
+      "name": "ALGERIA",
+      "negatif" : "+211",
+      "abrev" : "dz"
+    },
+    {
+      "name": "ANGOLA",
+      "negatif" : "+244",
+      "abrev" : "ao"
+    },
+    {
+      "name": "BENIN",
+      "negatif" : "+229",
+      "abrev" : "bj"
+    },
+    {
+      "name": "BOTSWANA",
+      "negatif" : "+267",
+      "abrev" : "bw"
+    },
+    {
+      "name": "BURKINA FASO",
+      "negatif" : "+226",
+      "abrev" : "bf"
+    },
+    {
+      "name": "BURUNDI",
+      "negatif" : "+257",
+      "abrev" : "bi"
+    },
+    {
+      "name": "CABO VERDE",
+      "negatif" : "+238",
+      "abrev" : "cv"
+    },
+    {
+      "name": "CAMEROON",
+      "negatif" : "+237",
+      "abrev" : "cm"
+    },
+    {
+      "name": "CENTRAL AFRICAN REPUBLIC",
+      "negatif" : "+236",
+      "abrev" : "cf"
+    },
+    {
+      "name": "CHAD",
+      "negatif" : "+235",
+      "abrev" : "td"
+    },
+    {
+      "name": "COMOROS",
+      "negatif" : "+269",
+      "abrev" : "km"
+    },
+    {
+      "name": "CONGO DEMOCRATIC REPUBLIC",
+      "negatif" : "+243",
+      "abrev" : "cd"
+    },
+    {
+      "name": "CONGO REPUBLIC",
+      "negatif" : "+242",
+      "abrev" : "cg"
+    },
+    {
+      "name": "COTE D'IVOIRE",
+      "negatif" : "+225",
+      "abrev" : "ci"
+    },
+    {
+      "name": "DJIBOUTI",
+      "negatif" : "+253",
+      "abrev" : "dj"
+    },
+    {
+      "name": "EGYPT",
+      "negatif" : "+20",
+      "abrev" : "eg"
+    },
+    {
+      "name": "EQUATORIAL GUINEA",
+      "negatif" : "+240",
+      "abrev" : "gq"
+    },
+    {
+      "name": "ERITREA",
+      "negatif" : "+291",
+      "abrev" : "er"
+    },
+    {
+      "name": "ESWATINI",
+      "negatif" : "+268",
+      "abrev" : "ee"
+    },
+    {
+      "name": "ETHIOPIA",
+      "negatif" : "+251",
+      "abrev" : "et"
+    },
+    {
+      "name": "GABON",
+      "negatif" : "+241",
+      "abrev" : "ga"
+    },
+    {
+      "name": "GAMBIA",
+      "negatif" : "+220",
+      "abrev" : "gm"
+    },
+    {
+      "name": "GHANA",
+      "negatif" : "+233",
+      "abrev" : "gh"
+    },
+    {
+      "name": "GUINEA",
+      "negatif" : "+224",
+      "abrev" : "gn"
+    },
+    {
+      "name": "GUINEA-BISSAU",
+      "negatif" : "+245",
+      "abrev" : "gw"
+    },
+    {
+      "name": "KENYA",
+      "negatif" : "+254",
+      "abrev" : "ke"
+    },
+    {
+      "name": "LESOTHO",
+      "negatif" : "+266",
+      "abrev" : "ls"
+    },
+    {
+      "name": "LIBERIA",
+      "negatif" : "+231",
+      "abrev" : "lr"
+    },
+    {
+      "name": "LIBYA",
+      "negatif" : "+218",
+      "abrev" : "ly"
+    },
+    {
+      "name": "MADAGASCAR",
+      "negatif" : "+261",
+      "abrev" : "mg"
+    },
+    {
+      "name": "MALAWI",
+      "negatif" : "+265",
+      "abrev" : "mw"
+    },
+    {
+      "name": "MALI",
+      "negatif" : "+223",
+      "abrev" : "ml"
+    },
+    {
+      "name": "MAURITANIA",
+      "negatif" : "+222",
+      "abrev" : "mr"
+    },
+    {
+      "name": "MOROCCO",
+      "negatif" : "+212",
+      "abrev" : "ma"
+    },
+    {
+      "name": "MOZAMBIQUE",
+      "negatif" : "+258 ",
+      "abrev" : "mz"
+    },
+    {
+      "name": "NAMIBIA",
+      "negatif" : "+264 ",
+      "abrev" : "na"
+    },
+    {
+      "name": "NIGER",
+      "negatif" : "+227 ",
+      "abrev" : "ne"
+    },
+    {
+      "name": "NIGERIA",
+      "negatif" : "+234",
+      "abrev" : "ng"
+    },
+    {
+      "name": "RWANDA",
+      "negatif" : "+250",
+      "abrev" : "rw"
+    },
+    {
+      "name": "SAO TOME",
+      "negatif" : "+239",
+      "abrev" : "st"
+    },
+    {
+      "name": "SENEGAL",
+      "negatif" : "+221",
+      "abrev" : "sn"
+    },
+    {
+      "name": "SEYCHELLES",
+      "negatif" : "+248",
+      "abrev" : "sc"
+    },
+    {
+      "name": "SIERRA LEONE",
+      "negatif" : "+232",
+      "abrev" : "sl"
+    },
+    {
+      "name": "SOMALIA",
+      "negatif" : "+252",
+      "abrev" : "so"
+    },
+    {
+      "name": "SOUTH AFRICA",
+      "negatif" : "+27",
+      "abrev" : "za"
+    },
+    {
+      "name": "SOUTH SUDAN",
+      "negatif" : "+211",
+      "abrev" : "ss"
+    },
+    {
+      "name": "SUDAN",
+      "negatif" : "+249",
+      "abrev" : "sd"
+    },
+    {
+      "name": "TANZANIA",
+      "negatif" : "+255",
+      "abrev" : "dz"
+    },
+    {
+      "name": "TOGO",
+      "negatif" : "+228",
+      "abrev" : "tg"
+    },
+    {
+      "name": "TUNISIA",
+      "negatif" : "+216",
+      "abrev" : "tn"
+    },
+    {
+      "name": "UGANDA",
+      "negatif" : "+256",
+      "abrev" : "ug"
+    },
+    {
+      "name": "ZAMBIA",
+      "negatif" : "+260",
+      "abrev" : "zm"
+    },
+    {
+      "name": "ZIMBABWE",
+      "negatif" : "+263",
+      "abrev" : "zw"
+    }
+  ]
+}

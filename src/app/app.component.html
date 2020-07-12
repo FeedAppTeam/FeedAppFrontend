@@ -9,7 +9,7 @@
   <app-header id="modal" *ngIf="errorVersion" [hidden]="this.platform.url().includes('/auth')" [hidden]="this.platform.url().includes('/event-details')" [hidden]="this.platform.url().includes('/intro')"></app-header>
   <!-- menu slide -->
   <ion-menu *ngIf="this.currentUser" side="end" menuId="first" contentId="page-wrap">
-    <ion-header color ="primary">
+    <!--ion-header color ="primary">
       <ion-toolbar (click)="openProfile()">
           <ion-avatar class="avatar-menu">
             <ion-img class="user-image" [src]="srcAvatar"></ion-img>
@@ -31,6 +31,24 @@
         <ion-label> Logout </ion-label>
         <ion-icon name="log-out-outline" slot="start"></ion-icon>
       </ion-button>
+    </ion-content-->
+    <ion-content>
+      <div class="menu-header-bg"></div>
+      <div class="header-content">
+        <img src="{{srcAvatar}}" alt=""/>
+        <ion-label>
+          <h2> {{this.currentUser?.name}} </h2>
+          <p>{{this.currentUser?.phone}}</p>
+        </ion-label>
+      </div>
+      <ion-list lines="none" *ngFor="let pages of navigate" class="menu-items">
+        <ion-menu-toggle >
+          <ion-item  (click)="sideMenuAction($event, pages)" [class.active]="pages.active">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            {{pages.title}}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
     </ion-content>
   </ion-menu>
   <ion-content id="page-wrap" >

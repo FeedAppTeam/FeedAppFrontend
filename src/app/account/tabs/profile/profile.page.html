@@ -1,23 +1,42 @@
 <ion-header no-border [hidden]="contentToShow !== 'main'">
-  <ion-avatar id="avatar-header" (click)="selectAvatar()">
+  <ion-avatar *ngIf="infoUser" class="avatar-header" (click)="selectAvatar()">
     <img src="{{this.infoUser?.img}}" />
     <ion-fab-button id="user_pic">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-avatar>
+
+  <ion-avatar *ngIf="!infoUser" class="avatar-header">
+    <ion-skeleton-text animated > </ion-skeleton-text>
+  </ion-avatar>
+
 </ion-header>
 
 <ion-content ng-model="Profile" >
-  <div *ngIf="contentToShow === 'main'">
-    <div class="name-badge">
+  <div class = "container"*ngIf="contentToShow === 'main'">
+    <div *ngIf="infoUser" class="name-badge">
       <ion-label> {{infoUser?.name}} </ion-label>
-      <ion-badge color="warning" slot="end">
+      <ion-badge *ngIf="infoUser?.badge.name === 'GOLD'" style = "background-color : #ffd700;color: black" slot="end">
         Gold
+      </ion-badge>
+      <ion-badge *ngIf="infoUser?.badge.name === 'BRONZE'" style = "background-color : #cd7f32; color: black;" slot="end">
+        Bronze
+      </ion-badge>
+      <ion-badge *ngIf="infoUser?.badge.name === 'SILVER'" style = "background-color : #c0c0c0" slot="end">
+        Silver
       </ion-badge>
     </div>
 
+    <div *ngIf="!infoUser" class="name-badge">
+        <ion-skeleton-text animated  style="width: 40%;margin-right: 5px;
+    display: inline-block;" > </ion-skeleton-text>
+        <ion-skeleton-text animated  style="width: 10%;margin-left: auto;
+    margin-right: auto;
+    display: inline-block;"> </ion-skeleton-text>
+    </div>
+
     <div class="info">
-      <ion-list lines="none">
+      <ion-list *ngIf="infoUser" lines="none">
         <ion-item-sliding>
           <ion-item button ng-model="EditProfile" (click)="showProfile()">
             <ion-icon slot="start" name="create"></ion-icon>
@@ -56,23 +75,51 @@
           <ion-toggle slot="end" name="blueberry" checked></ion-toggle>
         </ion-item>
       </ion-list>
+      <ion-list *ngIf="!infoUser" lines="none">
+        <ion-item-sliding>
+          <ion-item button ng-model="EditProfile" >
+            <ion-skeleton-text style="height: 35px;"></ion-skeleton-text>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding>
+          <ion-item button ng-model="ChangePassword">
+            <ion-skeleton-text style="height: 35px;"></ion-skeleton-text>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding>
+          <ion-item button ng-model="Team">
+            <ion-skeleton-text style="height: 35px;"></ion-skeleton-text>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item>
+          <ion-skeleton-text style="height: 35px;"></ion-skeleton-text>
+        </ion-item>
+      </ion-list>
     </div>
+
   </div>
+
   <div *ngIf="contentToShow === 'edit'">
     <div >
       <app-edit-profile [profile]="infoUser" (goBack)='setContent($event)'></app-edit-profile>
     </div>
   </div>
+
   <div *ngIf="contentToShow === 'password'">
     <div >
       <app-change-password [profile]="infoUser" (goBack)='setContent($event)'></app-change-password>
     </div>
   </div>
+
   <div *ngIf="contentToShow === 'team'">
     <div >
       <app-myteam [profile]="infoUser" (goBack)='setContent($event)'></app-myteam>
     </div>
   </div>
+
 </ion-content>
 
 

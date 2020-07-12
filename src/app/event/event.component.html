@@ -53,24 +53,47 @@
 </div-->
 <ion-grid>
   <ion-row *ngIf="contentLoaded != false">
-    <ion-card *ngFor="let event of events">
-      <div class="button-container">
-        <img src="assets/city/{{event.informations.img}}" (click)="getMoreDetailsEvent(event)" />
-        <ion-icon name="ellipsis-vertical" (click)="presentPopover($event, event)"></ion-icon>
-      </div>
-      <ion-card-header>
-        <ion-card-title>{{event.informations.title}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        {{event.informations.city}} | {{event.informations.organizedby}} |{{event.informations.date}}
-      </ion-card-content>
-      <ion-buttons class="button-bar">
-         <ion-button id="participate"  >Participate</ion-button>
-        <ion-button id="donate" >Donate</ion-button>
-        <ion-button id="more" (click)="getMoreDetailsEvent(event)" >More</ion-button>
-      </ion-buttons>
-    </ion-card>
+    <ion-col *ngFor="let event of events">
+      <ion-card>
+        <div class="button-container">
+          <img src="assets/city/{{event.informations.img}}" (click)="getMoreDetailsEvent(event)" />
+        </div>
+        <ion-card-header>
+          <ion-card-title>{{event.informations.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{event.informations.city}} | {{event.informations.organizedby}} |{{event.informations.date}}
+        </ion-card-content>
+        <ion-buttons>
+          <ion-grid style="padding: 0;">
+            <ion-row>
+              <ion-col style="text-align: center;">
+                <ion-button  fill="clear" class="button activated participate">
+                  <ion-icon name="heart-outline"></ion-icon>
+                </ion-button>
+              </ion-col>
+              <ion-col style="text-align: center;">
+                <ion-button  fill="clear" class="button activated donate">
+                  <ion-icon name="pricetag-outline"></ion-icon>
+                </ion-button>
+              </ion-col>
+              <ion-col style="text-align: center;">
+                <ion-button  fill="clear" class="button activated info" (click)="getMoreDetailsEvent(event)">
+                  <ion-icon name="information-outline"></ion-icon>
+                </ion-button>
+              </ion-col>
+              <ion-col style="text-align: center;">
+                <ion-button  fill="clear" class="button activated share" (click)="presentPopover($event, event)">
+                  <ion-icon name="arrow-redo-outline"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-buttons>
+      </ion-card>
+    </ion-col>
   </ion-row>
+
   <div *ngIf="contentLoaded == false">
     <ion-row *ngFor="let v of [1,2,3,4]">
       <ion-card style="width : 100%">
@@ -89,5 +112,4 @@
       </ion-card>
     </ion-row>
   </div>
-
 </ion-grid>
