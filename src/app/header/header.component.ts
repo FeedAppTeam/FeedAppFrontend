@@ -112,6 +112,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.resetVariable();
     }
 
+    toCoordinateur() {
+        this.router.navigate(['coordinateur']);
+        this.resetVariable();
+    }
     resetVariable() {
         this.widthSize = this.platform.width();
         this.isDisplayed = true;

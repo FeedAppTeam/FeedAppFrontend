@@ -43,8 +43,8 @@ const routes: Routes = [
     loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule)
   },
   {
-      path: 'coordinateur',
-      loadChildren: () => import('./coordinateur/coordinateur.module').then( m => m.CoordinateurPageModule)
+    path: 'coordinateur',
+    loadChildren: () => import('./coordinateur/coordinateur.module').then( m => m.CoordinateurPageModule)
   }
 
 
